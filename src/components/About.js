@@ -50,7 +50,7 @@ export default function About() {
     </Box>
     <Box justifyContent="center" m={0} p={3}>
      <div className={classes.root}>
-      <Paper className={classes.paper} elevation={0} xs={2} variant="outlined">
+      <Paper className={classes.paper} elevation={2} xs={2} variant="outlined">
        <Grid container>
         <Box p={2}>
          <Grid item>

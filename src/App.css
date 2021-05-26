@@ -39,3 +39,29 @@
   transform: rotate(360deg);
  }
 }
+
+.sliderimg {
+ width: 100%;
+ height: 500px;
+ object-fit: cover;
+}
+
+.img {
+ height: 300;
+ width: 380;
+}
+
+.carousel-container {
+ position: relative;
+ max-width: 1000px;
+ max-height: 1000px;
+
+ .carousel {
+  .slide {
+   img {
+    height: 500px;
+    width: 500px;
+   }
+  }
+ }
+}
