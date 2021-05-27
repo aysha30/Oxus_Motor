@@ -50,17 +50,17 @@ export default function About() {
     </Box>
     <Box justifyContent="center" m={0} p={3}>
      <div className={classes.root}>
-      <Paper className={classes.paper} elevation={2} xs={2} variant="outlined">
+      <Paper className={classes.paper} elevation={2} xs={12} variant="outlined">
        <Grid container>
         <Box p={2}>
-         <Grid item>
+         <Grid item xs={1}>
           <img className={classes.img} alt="CAR" src={Car1} />
          </Grid>
         </Box>
         {/* <Grid item xs={2} /> */}
         <Grid item xs={8} sm container>
          <Grid item xs container direction="column" spacing={5}>
-          <Grid item xs>
+          <Grid item xs={12}>
            {/* <Typography gutterBottom variant="subtitle1">
             Standard license
            </Typography> */}
@@ -106,9 +106,6 @@ export default function About() {
         <Grid item xs={8} sm container>
          <Grid item xs container direction="column" spacing={5}>
           <Grid item xs>
-           {/* <Typography gutterBottom variant="subtitle1">
-            Standard license
-           </Typography> */}
            <Box p={2}>
             <Typography variant="body2">
              Lorem Ipsum is simply dummy text of the printing and typesetting

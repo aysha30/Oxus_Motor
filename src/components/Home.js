@@ -13,8 +13,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Carousel from "react-elastic-carousel";
 
 import { makeStyles } from "@material-ui/core/styles";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import Paper from "@material-ui/core/Paper";
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+ formControl: {
+  margin: theme.spacing(1),
+  minWidth: 120,
+ },
+ selectEmpty: {
+  marginTop: theme.spacing(2),
+ },
+}));
 
 const breakPoints = [
  { width: 1, itemsToShow: 1 },
@@ -109,7 +123,11 @@ export default function Home() {
     </Container>{" "}
    </Box>
    <Box m={5}>
-    <Container>asduuuu</Container>
+    <Container>
+     <Paper>
+      <Grid container> </Grid>
+     </Paper>
+    </Container>
    </Box>
    <Footer />
   </React.Fragment>
