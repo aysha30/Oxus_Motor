@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import 'tachyons';
 
 import green from '@material-ui/core/colors/green';
 
