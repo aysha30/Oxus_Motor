@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
             width: "80%",
             height: "100%",
         },
+        flexGrow: 1,
       },
     grid:{
         margin: "0px",
@@ -37,25 +38,18 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     reachusbox:{
+        height: "100%",
         [theme.breakpoints.down('xs')]:{
             width: "100%",
-            height: "100%",
         },
         [theme.breakpoints.up('sm')]:{
             width: "40%",
-            height: "100%",
         },
     },
     reachus:{
         padding: "20px",
-        [theme.breakpoints.down('xs')]:{
-            width: "100%",
-            height: "auto",
-        },
-        [theme.breakpoints.up('sm')]:{
-            width: "100%",
-            height: "auto",
-        },
+        width: "100%",
+        height: "auto",
     },
     sendus:{
         [theme.breakpoints.down('xs')]:{
