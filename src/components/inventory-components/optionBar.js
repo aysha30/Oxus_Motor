@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Select, Toolbar, IconButton, Grid, Typography, CssBaseline, useMediaQuery, Container, InputLabel } from '@material-ui/core';
-import { makeStyles, useTheme, fade } from "@material-ui/core/styles";
+import { Box, Select, Toolbar, Button, Grid, Typography, MenuItem, InputLabel } from '@material-ui/core';
+import { makeStyles} from "@material-ui/core/styles";
 import ListIcon from '@material-ui/icons/List';
 import AppsIcon from '@material-ui/icons/Apps';
 import ToggleButton from '@material-ui/lab/ToggleButton';
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
         padding: "10px 0px",
         },
         [theme.breakpoints.up('sm')]:{
-            padding: "0px 200px",
+            width: 600,
         },
     },
 }))
@@ -56,42 +56,45 @@ export default function OptionBar() {
                 alignItems="center"
                 justify="space-around" >
                 <Grid item >
-                    <div className={classes.carItem}>
                     <ToggleButtonGroup
+                        className={classes.carItem}
                         value={car}
                         exclusive
+                        variant="text"
+                        fullWidth
                         onChange={handleCar}
                     >
-                        <ToggleButton value="luxury" >
-                        Luxury
+                        <ToggleButton  value="luxury" style={{ borderRadius: 50, margin: 5, border: 2 }}  >
+                            Luxury
                         </ToggleButton>
-                        <ToggleButton value="suv" >
-                        SUV
+                        <ToggleButton value="suv" style={{ borderRadius: 50, margin: 5, border: 2 }} >
+                            SUV
                         </ToggleButton>
-                        <ToggleButton value="sedan" >
-                        Sedan
+                        <ToggleButton value="sedan" style={{ borderRadius: 50, margin: 5, border: 2 }} >
+                            Sedan
                         </ToggleButton>
-                        <ToggleButton value="sport" >
-                        Sport
+                        <ToggleButton value="sport" style={{ borderRadius: 50, margin: 5, border: 2 }} >
+                            Sport
                         </ToggleButton>
-                        <ToggleButton value="coupe" >
-                        Coupe
+                        <ToggleButton value="coupe" style={{ borderRadius: 50, margin: 5, border: 2 }} >
+                            Coupe
                         </ToggleButton>
                     </ToggleButtonGroup>
-                    </div>
                 </Grid>
                 <Grid item className={classes.toggleContainer}  >
                     <Box style={{ width: 200}}>
-                    <InputLabel id="sort-by">Sort by: </InputLabel>
+                    <Typography>Sort by:</Typography>
+                    {/* <InputLabel id="sort-by">Sort by: </InputLabel> */}
                     <Select
                         labelId="sort-by"
                         native
+                        fullWidth
                         value={sort}
                         label="Sort by: "
                         onChange={handleSort}
                         
                         >
-                        <option value={"Recently Added"}>  Recently Added</option>
+                        <option value={"Recently Added"} >  Recently Added</option>
                         <option value={"Price: Low to High"}>  Price: Low to High</option>
                         <option value={"Price: High to Low"}>  Price: High to Low</option>
                         <option value={"Newest Arrival"}>  Newest Arrival</option>
@@ -103,15 +106,15 @@ export default function OptionBar() {
                     <ToggleButtonGroup
                         value={view}
                         exclusive
+                        variant="text"
                         onChange={handleView}
+                        br={2}
                     >
-                        <ToggleButton value="list" >
+                        <ToggleButton value="list" style={{ borderRadius: 50, margin: 10, border: 2 }} >
                         <ListIcon />
-                        <Typography >List</Typography>
                         </ToggleButton>
-                        <ToggleButton value="grid" >
+                        <ToggleButton value="grid" style={{ borderRadius: 50, margin: 10, border: 2 }} >
                         <AppsIcon/>
-                        Grid
                         </ToggleButton>
                         
                     </ToggleButtonGroup>

@@ -17,13 +17,13 @@ const useStyles = makeStyles((theme) => ({
         
     },
     gridSearch: {
-
+        border: 0,
         [theme.breakpoints.down('xs')]:{
             width: "100%",
         },
         [theme.breakpoints.up('sm')]:{
             // marginLeft:"100px",
-            width: "70%",
+            width: "50%",
         },
     },
     gridItem: {
@@ -42,25 +42,31 @@ const useStyles = makeStyles((theme) => ({
 
         },
         [theme.breakpoints.up('sm')]:{
-            padding: "0px 30px",
-            width: "150px",
+            padding: "0px 20px",
+            width: "100px",
         },
     },
     textField: {
         padding: "0px 20px",
         height: "100%",
         width: "100%",
+        border: 1,
+        boxShadow: "1px 1px 20px #aaaaaa",
+        borderRadius: 5,
     },
     searchButton: {
         height: "100%",
         width: "auto",
         borderRadius: 0,
+        boxShadow: "1px 1px 20px #aaaaaa",
     },
     advanceButton: {
-        height: "50px",
-        width: "200px",
-        borderRadius: 0,
-        backgroundColor: "#b59b70"
+        height: "100%",
+        width: "180px",
+        borderRadius: 5,
+        backgroundColor: "#b59b70",
+        boxShadow: "1px 1px 20px #aaaaaa",
+        color: "#ffffff"
     },
 }))
 
