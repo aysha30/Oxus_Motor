@@ -6,11 +6,16 @@ import SearchBox from './inventory-components/searchBox';
 import OptionBar from './inventory-components/optionBar';
 import { Box, TextField, Grid, Typography, Button, useMediaQuery, Container } from '@material-ui/core';
 import { makeStyles, useTheme, fade } from "@material-ui/core/styles";
-import SearchIcon from '@material-ui/icons/Search';
+import Pagination from '@material-ui/lab/Pagination';
 
-const useStyles = makeStyles((theme) => {
-
-})
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+        '& > *': {
+            marginTop: theme.spacing(2),
+        },
+    },
+}))
 
 
 export default function Inventory() {
@@ -50,13 +55,21 @@ export default function Inventory() {
                     <OptionBar />
                 </Grid>
 
-                <Grid container direction="column" >
+                <Grid container 
+                direction="column" 
+                justify="center"
+                alignItems="stretch"
+                >
                     <Grid item bgcolor="secondary.light">
                         <ListCard />
                     </Grid>
                     <Grid item bgcolor="secondary.light">
                         <ListCard />
                     </Grid>
+                    <Grid item bgcolor="secondary.light">
+                        <ListCard />
+                    </Grid>
+                    <Pagination count={5} shape="rounded" />
                 </Grid>
             </Box>
             <Footer />

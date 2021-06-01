@@ -51,14 +51,14 @@ const useStyles = makeStyles((theme) => ({
         height: "100%",
         width: "100%",
         border: 1,
-        boxShadow: "1px 1px 20px #aaaaaa",
+        boxShadow: "1px 1px 10px #aaaaaa",
         borderRadius: 5,
     },
     searchButton: {
         height: "100%",
         width: "auto",
         borderRadius: 0,
-        boxShadow: "1px 1px 20px #aaaaaa",
+        boxShadow: "1px 1px 10px #aaaaaa",
     },
     advanceButton: {
         height: "100%",

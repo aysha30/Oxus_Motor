@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Box, Select, Toolbar, Button, Grid, Typography, MenuItem, InputLabel } from '@material-ui/core';
 import { makeStyles} from "@material-ui/core/styles";
 import ListIcon from '@material-ui/icons/List';
 import AppsIcon from '@material-ui/icons/Apps';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -12,18 +14,23 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     toggleContainer: {
-        margin: theme.spacing(2, 0),
-        width: "100",
+        left: 5,
+        width: "auto",
         alignItems: "center",
       },
     carItem: {
+        height: 70,
         [theme.breakpoints.down('xs')]:{
-        padding: "10px 0px",
+        padding: "0px 20px",
+        width: "100vw", 
         },
         [theme.breakpoints.up('sm')]:{
             width: 600,
         },
     },
+    // toolbar:{
+    //     width: "100vw"
+    // }
 }))
 
 export default function OptionBar() {
@@ -51,20 +58,21 @@ export default function OptionBar() {
     return(
         <div className={classes.root}>
             <Toolbar >
-            <Grid container
+            <Grid container 
+            className={classes.toolbar}
                 direction="row"
                 alignItems="center"
                 justify="space-around" >
-                <Grid item >
+                <Grid item container justify="center">
                     <ToggleButtonGroup
                         className={classes.carItem}
                         value={car}
                         exclusive
                         variant="text"
-                        fullWidth
+                        fullwidth="true"
                         onChange={handleCar}
                     >
-                        <ToggleButton  value="luxury" style={{ borderRadius: 50, margin: 5, border: 2 }}  >
+                        <ToggleButton  value="luxury" style={{ borderRadius: 50, border: 2 }}  >
                             Luxury
                         </ToggleButton>
                         <ToggleButton value="suv" style={{ borderRadius: 50, margin: 5, border: 2 }} >
@@ -82,7 +90,7 @@ export default function OptionBar() {
                     </ToggleButtonGroup>
                 </Grid>
                 <Grid item className={classes.toggleContainer}  >
-                    <Box style={{ width: 200}}>
+                    <Box style={{ width: 240}}>
                     <Typography>Sort by:</Typography>
                     {/* <InputLabel id="sort-by">Sort by: </InputLabel> */}
                     <Select
@@ -126,3 +134,8 @@ export default function OptionBar() {
         </div>
     )
 }
+
+// OptionBar.propTypes = {
+//     car: PropTypes.object,
+
+// }
