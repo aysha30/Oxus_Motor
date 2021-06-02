@@ -38,12 +38,7 @@ export default function About() {
    <CssBaseline />
    <Navbar />
    <Container>
-    <Box m={4}>
-     <Typography variant="h5" align="center">
-      About Us
-     </Typography>
-    </Box>
-    <Box m={4}>
+    <Box m={4} style={{ marginTop: "100px" }}>
      <Typography variant="h5" align="center">
       About Us
      </Typography>
@@ -53,7 +48,7 @@ export default function About() {
       <Paper className={classes.paper} elevation={2} xs={12} variant="outlined">
        <Grid container>
         <Box p={2}>
-         <Grid item xs={1}>
+         <Grid item>
           <img className={classes.img} alt="CAR" src={Car1} />
          </Grid>
         </Box>
