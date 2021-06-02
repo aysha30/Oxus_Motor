@@ -103,7 +103,7 @@ export default function Footer() {
       </Grid>
      </Typography>
      <Divider />
-     <Box textAlign="center" pt={{ xs: 2, sm: 2 }} pb={{ xs: 2, sm: 2 }}>
+     <Box textAlign="center" pt={{ xs: 2, sm: 2 }} pb={{ xs: 5, sm: 2 }}>
       ©{new Date().getFullYear()} Oxus Motors. All Rights Reserved.
      </Box>
     </Container>

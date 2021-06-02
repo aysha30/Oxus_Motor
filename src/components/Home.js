@@ -19,12 +19,11 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Paper from "@material-ui/core/Paper";
-import NativeSelect from "@material-ui/core/NativeSelect";
 
 const useStyles = makeStyles((theme) => ({
  formControl: {
-  margin: theme.spacing(4),
-  minWidth: 180,
+  margin: theme.spacing(1),
+  minWidth: 120,
  },
  selectEmpty: {
   marginTop: theme.spacing(2),
@@ -44,15 +43,6 @@ export default function Home() {
   height: "100",
   width: "100",
  };
-
- const [make, setMake] = React.useState("");
- const handleCh1 = (e) => setMake(e.target.value);
-
- const [model, setModel] = React.useState("");
- const handleCh2 = (e) => setModel(e.target.value);
-
- const [trim, setTrim] = React.useState("");
- const handleCh3 = (e) => setTrim(e.target.value);
 
  return (
   <React.Fragment>
@@ -129,110 +119,16 @@ export default function Home() {
       </Box>
       <Box p={5}></Box>
       <Box p={5}></Box>
-     </Typography>
-    </Container>
+     </Typography>{" "}
+    </Container>{" "}
    </Box>
-   <Box m={6} p={5}>
+   <Box m={5}>
     <Container>
      <Paper>
-      <Grid container>
-       <Grid item xs={12} sm={2}>
-        {" "}
-        <Box m={3} fontWeight="fontWeightBold" fontSize="h5.fontSize">
-         Find Your Car
-        </Box>
-       </Grid>
-       <Grid xs={12} sm={10}>
-        <Box pt={3} fontSize="h6.fontSize">
-         (Advanced Search)
-        </Box>
-       </Grid>
-       <Grid item>
-        <Box m={1}>
-         <FormControl className={classes.formControl}>
-          <InputLabel>Make</InputLabel>
-          <Select native onChange={handleCh1}>
-           <option aria-label="None" value="" />
-
-           <option value={1}>Toyota</option>
-           <option value={2}>Maserati</option>
-
-           <option value={3}>Porsche</option>
-           <option value={4}>Tesla</option>
-          </Select>
-         </FormControl>
-        </Box>{" "}
-       </Grid>
-       <Grid item>
-        <Box m={1}>
-         <FormControl className={classes.formControl}>
-          <InputLabel>Model</InputLabel>
-          <Select native onChange={handleCh2}>
-           <option aria-label="None" value="" />
-
-           <option value={1}>A</option>
-           <option value={2}>B</option>
-
-           <option value={3}>C</option>
-           <option value={4}>D</option>
-          </Select>
-         </FormControl>
-        </Box>{" "}
-       </Grid>
-       <Grid item>
-        <Box m={1}>
-         <FormControl className={classes.formControl}>
-          <InputLabel>Trim</InputLabel>
-          <Select native onChange={handleCh3}>
-           <option aria-label="None" value="" />
-
-           <option value={1}>1</option>
-           <option value={2}>2</option>
-
-           <option value={3}>3</option>
-           <option value={4}>4</option>
-          </Select>
-         </FormControl>
-        </Box>
-       </Grid>
-       <Grid item>
-        <Box m={1}>
-         {" "}
-         <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="stp-native-select">Year</InputLabel>
-          <Select native defaultValue="" id="stp-native-select">
-           <option aria-label="None" disabled value="" />
-
-           <option value={1}>Option 1</option>
-           <option value={2}>Option 2</option>
-
-           <option value={3}>Option 3</option>
-           <option value={4}>Option 4</option>
-          </Select>
-         </FormControl>
-        </Box>
-       </Grid>
-       <Box>
-        {" "}
-        <Grid>
-         <Box m={1} pt={6}>
-          <Button variant="contained" color="primary">
-           <Typography color="white" variant="button">
-            Search
-           </Typography>
-          </Button>
-         </Box>
-        </Grid>
-       </Box>
-      </Grid>
-      <Grid container></Grid>
+      <Grid container> </Grid>
      </Paper>
     </Container>
    </Box>
-   <Box>
-    <Typography>What Makes Us Diffrent</Typography>
-   </Box>
-
    <Footer />
   </React.Fragment>
  );
