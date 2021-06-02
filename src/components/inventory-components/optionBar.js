@@ -14,23 +14,24 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     toggleContainer: {
-        left: 5,
-        width: "auto",
+        margin: theme.spacing(2, 0),
+        width: "100",
         alignItems: "center",
       },
     carItem: {
         height: 70,
         [theme.breakpoints.down('xs')]:{
-        padding: "0px 20px",
+        // padding: "0px 20px",
+        padding: "10px 0px",
         width: "100vw", 
         },
         [theme.breakpoints.up('sm')]:{
             width: 600,
         },
     },
-    // toolbar:{
-    //     width: "100vw"
-    // }
+    toolbar:{
+        width: "100vw"
+    }
 }))
 
 export default function OptionBar() {
@@ -40,8 +41,9 @@ export default function OptionBar() {
     const [ view, setView ] = useState("list");
 
     const handleCar = (event, newCar) => {
-        setCar(newCar);
-        
+        if ( newCar != null ){
+            setCar(newCar);
+        }
     };
 
     const handleSort = (event, newSort) => {
@@ -49,7 +51,9 @@ export default function OptionBar() {
     };
 
     const handleView = (event, newView) => {
-        setView(newView);
+        if ( newView != null ){
+            setView(newView);
+        }
     };
 
 
@@ -72,7 +76,7 @@ export default function OptionBar() {
                         fullwidth="true"
                         onChange={handleCar}
                     >
-                        <ToggleButton  value="luxury" style={{ borderRadius: 50, border: 2 }}  >
+                        <ToggleButton  value="luxury" style={{ borderRadius: 50, margin: 5, border: 2 }}  >
                             Luxury
                         </ToggleButton>
                         <ToggleButton value="suv" style={{ borderRadius: 50, margin: 5, border: 2 }} >
@@ -96,7 +100,6 @@ export default function OptionBar() {
                     <Select
                         labelId="sort-by"
                         native
-                        fullWidth
                         value={sort}
                         label="Sort by: "
                         onChange={handleSort}

@@ -7,6 +7,8 @@ import OptionBar from './inventory-components/optionBar';
 import { Box, TextField, Grid, Typography, Button, useMediaQuery, Container } from '@material-ui/core';
 import { makeStyles, useTheme, fade } from "@material-ui/core/styles";
 import Pagination from '@material-ui/lab/Pagination';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -60,16 +62,21 @@ export default function Inventory() {
                 justify="center"
                 alignItems="stretch"
                 >
-                    <Grid item bgcolor="secondary.light">
+                    <Grid item >
                         <ListCard />
                     </Grid>
-                    <Grid item bgcolor="secondary.light">
+                    <Grid item >
                         <ListCard />
                     </Grid>
-                    <Grid item bgcolor="secondary.light">
+                    <Grid item >
                         <ListCard />
                     </Grid>
-                    <Pagination count={5} shape="rounded" />
+                    <Grid item style={{ width: "100vw", margin: "10px 0px 70px"}} container justify="center" >
+                        <Fab color="#e8e8ea" aria-label="add" border={1} >
+                            <AddIcon />
+                        </Fab>
+                    </Grid>
+                    {/* <Pagination count={5} shape="rounded" /> */}
                 </Grid>
             </Box>
             <Footer />
