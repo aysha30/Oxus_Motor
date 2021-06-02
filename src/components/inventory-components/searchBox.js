@@ -12,6 +12,7 @@ import {
 import { makeStyles, useTheme, fade } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
+<<<<<<< HEAD
  root: {
   flexGrow: 1,
  },
@@ -76,6 +77,74 @@ const useStyles = makeStyles((theme) => ({
   color: "#ffffff",
  },
 }));
+=======
+    root: {
+        flexGrow: 1,
+    },
+    gridContainer: {
+        [theme.breakpoints.down('xs')]:{
+            height: "100px",
+        },
+        [theme.breakpoints.up('sm')]:{
+            padding: "20px",
+            height: "90px",
+        },
+        
+    },
+    gridSearch: {
+        border: 0,
+        [theme.breakpoints.down('xs')]:{
+            width: "100%",
+        },
+        [theme.breakpoints.up('sm')]:{
+            // marginLeft:"100px",
+            width: "50%",
+        },
+    },
+    gridItem: {
+        [theme.breakpoints.down('xs')]:{
+            width: "300",
+        },
+        [theme.breakpoints.up('sm')]:{
+            // marginLeft:"100px",
+            width: "70%",
+        },
+    },
+    gridAdvance: {
+        [theme.breakpoints.down('xs')]:{
+            padding: "10px 80px",
+            width: "100%",
+
+        },
+        [theme.breakpoints.up('sm')]:{
+            padding: "0px 20px",
+            width: "100px",
+        },
+    },
+    textField: {
+        padding: "0px 20px",
+        height: "100%",
+        width: "100%",
+        border: 1,
+        boxShadow: "1px 1px 10px #aaaaaa",
+        borderRadius: 5,
+    },
+    searchButton: {
+        height: "100%",
+        width: "auto",
+        borderRadius: 0,
+        boxShadow: "1px 1px 10px #aaaaaa",
+    },
+    advanceButton: {
+        height: "100%",
+        width: "180px",
+        borderRadius: 5,
+        backgroundColor: "#b59b70",
+        boxShadow: "1px 1px 20px #aaaaaa",
+        color: "#ffffff"
+    },
+}))
+>>>>>>> e09e15b75ef6c16fa55b13e65dbd131040375e74
 
 export default function SearchBox(props) {
  const classes = useStyles();

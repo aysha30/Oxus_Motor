@@ -14,7 +14,22 @@ import {
  Container,
 } from "@material-ui/core";
 import { makeStyles, useTheme, fade } from "@material-ui/core/styles";
+<<<<<<< HEAD
 import SearchIcon from "@material-ui/icons/Search";
+=======
+import Pagination from '@material-ui/lab/Pagination';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+        '& > *': {
+            marginTop: theme.spacing(2),
+        },
+    },
+}))
+>>>>>>> e09e15b75ef6c16fa55b13e65dbd131040375e74
 
 const useStyles = makeStyles((theme) => {});
 
@@ -51,6 +66,7 @@ export default function Inventory() {
      <OptionBar />
     </Grid>
 
+<<<<<<< HEAD
     <Grid container direction="column">
      <Grid item bgcolor="secondary.light">
       <ListCard />
@@ -64,3 +80,31 @@ export default function Inventory() {
   </React.Fragment>
  );
 }
+=======
+                <Grid container 
+                direction="column" 
+                justify="center"
+                alignItems="stretch"
+                >
+                    <Grid item >
+                        <ListCard />
+                    </Grid>
+                    <Grid item >
+                        <ListCard />
+                    </Grid>
+                    <Grid item >
+                        <ListCard />
+                    </Grid>
+                    <Grid item style={{ width: "100vw", margin: "10px 0px 70px"}} container justify="center" >
+                        <Fab color="#e8e8ea" aria-label="add" border={1} >
+                            <AddIcon />
+                        </Fab>
+                    </Grid>
+                    {/* <Pagination count={5} shape="rounded" /> */}
+                </Grid>
+            </Box>
+            <Footer />
+        </React.Fragment>
+    );
+}
+>>>>>>> e09e15b75ef6c16fa55b13e65dbd131040375e74
