@@ -44,8 +44,8 @@ const useStyles = makeStyles((theme) => ({
 
 const carArray = [
     {
-        src: "https://dummyimage.com/400x250/000000/fff.png&text=Car++1+",
-        name: "Car 1",
+        src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
+        name: "Mercedes benz",
         fullPrice: "  $50,000",
         monthly: "  $2,000",
         year: 2020,

@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './modules/Navbar';
 import Footer from './modules/Footer';
 import ListCard from './inventory-components/listCard';
+import GridCard from './inventory-components/gridCard';
 import SearchBox from './inventory-components/searchBox';
 import OptionBar from './inventory-components/optionBar';
 import { Box, TextField, Grid, Typography, Button, useMediaQuery, Container } from '@material-ui/core';
@@ -17,7 +18,27 @@ const useStyles = makeStyles((theme) => ({
             marginTop: theme.spacing(2),
         },
     },
+    gridCardContainer: {
+        width: "100vw",
+        height: "100%",
+        display: "flex",
+
+    }
 }))
+// const carArray = [
+//     {
+//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
+//         name: "Mercedes Benz",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     }
+// ];
 
 
 export default function Inventory() {
@@ -56,27 +77,46 @@ export default function Inventory() {
                 <Grid>
                     <OptionBar />
                 </Grid>
+                <Container className={classes.gridCardContainer}>
+                    <Grid container spacing={5}>
+                        <Grid item sm={6} xs={12} md={4}>
+                            <GridCard  />
+                        </Grid>
+                        <Grid item sm={6} xs={12} md={4}>
+                            <GridCard />
+                        </Grid>
+                        <Grid item sm={6} xs={12} md={4}>
+                            <GridCard />
+                        </Grid>
+                        <Grid item sm={6} xs={12} md={4}>
+                            <GridCard />
+                        </Grid>
+                        <Grid item sm={6} xs={12} md={4}>
+                            <GridCard />
+                        </Grid>
+                        <Grid item sm={6} xs={12} md={4}>
+                            <GridCard />
+                        </Grid>
+                    </Grid> 
+                </Container>
 
-                <Grid container 
+                {/* <Grid container 
                 direction="column" 
                 justify="center"
                 alignItems="stretch"
-                >
+                >   
+                    
                     <Grid item >
                         <ListCard />
                     </Grid>
-                    <Grid item >
-                        <ListCard />
-                    </Grid>
-                    <Grid item >
-                        <ListCard />
-                    </Grid>
-                    <Grid item style={{ width: "100vw", margin: "10px 0px 70px"}} container justify="center" >
+                    
+                </Grid> */}
+                <Grid conatiner style={{ width: "100vw", margin: "10px 0px 70px"}} container justify="center" >
+                    <Grid item>
                         <Fab color="#e8e8ea" aria-label="add" border={1} >
                             <AddIcon />
                         </Fab>
                     </Grid>
-                    {/* <Pagination count={5} shape="rounded" /> */}
                 </Grid>
             </Box>
             <Footer />
