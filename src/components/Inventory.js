@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './modules/Navbar';
 import Footer from './modules/Footer';
 import ListCard from './inventory-components/listCard';
@@ -47,6 +47,14 @@ function Inventory() {
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down("xs"));
 
+    
+    const [ view, setView ] = useState("list");
+    // const handleView = (event, newView) => {
+    //     if ( newView != null ){
+    //         setView(newView);
+    //     }
+    // };
+console.log(view);
 
     return (
         <React.Fragment>
@@ -75,45 +83,54 @@ function Inventory() {
                 </Grid>
 
                 <Grid>
-                    <OptionBar />
+                    <OptionBar passView={view => setView(view)} view={view} />
                 </Grid>
-                <Container className={classes.gridCardContainer}>
-                    <Grid container="true" spacing={5}>
-                        <Grid item sm={6} xs={12} md={4}>
-                            <GridCard  />
+                {(view === "list")? 
+                    <Grid container
+                        direction="column" 
+                        justify="center"
+                        alignItems="stretch"
+                        >   
+                        <Grid item >
+                            <ListCard />
                         </Grid>
-                        <Grid item sm={6} xs={12} md={4}>
-                            <GridCard />
+                        <Grid item >
+                            <ListCard />
                         </Grid>
-                        <Grid item sm={6} xs={12} md={4}>
-                            <GridCard />
+                        <Grid item >
+                            <ListCard />
                         </Grid>
-                        <Grid item sm={6} xs={12} md={4}>
-                            <GridCard />
-                        </Grid>
-                        <Grid item sm={6} xs={12} md={4}>
-                            <GridCard />
-                        </Grid>
-                        {/* <Grid item sm={6} xs={12} md={4}>
-                            <GridCard />
-                        </Grid> */}
-                    </Grid> 
-                </Container>
-
-                {/* <Grid container 
-                direction="column" 
-                justify="center"
-                alignItems="stretch"
-                >   
                     
-                    <Grid item >
-                        <ListCard />
                     </Grid>
-                    
-                </Grid> */}
-                <Grid conatiner style={{ width: "100vw", margin: "10px 0px 70px"}} container justify="center" >
+                
+                :
+                    <Container className={classes.gridCardContainer}>
+                        <Grid container spacing={5}>
+                            <Grid item sm={6} xs={12} md={4}>
+                                <GridCard  />
+                            </Grid>
+                            <Grid item sm={6} xs={12} md={4}>
+                                <GridCard />
+                            </Grid>
+                            <Grid item sm={6} xs={12} md={4}>
+                                <GridCard />
+                            </Grid>
+                            <Grid item sm={6} xs={12} md={4}>
+                                <GridCard />
+                            </Grid>
+                            <Grid item sm={6} xs={12} md={4}>
+                                <GridCard />
+                            </Grid>
+                            {/* <Grid item sm={6} xs={12} md={4}>
+                                <GridCard />
+                            </Grid> */}
+                        </Grid> 
+                    </Container>
+                }
+                
+                <Grid container style={{ width: "100vw", margin: "10px 0px 70px"}} container justify="center" >
                     <Grid item>
-                        <Fab color="#e8e8ea" aria-label="add" border={1} >
+                        <Fab style={{bgcolor:"#e8e8ea"}} aria-label="add" border={1} >
                             <AddIcon />
                         </Fab>
                     </Grid>

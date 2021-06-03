@@ -18,6 +18,11 @@ const useStyles = makeStyles((theme) => ({
         //     height: "30",
         // },
     },
+    img: {
+        height : "300px", 
+        width: "100%", 
+        backgroundColor: "#eae9ea",
+    }
 }))
 
 const carArray = [
@@ -47,16 +52,16 @@ function GridCard() {
     return(
         
         <div >
-            <Card>
+            {/* <Card> */}
             
                 <CardActionArea>
                 <CardHeader 
                     title={carArray[0].name}
                     action={
                         <ToggleButton
-                            value="check"
+                            value={selected}
                             selected={selected}
-                            variant="contained"
+                            // variant="contained"
                             onChange={() =>{
                                 setSelected(!selected)
                             }}
@@ -66,9 +71,11 @@ function GridCard() {
                         </ToggleButton>
                     } />
                     <CardMedia image={carArray[0].src} 
-                    style={{ height : "300px", width: "100%"}} />
+                    className={classes.img} />
                         <CardContent>
-                            <Box display="flex" container direction="row" pt={3} >
+                            <Box display="flex" 
+                            // container 
+                            direction="row" pt={3} >
                             <Box display="flex"  pl={1}>
                                 <Box color="#919296" fontWeight="fontWeightMedium" >
                                     <Typography>Full Price</Typography> 
@@ -88,7 +95,7 @@ function GridCard() {
                             </Box>
                         </CardContent>
                 </CardActionArea>
-            </Card>
+            {/* </Card> */}
         </div>
     )
 }

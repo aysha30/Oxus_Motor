@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     },
     img: {
         height: 260,
+        backgroundColor: "#eae9ea",
         [theme.breakpoints.down(840)]:{
             // padding: "10px",
             width: "auto",
@@ -73,9 +74,14 @@ function ListCard() {
                 <Box
                  >
                 <div className={classes.root}>
-                <CardActionArea component={Link} href="#">
+                
                 <Paper component={Box}  xs={2}
-                bgcolor="#eae9eb" >
+                bgcolor="#fcfafc"
+                 >
+                <CardActionArea 
+                // component={Link}
+                //  href="#"
+                >
                 <Grid container >
                     <Box>
                         <Grid item>
@@ -176,8 +182,8 @@ function ListCard() {
                     
                     </Box>
                 </Grid>
-                </Paper>
                 </CardActionArea>
+                </Paper>
                 </div>
                 </Box>
             </Container>

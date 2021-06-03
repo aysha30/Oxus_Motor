@@ -34,11 +34,12 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function OptionBar() {
+function OptionBar(props) {
 
     const [ car, setCar ] = useState("luxury");
     const [ sort, setSort ] = useState("Recently Added");
-    const [ view, setView ] = useState("list");
+    // const [ view, setView ] = useState("list");
+    // let view = "grid";
 
     const handleCar = (event, newCar) => {
         if ( newCar != null ){
@@ -52,7 +53,8 @@ function OptionBar() {
 
     const handleView = (event, newView) => {
         if ( newView != null ){
-            setView(newView);
+            // view = newView;
+            props.passView(newView);
         }
     };
 
@@ -62,7 +64,7 @@ function OptionBar() {
     return(
         <div className={classes.root}>
             <Toolbar >
-            <Grid container 
+            <Grid container
             className={classes.toolbar}
                 direction="row"
                 alignItems="center"
@@ -115,13 +117,16 @@ function OptionBar() {
                 <Grid item >
                     <div >
                     <ToggleButtonGroup
-                        value={view}
+                        value={props.view}
                         exclusive
                         variant="text"
                         onChange={handleView}
                         br={2}
                     >
-                        <ToggleButton value="list" style={{ borderRadius: 50, margin: 10, border: 2 }} >
+                        <ToggleButton 
+                        value="list"
+                            // onClick={value="list"}
+                            style={{ borderRadius: 50, margin: 10, border: 2 }} >
                         <ListIcon />
                         </ToggleButton>
                         <ToggleButton value="grid" style={{ borderRadius: 50, margin: 10, border: 2 }} >

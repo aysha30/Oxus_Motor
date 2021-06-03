@@ -133,7 +133,7 @@ export default function Message() {
         <article 
             className="flex-justify shadow ma5" 
             align="left" >
-        <Grid container className={classes.grid} >
+        <Grid container={true} className={classes.grid} >
             
             <Box 
                 className={classes.reachusbox}
