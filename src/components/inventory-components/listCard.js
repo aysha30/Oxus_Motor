@@ -57,7 +57,7 @@ const carArray = [
     }
 ];
 
-export default function ListCard() {
+function ListCard() {
 
     const [ selected, setSelected ] = useState(false);
 
@@ -184,3 +184,5 @@ export default function ListCard() {
         </div>
     )
 }
+
+export default ListCard;

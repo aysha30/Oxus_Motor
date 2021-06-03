@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-export default function SearchBox(props) {
+function SearchBox(props) {
 
     const classes = useStyles();
 
@@ -122,3 +122,5 @@ export default function SearchBox(props) {
         </div>
     )
 }
+
+export default SearchBox;

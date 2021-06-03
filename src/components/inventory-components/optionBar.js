@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export default function OptionBar() {
+function OptionBar() {
 
     const [ car, setCar ] = useState("luxury");
     const [ sort, setSort ] = useState("Recently Added");
@@ -138,6 +138,7 @@ export default function OptionBar() {
     )
 }
 
+export default OptionBar;
 // OptionBar.propTypes = {
 //     car: PropTypes.object,
 

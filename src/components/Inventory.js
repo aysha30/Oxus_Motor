@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 // ];
 
 
-export default function Inventory() {
+function Inventory() {
 
     const classes = useStyles();
     const theme = useTheme();
@@ -78,7 +78,7 @@ export default function Inventory() {
                     <OptionBar />
                 </Grid>
                 <Container className={classes.gridCardContainer}>
-                    <Grid container spacing={5}>
+                    <Grid container="true" spacing={5}>
                         <Grid item sm={6} xs={12} md={4}>
                             <GridCard  />
                         </Grid>
@@ -94,9 +94,9 @@ export default function Inventory() {
                         <Grid item sm={6} xs={12} md={4}>
                             <GridCard />
                         </Grid>
-                        <Grid item sm={6} xs={12} md={4}>
+                        {/* <Grid item sm={6} xs={12} md={4}>
                             <GridCard />
-                        </Grid>
+                        </Grid> */}
                     </Grid> 
                 </Container>
 
@@ -123,3 +123,4 @@ export default function Inventory() {
         </React.Fragment>
     );
 }
+export default Inventory;

@@ -71,15 +71,15 @@ function GridCard() {
                             <Box display="flex" container direction="row" pt={3} >
                             <Box display="flex"  pl={1}>
                                 <Box color="#919296" fontWeight="fontWeightMedium" >
-                                    Full Price :
+                                    <Typography>Full Price</Typography> 
                                 </Box>
                                 <Box color="#ceba97" > 
                                     {carArray[0].fullPrice} 
                                 </Box>
                             </Box>
-                            <Box display="flex" pl={10} >
+                            <Box display="flex" pl={3} >
                                 <Box color="#919296" fontWeight="fontWeightMedium" >
-                                Monthly :
+                                <Typography>Monthly </Typography>
                                 </Box>
                                 <Box color="#ceba97"> 
                                 {carArray[0].monthly} 
