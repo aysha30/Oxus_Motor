@@ -54,7 +54,7 @@ function Inventory() {
     //         setView(newView);
     //     }
     // };
-console.log(view);
+// console.log(view);
 
     return (
         <React.Fragment>

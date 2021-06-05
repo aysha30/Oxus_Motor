@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, TextField, Grid, Typography, Button, useMediaQuery, Container, InputBase } from '@material-ui/core';
 import { makeStyles, useTheme, fade } from "@material-ui/core/styles";
+import AdvSearch from "./advSearch";
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
     gridContainer: {
+        flexGrow: 1,
         [theme.breakpoints.down('xs')]:{
             height: "100px",
         },
         [theme.breakpoints.up('sm')]:{
             padding: "20px",
-            height: "90px",
+            height: "150px",
         },
         
     },
@@ -36,14 +38,16 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     gridAdvance: {
+        // flexGrow: 1,
         [theme.breakpoints.down('xs')]:{
             padding: "10px 80px",
             width: "100%",
 
         },
         [theme.breakpoints.up('sm')]:{
+            margin: "10px",
             padding: "0px 20px",
-            width: "100px",
+            width: "100%",
         },
     },
     textField: {
@@ -72,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
 
 function SearchBox(props) {
 
+    const [ openAdvSch, setOpenAdvSch ] = useState(false);
     const classes = useStyles();
 
     return(
@@ -108,17 +113,24 @@ function SearchBox(props) {
                         </Button>
                     </Grid>
                 </Grid>
-                <Grid item
+                <Grid item container justify="center"
                     className={classes.gridAdvance}>
                     <Button 
                             className={classes.advanceButton}
                             variant="contained" 
+                            onClick={()=> setOpenAdvSch(true)}
                             // color="secondary.light"
                             >
                             Advance Search
                         </Button>
                 </Grid>
             </Grid>
+            <AdvSearch
+            openAdvSch={openAdvSch}
+            setOpenAdvSch={setOpenAdvSch}
+            >
+
+            </AdvSearch>
         </div>
     )
 }
