@@ -18,9 +18,13 @@ import { Dialog,
     Paper,
     Slider,
     ButtonGroup,
-    AppBar } from '@material-ui/core';
+    AppBar,
+    Switch,
+    FormGroup,
+    FormControlLabel } from '@material-ui/core';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import CloseIcon from '@material-ui/icons/Close';
+import {ToggleButtonGroup, ToggleButton} from '@material-ui/lab';
 
 const useStyle = makeStyles((theme) => ({
     root: {
@@ -62,7 +66,116 @@ const useStyle = makeStyles((theme) => ({
         '& > *': {
           margin: theme.spacing(1),
         },
-      },
+    },
+    colbtn1:{
+        [theme.breakpoints.down('xs')]:{
+        width: "100%", 
+        },
+        [theme.breakpoints.up('sm')]:{
+            width: "80px",
+        },
+        backgroundColor: "#ffffff",
+    },
+    colbtn2:{
+        [theme.breakpoints.down('xs')]:{
+        width: "100%", 
+        },
+        [theme.breakpoints.up('sm')]:{
+            width: "80px",
+        },
+        backgroundColor: "#010101",
+    },
+    colbtn3:{
+        [theme.breakpoints.down('xs')]:{
+        width: "100%", 
+        },
+        [theme.breakpoints.up('sm')]:{
+            width: "80px",
+        },
+        backgroundColor: "#bdbdbd",
+    },
+    colbtn4:{
+        [theme.breakpoints.down('xs')]:{
+        width: "100%", 
+        },
+        [theme.breakpoints.up('sm')]:{
+            width: "80px",
+        },
+        backgroundColor: "#424955",
+    },
+    colbtn5:{
+        [theme.breakpoints.down('xs')]:{
+        width: "100%", 
+        },
+        [theme.breakpoints.up('sm')]:{
+            width: "80px",
+        },
+        backgroundColor: "#e81f2a",
+    },
+    colbtn6:{
+        [theme.breakpoints.down('xs')]:{
+        width: "100%", 
+        },
+        [theme.breakpoints.up('sm')]:{
+            width: "80px",
+        },
+        backgroundColor: "#c4c4c3",
+    },
+    colbtn7:{
+        [theme.breakpoints.down('xs')]:{
+        width: "100%", 
+        },
+        [theme.breakpoints.up('sm')]:{
+            width: "80px",
+        },
+        backgroundColor: "#010101",
+    },
+    colbtn8:{
+        [theme.breakpoints.down('xs')]:{
+        width: "100%", 
+        },
+        [theme.breakpoints.up('sm')]:{
+            width: "80px",
+        },
+        backgroundColor: "#27351b",
+    },
+    colbtn9:{
+        [theme.breakpoints.down('xs')]:{
+        width: "100%", 
+        },
+        [theme.breakpoints.up('sm')]:{
+            width: "80px",
+        },
+        backgroundColor: "#c4a472",
+    },
+    colbtn10:{
+        [theme.breakpoints.down('xs')]:{
+        width: "100%", 
+        },
+        [theme.breakpoints.up('sm')]:{
+            width: "80px",
+        },
+        backgroundColor: "#d5d5ec",
+    },
+    colbtn11:{
+        [theme.breakpoints.down('xs')]:{
+        width: "100%", 
+        },
+        [theme.breakpoints.up('sm')]:{
+            width: "80px",
+        },
+        backgroundColor: "#5d4827",
+    },
+    colbtn12:{
+        [theme.breakpoints.down('xs')]:{
+        width: "100%", 
+        },
+        [theme.breakpoints.up('sm')]:{
+            width: "80px",
+        },
+        backgroundColor: "#c4c4c3",
+    },
+    
 }))
 
 
@@ -117,7 +230,33 @@ export default function AdvSearch( props ) {
     const [millageValue, setMillageValue] = useState([2,8]);
     const [dayValue, setDayValue] = useState([40,160]);
 
+    const [ cylinder, setCylinder ] = useState(4);
+    const [ cylinderType, setCylinderType ] = useState("any");
+    const [ condition, setCondition ] = useState("new");
 
+    const [ extColor, setExtColor ] = useState("any");
+    const [ intColor, setIntColor ] = useState("any");
+    const [ extColType, setExtColType ] = useState("Convertible")
+
+    const [ photo, setPhoto ] = useState(true);
+
+    const handlePhotoChange = (event, newValue) => {
+        setPhoto(newValue);
+    };
+
+    const handleExtColType = (event, newValue) => {
+        setExtColType(newValue);
+    };
+
+    const handleCylinder = (event, newValue) => {
+        setCylinder(newValue);
+    };
+    const handleCylinderType = (event, newValue) => {
+        setCylinderType(newValue);
+    };
+    const handleCondition = (event, newValue) => {
+        setCondition(newValue);
+    };
 
 
     
@@ -354,35 +493,155 @@ export default function AdvSearch( props ) {
                                 <Grid container>
                                     <Grid item md={4} className={classes.rootButtonGrp}>
                                     <Typography>Cylinders</Typography>
-                                    <ButtonGroup size="large" color="primary" aria-label="large outlined primary button group">
-                                        <Button>4</Button>
-                                        <Button>6</Button>
-                                        <Button>8</Button>
-                                    </ButtonGroup>
+                                    <ToggleButtonGroup
+                                        value={cylinder}
+                                        exclusive
+                                        onChange={handleCylinder}
+                                        aria-label="text alignment"
+                                        size="large"
+                                        >
+                                        <ToggleButton value={4} aria-label="left aligned">
+                                            4
+                                        </ToggleButton>
+                                        <ToggleButton value={6} aria-label="centered">
+                                            6
+                                        </ToggleButton>
+                                        <ToggleButton value={8} aria-label="right aligned">
+                                            8
+                                        </ToggleButton>
+                                    </ToggleButtonGroup>
+                                    
                                     </Grid>
                                     <Grid item md={4} className={classes.rootButtonGrp}>
                                     <Typography>Cylinders</Typography>
-                                    <ButtonGroup size="large" color="primary" aria-label="large outlined primary button group">
-                                        <Button>Any</Button>
-                                        <Button>Auto</Button>
-                                        <Button>Manual</Button>
-                                    </ButtonGroup>
+                                    <ToggleButtonGroup
+                                        value={cylinderType}
+                                        exclusive
+                                        onChange={handleCylinderType}
+                                        aria-label="text alignment"
+                                        size="large"
+                                        >
+                                        <ToggleButton value="any" aria-label="left aligned">
+                                            Any
+                                        </ToggleButton>
+                                        <ToggleButton value="auto" aria-label="centered">
+                                            Auto
+                                        </ToggleButton>
+                                        <ToggleButton value="manual" aria-label="right aligned">
+                                            Manual
+                                        </ToggleButton>
+                                    </ToggleButtonGroup>
+                                    
                                     </Grid>
                                     <Grid item md={4} className={classes.rootButtonGrp}>
                                     <Typography>Condition</Typography>
-                                    <ButtonGroup size="large" color="primary" aria-label="large outlined primary button group">
-                                        <Button>New</Button>
-                                        <Button>Used</Button>
-                                        <Button>Salvage</Button>
-                                    </ButtonGroup>
+                                    <ToggleButtonGroup
+                                        value={condition}
+                                        exclusive
+                                        onChange={handleCondition}
+                                        aria-label="text alignment"
+                                        size="large"
+                                        >
+                                        <ToggleButton value="new" aria-label="left aligned" >
+                                            New
+                                        </ToggleButton>
+                                        <ToggleButton value="used" aria-label="centered">
+                                            Used
+                                        </ToggleButton>
+                                        <ToggleButton value="salvage" aria-label="right aligned">
+                                            Salvage
+                                        </ToggleButton>
+                                    </ToggleButtonGroup>
+                                    
                                     </Grid>
                                 </Grid>
                             </TabPanel>
                             <TabPanel value={value} index={1} dir={theme.direction}>
-                            Item Two
+                            <Grid container
+                                direction="row"
+                                justify="space-evenly"
+                                alignItems="stretch" spacing={8} style={{paddingTop: "20px", width: "100%"}}>
+                                <Grid item md={6}  >
+                                <Typography>Exterior Color</Typography>
+                                <ButtonGroup >
+                                    
+                                    <Button variant="contained" className={classes.colbtn1} 
+                                    onClick={()=> {setExtColor("white")}} ></Button>
+                                    <Button variant="contained" className={classes.colbtn2} 
+                                    onClick={()=> {setExtColor("black")}} ></Button>
+                                    <Button variant="contained" className={classes.colbtn3} 
+                                    onClick={()=> {setExtColor("lightgrey")}} ></Button>
+                                    <Button variant="contained" className={classes.colbtn4} 
+                                    onClick={()=> {setExtColor("darkgrey")}} ></Button>
+                                    <Button variant="contained" className={classes.colbtn5} 
+                                    onClick={()=> {setExtColor("red")}} ></Button>
+                                    <Button variant="contained" className={classes.colbtn6} 
+                                    onClick={()=> {setExtColor("any")}} >?</Button>
+                                    
+                                </ButtonGroup>
+                                </Grid>
+                                <Grid item md={6}  >
+                                <Typography>Interior Color</Typography>
+                                <ButtonGroup >
+                                    
+                                    <Button variant="contained" className={classes.colbtn7} 
+                                    onClick={()=> {setIntColor("black")}} ></Button>
+                                    <Button variant="contained" className={classes.colbtn8} 
+                                    onClick={()=> {setIntColor("green")}} ></Button>
+                                    <Button variant="contained" className={classes.colbtn9} 
+                                    onClick={()=> {setIntColor("lightbrown")}} ></Button>
+                                    <Button variant="contained" className={classes.colbtn10} 
+                                    onClick={()=> {setIntColor("lightgrey")}} ></Button>
+                                    <Button variant="contained" className={classes.colbtn11} 
+                                    onClick={()=> {setIntColor("brown")}} ></Button>
+                                    <Button variant="contained" className={classes.colbtn12} 
+                                    onClick={()=> {setIntColor("any")}} >?</Button>
+                                    
+                                </ButtonGroup>
+                                </Grid>
+                            </Grid>
+                            <Grid container style={{padding: "20px 0px 20px"}} >
+                                <Grid item>
+                                <Typography>Exterior Color</Typography>
+                                <ToggleButtonGroup
+                                        value={extColType}
+                                        exclusive
+                                        onChange={handleExtColType}
+                                        aria-label="text alignment"
+                                        size="large"
+                                        >
+                                        <ToggleButton value="Convertible" aria-label="left aligned" >
+                                            Convertible
+                                        </ToggleButton>
+                                        <ToggleButton value="Sedan" aria-label="centered">
+                                            Sedan
+                                        </ToggleButton>
+                                        <ToggleButton value="Hatchback" aria-label="right aligned">
+                                            Hatchback
+                                        </ToggleButton>
+                                        <ToggleButton value="Sports" aria-label="right aligned">
+                                            Sports
+                                        </ToggleButton>
+                                        <ToggleButton value="Trucks" aria-label="right aligned">
+                                            Trucks
+                                        </ToggleButton>
+                                    </ToggleButtonGroup>
+                                
+                                </Grid>
+                            </Grid>
                             </TabPanel>
                             <TabPanel value={value} index={2} dir={theme.direction}>
-                            Item Three
+                            {/* <FormControl component="fieldset"> */}
+                            {/* <FormGroup aria-label="position" row> */}
+                                <FormControlLabel
+                                value="start"
+                                control={<Switch checked={photo} onChange={handlePhotoChange} inputProps={{ 'aria-label': 'primary checkbox' }} />}
+                                label="Has Photos Attached"
+                                labelPlacement="start"
+                                />
+                            {/* </FormGroup> */}
+                            {/* </FormControl> */}
+                            {/* <Switch inputProps={{ 'aria-label': 'primary checkbox' }} /> */}
                             </TabPanel>
                         </SwipeableViews>
                 </Grid>
