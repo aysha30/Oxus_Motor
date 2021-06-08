@@ -25,23 +25,23 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const carArray = [
-    {
-        src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-        name: "Mercedes Benz",
-        fullPrice: "  $50,000",
-        monthly: "  $2,000",
-        year: 2020,
-        fuel: "Diesel",
-        gear: "Full Automatic",
-        km: 37400,
-        bodyType: "SUV",
-        enginePower: "125 hp"
-    }
-];
+// const carArray = [
+//     {
+//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
+//         name: "Mercedes Benz",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     }
+// ];
 
 
-function GridCard() {
+function GridCard({ carArray }) {
 
     // const { carArray } = props.carArray;
 
@@ -56,7 +56,7 @@ function GridCard() {
             
                 <CardActionArea>
                 <CardHeader 
-                    title={carArray[0].name}
+                    title={carArray?.name}
                     action={
                         <ToggleButton
                             value={selected}
@@ -70,7 +70,7 @@ function GridCard() {
                                 <FavoriteBorderIcon />
                         </ToggleButton>
                     } />
-                    <CardMedia image={carArray[0].src} 
+                    <CardMedia image={carArray?.src} 
                     className={classes.img} />
                         <CardContent>
                             <Box display="flex" 
@@ -81,7 +81,7 @@ function GridCard() {
                                     <Typography>Full Price</Typography> 
                                 </Box>
                                 <Box color="#ceba97" > 
-                                    {carArray[0].fullPrice} 
+                                    {carArray?.fullPrice} 
                                 </Box>
                             </Box>
                             <Box display="flex" pl={3} >
@@ -89,7 +89,7 @@ function GridCard() {
                                 <Typography>Monthly </Typography>
                                 </Box>
                                 <Box color="#ceba97"> 
-                                {carArray[0].monthly} 
+                                {carArray?.monthly} 
                                 </Box>
                             </Box>
                             </Box>

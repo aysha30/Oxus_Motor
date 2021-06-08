@@ -291,7 +291,7 @@ export default function AdvSearch( props ) {
                     align="center" 
                     color="textPrimary"
                     style={{flexGrow: 1}}
-                    gutterBottom >
+                     >
                     <Box fontWeight="fontWeightBold" m={1} md={4}>
                         Advance Search
                     </Box>
@@ -335,7 +335,7 @@ export default function AdvSearch( props ) {
                         id="demo-simple-select-outlined"
                         // value={age}
                         // onChange={handleChange}
-                        // label="Make62"
+                        label="Make"
                         >
                         <MenuItem value="">
                             <em>None</em>
@@ -354,7 +354,7 @@ export default function AdvSearch( props ) {
                         id="demo-simple-select-outlined"
                         // value={age}
                         // onChange={handleChange}
-                        // label="Age"
+                        label="Mode"
                         >
                         <MenuItem value="">
                             <em>None</em>
@@ -373,7 +373,7 @@ export default function AdvSearch( props ) {
                         id="demo-simple-select-outlined"
                         // value={age}
                         // onChange={handleChange}
-                        // label="Age"
+                        label="Trim"
                         >
                         <MenuItem value="">
                             <em>None</em>
@@ -392,7 +392,7 @@ export default function AdvSearch( props ) {
                         id="demo-simple-select-outlined"
                         // value={age}
                         // onChange={handleChange}
-                        // label="Age"
+                        label="Year"
                         >
                         <MenuItem value="">
                             <em>None</em>

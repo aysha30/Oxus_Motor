@@ -23,14 +23,14 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('xs')]:{
         // padding: "0px 20px",
         padding: "10px 0px",
-        width: "100vw", 
+        width: "100%", 
         },
         [theme.breakpoints.up('sm')]:{
             width: 600,
         },
     },
     toolbar:{
-        width: "100vw"
+        width: "100%"
     }
 }))
 

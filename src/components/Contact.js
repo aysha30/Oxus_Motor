@@ -24,7 +24,7 @@ export default function Contact() {
         <React.Fragment>
             <Navbar />
             <h1 >"  "</h1>
-            <Box className="flex-justify" className={classes.root}>
+            <Box className={classes.root}>
             <Container style={{marginBottom: 20}} >
                     <Typography variant="h4" 
                     align="center" 
