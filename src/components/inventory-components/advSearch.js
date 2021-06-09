@@ -279,7 +279,7 @@ export default function AdvSearch( props ) {
     // };
     const handleChangeIndex = (index) => {
         setValue(index);
-      };
+    };
     const { openAdvSch, setOpenAdvSch } = props;
 
     return(

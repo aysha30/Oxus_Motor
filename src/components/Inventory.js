@@ -10,6 +10,7 @@ import { makeStyles, useTheme, fade } from "@material-ui/core/styles";
 import Pagination from '@material-ui/lab/Pagination';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import Details from './details';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -136,12 +137,6 @@ function Inventory() {
         setListVisible((prevValue)=> prevValue + 3);
     }
     const [ view, setView ] = useState("list");
-    // const handleView = (event, newView) => {
-    //     if ( newView != null ){
-    //         setView(newView);
-    //     }
-    // };
-// console.log(view);
 
     return (
         <React.Fragment>
@@ -182,9 +177,10 @@ function Inventory() {
                         >
                         {listItems.slice(0, listvisible).map((item) => (
                             <Grid item >
-                                <ListCard  carArray={item} />
+                                <ListCard  carArray={item}  />
+                                {/* <Details /> */}
                             </Grid>
-                        ))}   
+                        ))}  
                         
                         <Grid container style={{ width: "100%", margin: "10px 0px 70px"}} justify="center" >
                             <Grid item>
@@ -216,6 +212,8 @@ function Inventory() {
                         </Grid> 
                     </Container>
                 }
+                
+                
                 
                 {/* <Grid container style={{ width: "100%", margin: "10px 0px 70px"}} container justify="center" >
                     <Grid item>
