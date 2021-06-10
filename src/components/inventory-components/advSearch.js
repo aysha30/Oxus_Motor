@@ -57,14 +57,15 @@ const useStyle = makeStyles((theme) => ({
         minWidth: 200,
     },
     rootSlider: {
-        width: "380px",
+        width: "260px",
+
     },
     rootButtonGrp: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         '& > *': {
-          margin: theme.spacing(1),
+        margin: theme.spacing(1),
         },
     },
     colbtn1:{
@@ -72,7 +73,7 @@ const useStyle = makeStyles((theme) => ({
         width: "100%", 
         },
         [theme.breakpoints.up('sm')]:{
-            width: "80px",
+            width: "60px",
         },
         backgroundColor: "#ffffff",
     },
@@ -81,7 +82,7 @@ const useStyle = makeStyles((theme) => ({
         width: "100%", 
         },
         [theme.breakpoints.up('sm')]:{
-            width: "80px",
+            width: "60px",
         },
         backgroundColor: "#010101",
     },
@@ -90,7 +91,7 @@ const useStyle = makeStyles((theme) => ({
         width: "100%", 
         },
         [theme.breakpoints.up('sm')]:{
-            width: "80px",
+            width: "60px",
         },
         backgroundColor: "#bdbdbd",
     },
@@ -99,7 +100,7 @@ const useStyle = makeStyles((theme) => ({
         width: "100%", 
         },
         [theme.breakpoints.up('sm')]:{
-            width: "80px",
+            width: "60px",
         },
         backgroundColor: "#424955",
     },
@@ -108,7 +109,7 @@ const useStyle = makeStyles((theme) => ({
         width: "100%", 
         },
         [theme.breakpoints.up('sm')]:{
-            width: "80px",
+            width: "60px",
         },
         backgroundColor: "#e81f2a",
     },
@@ -117,7 +118,7 @@ const useStyle = makeStyles((theme) => ({
         width: "100%", 
         },
         [theme.breakpoints.up('sm')]:{
-            width: "80px",
+            width: "60px",
         },
         backgroundColor: "#c4c4c3",
     },
@@ -126,7 +127,7 @@ const useStyle = makeStyles((theme) => ({
         width: "100%", 
         },
         [theme.breakpoints.up('sm')]:{
-            width: "80px",
+            width: "60px",
         },
         backgroundColor: "#010101",
     },
@@ -135,7 +136,7 @@ const useStyle = makeStyles((theme) => ({
         width: "100%", 
         },
         [theme.breakpoints.up('sm')]:{
-            width: "80px",
+            width: "60px",
         },
         backgroundColor: "#27351b",
     },
@@ -144,7 +145,7 @@ const useStyle = makeStyles((theme) => ({
         width: "100%", 
         },
         [theme.breakpoints.up('sm')]:{
-            width: "80px",
+            width: "60px",
         },
         backgroundColor: "#c4a472",
     },
@@ -153,7 +154,7 @@ const useStyle = makeStyles((theme) => ({
         width: "100%", 
         },
         [theme.breakpoints.up('sm')]:{
-            width: "80px",
+            width: "60px",
         },
         backgroundColor: "#d5d5ec",
     },
@@ -162,7 +163,7 @@ const useStyle = makeStyles((theme) => ({
         width: "100%", 
         },
         [theme.breakpoints.up('sm')]:{
-            width: "80px",
+            width: "60px",
         },
         backgroundColor: "#5d4827",
     },
@@ -171,7 +172,7 @@ const useStyle = makeStyles((theme) => ({
         width: "100%", 
         },
         [theme.breakpoints.up('sm')]:{
-            width: "80px",
+            width: "60px",
         },
         backgroundColor: "#c4c4c3",
     },
@@ -182,21 +183,21 @@ const useStyle = makeStyles((theme) => ({
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
-  
+
     return (
-      <div
+    <div
         role="tabpanel"
         hidden={value !== index}
         id={`full-width-tabpanel-${index}`}
         aria-labelledby={`full-width-tab-${index}`}
         {...other}
-      >
+    >
         {value === index && (
-          <Box p={3}>
+        <Box p={3}>
             <Typography>{children}</Typography>
-          </Box>
+        </Box>
         )}
-      </div>
+    </div>
     );
 }
 
@@ -204,7 +205,7 @@ TabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.any.isRequired,
     value: PropTypes.any.isRequired,
-  };
+};
 
 
 function a11yProps(index) {
@@ -284,7 +285,7 @@ export default function AdvSearch( props ) {
 
     return(
         <div className={classes.root} >
-        <Dialog open={openAdvSch} maxWidth="lg" >
+        <Dialog open={openAdvSch} maxWidth="md" >
             <DialogTitle>
                 <div style={{display: "flex"}}>
                 <Typography variant="h4" 
@@ -325,7 +326,7 @@ export default function AdvSearch( props ) {
                 </Grid>
             </DialogTitle>
             <DialogContent>
-                <Container style={{flexGrow:1, padding: 10, height: 450}}>
+                <Container style={{flexGrow:1, height: 450}}>
                 <Grid container>
                     <Grid item  md={3}>
                     <FormControl variant="outlined" className={classes.formControl}>
@@ -424,9 +425,14 @@ export default function AdvSearch( props ) {
                             index={value}
                             onChangeIndex={handleChangeIndex}
                         >
-                            <TabPanel value={value} index={0} dir={theme.direction} style={{width: "100%"}} >
-                                <Grid container justify="flex-start" style={{paddingTop: "20px"}}>
-                                    <Grid item p={2} lg={4} >
+                            <TabPanel value={value} index={0} dir={theme.direction} 
+                            style={{width: "100%"}} 
+                            >
+                                <Grid container
+                                    direction="row"
+                                    justify="center"
+                                    alignItems="center" spacing={5} style={{paddingTop: "20px", display: "flex"}}>
+                                    <Grid item p={2} sm={4} >
                                         <div className={classes.rootSlider}>
                                         <Typography id="range-slider" gutterBottom>
                                             Price <Typography variant="body2" color="textSecondary">
@@ -447,7 +453,7 @@ export default function AdvSearch( props ) {
                                         />
                                         </div>
                                     </Grid>
-                                    <Grid item lg={4}>
+                                    <Grid item p={2} sm={4} >
                                         <div className={classes.rootSlider}>
                                         <Typography id="range-slider" gutterBottom>
                                             Millage<Typography variant="body2" color="textSecondary">
@@ -468,7 +474,7 @@ export default function AdvSearch( props ) {
                                         />
                                         </div>
                                     </Grid>
-                                    <Grid item lg={4}>
+                                    <Grid item p={2} sm={4} >
                                         <div className={classes.rootSlider}>
                                         <Typography id="range-slider" gutterBottom>
                                             Days on Oxus<Typography variant="body2" color="textSecondary">
@@ -559,8 +565,8 @@ export default function AdvSearch( props ) {
                             <TabPanel value={value} index={1} dir={theme.direction}>
                             <Grid container
                                 direction="row"
-                                justify="space-evenly"
-                                alignItems="stretch" spacing={8} style={{paddingTop: "20px", width: "100%"}}>
+                                justify="center"
+                                alignItems="center" spacing={5} style={{paddingTop: "20px", width: "100%"}}>
                                 <Grid item md={6}  >
                                 <Typography>Exterior Color</Typography>
                                 <ButtonGroup >

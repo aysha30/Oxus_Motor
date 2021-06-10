@@ -15,22 +15,23 @@ const useStyles = makeStyles((theme) => ({
     },
     toggleContainer: {
         margin: theme.spacing(2, 0),
-        width: "100",
-        alignItems: "center",
-      },
+        // width: "100%",
+        // alignItems: "center",
+    },
     carItem: {
         height: 70,
-        [theme.breakpoints.down('xs')]:{
+        [theme.breakpoints.down(1200)]:{
         // padding: "0px 20px",
-        padding: "10px 0px",
+        // padding: "10px 0px",
         width: "100%", 
         },
-        [theme.breakpoints.up('sm')]:{
+        [theme.breakpoints.up(1201)]:{
             width: 600,
         },
     },
     toolbar:{
-        width: "100%"
+        width: "100%",
+        display: "flex",
     }
 }))
 
@@ -68,14 +69,14 @@ function OptionBar(props) {
             className={classes.toolbar}
                 direction="row"
                 alignItems="center"
-                justify="space-around" >
-                <Grid item container justify="center">
+                justify="center" >
+                <Grid item className={classes.carItem}>
                     <ToggleButtonGroup
-                        className={classes.carItem}
+                        // className={classes.carItem}
                         value={car}
                         exclusive
                         variant="text"
-                        fullwidth="true"
+                        // fullwidth="true"
                         onChange={handleCar}
                     >
                         <ToggleButton  value="luxury" style={{ borderRadius: 50, margin: 5, border: 2 }}  >
@@ -96,7 +97,9 @@ function OptionBar(props) {
                     </ToggleButtonGroup>
                 </Grid>
                 <Grid item className={classes.toggleContainer}  >
-                    <Box style={{ width: 240}}>
+                    <Box 
+                    // style={{ width: 240}}
+                    >
                     <Typography>Sort by:</Typography>
                     {/* <InputLabel id="sort-by">Sort by: </InputLabel> */}
                     <Select
