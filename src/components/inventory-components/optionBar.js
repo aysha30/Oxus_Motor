@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Select, Toolbar, Button, Grid, Typography, MenuItem, InputLabel } from '@material-ui/core';
+import { Box, Select, Toolbar, FormControl, 
+    Button, Grid, Typography, MenuItem, InputLabel } from '@material-ui/core';
 import { makeStyles} from "@material-ui/core/styles";
 import ListIcon from '@material-ui/icons/List';
 import AppsIcon from '@material-ui/icons/Apps';
@@ -32,13 +33,17 @@ const useStyles = makeStyles((theme) => ({
     toolbar:{
         width: "100%",
         display: "flex",
-    }
+    },
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+    },
 }))
 
 function OptionBar(props) {
 
     const [ car, setCar ] = useState("luxury");
-    const [ sort, setSort ] = useState("Recently Added");
+    const [ sort, setSort ] = useState("");
     // const [ view, setView ] = useState("list");
     // let view = "grid";
 
@@ -48,8 +53,8 @@ function OptionBar(props) {
         }
     };
 
-    const handleSort = (event, newSort) => {
-        setSort(newSort);
+    const handleSort = (event) => {
+        setSort(event.target.value);
     };
 
     const handleView = (event, newView) => {
@@ -100,21 +105,23 @@ function OptionBar(props) {
                     <Box 
                     // style={{ width: 240}}
                     >
-                    <Typography>Sort by:</Typography>
-                    {/* <InputLabel id="sort-by">Sort by: </InputLabel> */}
-                    <Select
-                        labelId="sort-by"
-                        native
+                    <FormControl className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-label">Sort by:</InputLabel>
+                        <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
                         value={sort}
-                        label="Sort by: "
                         onChange={handleSort}
-                        
                         >
-                        <option value={"Recently Added"} >  Recently Added</option>
-                        <option value={"Price: Low to High"}>  Price: Low to High</option>
-                        <option value={"Price: High to Low"}>  Price: High to Low</option>
-                        <option value={"Newest Arrival"}>  Newest Arrival</option>
-                    </Select>
+                        
+                        <MenuItem value={"Recently Added"} >  Recently Added</MenuItem>
+                        <MenuItem value={"Price: Low to High"}>  Price: Low to High</MenuItem>
+                        <MenuItem value={"Price: High to Low"}>  Price: High to Low</MenuItem>
+                        <MenuItem value={"Newest Arrival"}>  Newest Arrival</MenuItem>
+                        
+                        </Select>
+                    </FormControl>
+                    
                     </Box>
                 </Grid>
                 <Grid item >

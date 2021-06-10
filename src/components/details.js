@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import Navbar from './modules/Navbar';
 import Footer from './modules/Footer';
 import Carouselcar from './inventory-components/Carouselcar';
+import CarScroll from './inventory-components/carScroll';
+import Overview from './inventory-components/overview';
+import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { Dialog, 
-    DialogTitle, 
-    DialogContent, 
+import {
     Box, 
     Select, 
     Button, 
@@ -13,24 +14,26 @@ import { Dialog,
     Typography, 
     MenuItem, 
     Container,
-    FormControl,
-    InputLabel,
     Tabs,
     Tab,
     Paper,
     Slider,
     ButtonGroup,
-    AppBar,
-    Switch,
-    FormGroup,
-    FormControlLabel } from '@material-ui/core';
-import Carousel from "react-elastic-carousel";
+    AppBar, } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         padding:"100px 0px",
         width: "100%",
         height: "100%",
+    },
+    imgContainer: {
+        [theme.breakpoints.down(1200)]:{
+            padding: "0px 0px",
+        },
+        [theme.breakpoints.up(1201)]:{
+            padding: "0px 70px",
+        },
     },
     carouselContainer:{
         
@@ -44,6 +47,27 @@ const useStyles = makeStyles((theme) => ({
         },
         margin: 0,
         padding: 0,
+    },
+    carScroll:{
+        padding: "10px 10px",
+        [theme.breakpoints.down(1200)]:{
+            height: "100%",
+            width:"100%",
+        },
+        [theme.breakpoints.up(1201)]:{
+            width: "25%",
+            height: "700px",
+        },
+    },
+    tabroot: {
+        flexGrow: 1,
+        backgroundColor: theme.palette.background.paper,
+        [theme.breakpoints.down(1200)]:{
+            padding: "20px 0px",
+        },
+        [theme.breakpoints.up(1201)]:{
+            padding: "20px 70px",
+        },
     },
     
 }))
@@ -148,26 +172,79 @@ const carArray = [
 
 ];
 
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+        >
+        {value === index && (
+            <Box p={3}>
+            <Typography>{children}</Typography>
+            </Box>
+        )}
+        </div>
+    );
+}
+
+    TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.any.isRequired,
+    value: PropTypes.any.isRequired,
+    };
+
+    function a11yProps(index) {
+    return {
+        id: `simple-tab-${index}`,
+        'aria-controls': `simple-tabpanel-${index}`,
+    };
+    }
+
 
 export default function Details() {
     const classes = useStyles();
-    // const { openDetail, setOpenDetail } = props;
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
     return(
         
         <React.Fragment>
             <Navbar />
             <div className={classes.root}>
-                <Container display="flex" >
-                
-                <Paper className={classes.carouselContainer}>
-                <Carouselcar />
-                </Paper>
-                <Grid>
-                    
+                <Grid container display="flex" className={classes.imgContainer} >
+                    <Grid item className={classes.carouselContainer}>
+                        <Carouselcar />
+                    </Grid>
+
+                    <Grid item className={classes.carScroll}>
+                        <CarScroll />
+                    </Grid>
                 </Grid>
-                
-                
-                </Container>
+                <Grid container>
+                    <div className={classes.tabroot}>
+                        <div position="static">
+                            <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+                            <Tab label="Overview" {...a11yProps(0)} />
+                            <Tab label="Specifications" {...a11yProps(1)} />
+                            </Tabs>
+                        </div>
+                        <TabPanel value={value} index={0}>
+                            
+                            <Overview />
+                        </TabPanel>
+                        <TabPanel value={value} index={1}>
+                            Item Two
+                        </TabPanel>
+                    </div>
+                </Grid>
             </div>
             <Footer />
         </React.Fragment>
