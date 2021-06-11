@@ -4,6 +4,7 @@ import Footer from './modules/Footer';
 import Carouselcar from './inventory-components/Carouselcar';
 import CarScroll from './inventory-components/carScroll';
 import Overview from './inventory-components/overview';
+import Specification from './inventory-components/specification';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {
@@ -185,7 +186,7 @@ function TabPanel(props) {
         >
         {value === index && (
             <Box p={3}>
-            <Typography>{children}</Typography>
+                <Typography>{children}</Typography>
             </Box>
         )}
         </div>
@@ -223,7 +224,6 @@ export default function Details() {
                     <Grid item className={classes.carouselContainer}>
                         <Carouselcar />
                     </Grid>
-
                     <Grid item className={classes.carScroll}>
                         <CarScroll />
                     </Grid>
@@ -237,11 +237,10 @@ export default function Details() {
                             </Tabs>
                         </div>
                         <TabPanel value={value} index={0}>
-                            
                             <Overview />
                         </TabPanel>
                         <TabPanel value={value} index={1}>
-                            Item Two
+                            <Specification />
                         </TabPanel>
                     </div>
                 </Grid>
