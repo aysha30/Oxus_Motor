@@ -292,7 +292,7 @@ export default function AdvSearch( props ) {
                     align="center" 
                     color="textPrimary"
                     style={{flexGrow: 1}}
-                     >
+                    >
                     <Box fontWeight="fontWeightBold" m={1} md={4}>
                         Advance Search
                     </Box>

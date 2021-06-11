@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import Navbar from './modules/Navbar';
 import Footer from './modules/Footer';
 import ListCard from './inventory-components/listCard';
@@ -10,7 +11,9 @@ import { makeStyles, useTheme, fade } from "@material-ui/core/styles";
 import Pagination from '@material-ui/lab/Pagination';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import QuestionAnswerOutlinedIcon from '@material-ui/icons/QuestionAnswerOutlined';
 import Details from './details';
+import ChatBot from 'react-simple-chatbot';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,6 +25,12 @@ const useStyles = makeStyles((theme) => ({
         height: "100%",
         display: "flex",
 
+    },
+    chatFab: {
+        position: "fixed",
+        bottom: "5%",
+        right: "5%",
+        zIndex: theme.zIndex.tooltip,
     }
 }))
 const carArray = [
@@ -123,6 +132,19 @@ const carArray = [
     },
 
 ];
+const steps = [
+    {
+      id: '0',
+      message: 'Welcome to react chatbot!',
+      trigger: '1',
+    },
+    {
+      id: '1',
+      message: 'Bye!',
+      end: true,
+    },
+  ];
+
 
 
 function Inventory() {
@@ -137,6 +159,8 @@ function Inventory() {
         setListVisible((prevValue)=> prevValue + 3);
     }
     const [ view, setView ] = useState("list");
+
+    
 
     return (
         <React.Fragment>
@@ -206,22 +230,20 @@ function Inventory() {
                                         <AddIcon />
                                     </Fab>
                                 </Grid>
-                            </Grid>
+                            </Grid> 
                             
                             
                         </Grid> 
                     </Container>
                 }
+                <Fab color="primary" className={classes.chatFab} 
+                onClick={() => { <ChatBot steps={steps} /> }}
+                >
+                <QuestionAnswerOutlinedIcon />
+                </Fab>
                 
                 
                 
-                {/* <Grid container style={{ width: "100%", margin: "10px 0px 70px"}} container justify="center" >
-                    <Grid item>
-                        <Fab style={{bgcolor:"#e8e8ea"}} aria-label="add" border={1}  >
-                            <AddIcon />
-                        </Fab>
-                    </Grid>
-                </Grid> */}
             </Box>
             <Footer />
         </React.Fragment>

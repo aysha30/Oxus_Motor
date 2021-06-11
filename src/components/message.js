@@ -154,19 +154,18 @@ export default function Message() {
                     </Typography><hr color="white" />
                     
                     <Typography  className={classes.wrapIcon}>
-                        <LanguageIcon  />  oxusmotor.com
+                        <LanguageIcon  /> &nbsp; oxusmotor.com
                     </Typography><br/>
                     
                     <Typography variant="subtitle1" className={classes.wrapIcon}>
-                        <CallIcon />  (376)196-3920
+                        <CallIcon /> &nbsp; (376)196-3920
                     </Typography><br/>
                     
                     <Typography variant="subtitle1" className={classes.wrapIcon}>
-                        <LocationOnIcon />  
+                        <LocationOnIcon />  &nbsp;
                         4787 Blackwell Street, 
                         Sharjah, United Arab Emirates
                     </Typography>
-
                 </Box>
                     <Box className={classes.googlemap} mt={5}>
                             <LoadScript
@@ -180,9 +179,6 @@ export default function Message() {
                         </Box>
                         
                 </Box>
-            
-            
-            
                 <Box 
                     className={classes.sendus} 
                     bgcolor="white" 

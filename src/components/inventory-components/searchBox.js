@@ -86,15 +86,14 @@ function SearchBox(props) {
                 direction="row"
                 justify="center"
                 alignItems="stretch"
-                 >
+                >
                 <Grid container
                     className={classes.gridSearch}
                     direction="row"
                     justify="center"
                     alignItems="stretch"
                     style={{ shadow: 5}}
-                   >
-                   
+                    >
                     <Grid item
                         className={classes.gridItem}>
                         <input 
