@@ -283,7 +283,7 @@ export default function Navbar() {
         underline="always"
         color="inherit"
         onClick={()=>setOpenCare(true)}
-        href="#"
+        // href="#"
        >
         {" "}
         Oxus Car Care{" "}
