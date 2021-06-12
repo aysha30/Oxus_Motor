@@ -157,30 +157,29 @@ const useStyles = makeStyles((theme) => ({
     },
     paraCont: {
         margin: "30px 0px",
-        [theme.breakpoints.down(1200)]:{
-            height: "auto",
-        },
-        [theme.breakpoints.up(1201)]:{
-            height: "500px",
-        },
+        height: "auto",
+        
     },
     img: {
-        height: 350,
+        // height: 350,
         // backgroundColor: "#eae9ea",
-        [theme.breakpoints.down(840)]:{
-            width: "auto",
+        [theme.breakpoints.down(1200)]:{
+            width: "100%",
+            height: "auto",
+            margin: "0px 10px",
         },
-        [theme.breakpoints.up('sm')]:{
+        [theme.breakpoints.up(1201)]:{
             width: 500,
         },
     },
     para: {
         padding: "20px",
-        [theme.breakpoints.down(840)]:{
+        [theme.breakpoints.down(1200)]:{
             width: "auto",
         },
-        [theme.breakpoints.up('sm')]:{
+        [theme.breakpoints.up(1201)]:{
             width: "60%",
+            // display:"flex",
         },
     },
     icon: {
@@ -291,8 +290,8 @@ export default function About() {
                     </Grid>
                 </Grid>
                 </Grid>
-            <Grid container spacing={3}>
-                <Grid item sm={6} container direction="row">
+            <Grid container spacing={3} >
+                <Grid item sm={6} container direction="row" justify="center">
                     <Grid item>
                         <Box border={4} borderRadius={10} borderColor="#ceba96" p={3}>
                             <img className={classes.icon} 
@@ -300,7 +299,7 @@ export default function About() {
                             alt="experience" />
                         </Box>
                     </Grid>
-                    <Grid item sm={8}> 
+                    <Grid item sm={8} > 
                     <Typography variant="h6"
                         align="left" 
                         color="primary">
@@ -317,7 +316,7 @@ export default function About() {
                     </Typography>
                     </Grid>
                 </Grid>
-                <Grid item sm={6} container direction="row">
+                <Grid item sm={6} container direction="row" justify="center">
                     <Grid item>
                         <Box border={4} borderRadius={10} borderColor="#ceba96" p={3}>
                             <img className={classes.icon} 
@@ -342,7 +341,7 @@ export default function About() {
                     </Typography>
                     </Grid>
                 </Grid>
-                <Grid item sm={6} container direction="row">
+                <Grid item sm={6} container direction="row" justify="center">
                     <Grid item>
                         <Box border={4} borderRadius={10} borderColor="#ceba96" p={3}>
                             <img className={classes.icon} 
@@ -367,7 +366,7 @@ export default function About() {
                     </Typography>
                     </Grid>
                 </Grid>
-                <Grid item sm={6} container direction="row">
+                <Grid item sm={6} container direction="row" justify="center">
                     <Grid item>
                         <Box border={4} borderRadius={10} borderColor="#ceba96" p={3}>
                             <img className={classes.icon} 
