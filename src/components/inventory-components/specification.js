@@ -30,7 +30,7 @@ import {
     const useStyles = makeStyles((theme) => ({
         card: {
             backgroundColor: "#f7f1e4",
-            width: "20em"
+            width: "25em"
         },
     }))
 

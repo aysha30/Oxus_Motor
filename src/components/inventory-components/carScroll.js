@@ -6,7 +6,8 @@ import {
     Container,
     FormControl,
     useMediaQuery,
-    Card,
+    Card, 
+    Paper,
     CardActionArea,
     CardMedia,
     CardContent} from '@material-ui/core';
@@ -123,7 +124,7 @@ export default function CarScroll() {
     const matches = useMediaQuery(theme.breakpoints.down("xs"));
     return(
         <div>
-            <Card>
+            <Paper square elevation={0}>
                 <CardActionArea>
                     <CardMedia
                     component="img"
@@ -139,8 +140,8 @@ export default function CarScroll() {
                     {carArray[0].fullPrice}
                 </CardContent>
                 </CardActionArea>
-            </Card>
-            <Card>
+            </Paper>
+            <Paper square elevation={0}>
                 <CardActionArea>
                     <CardMedia
                     component="img"
@@ -156,8 +157,8 @@ export default function CarScroll() {
                     {carArray[1].fullPrice}
                 </CardContent>
                 </CardActionArea>
-            </Card>
-            <Card>
+            </Paper>
+            <Paper square elevation={0}>
                 <CardActionArea>
                     <CardMedia
                     component="img"
@@ -173,7 +174,7 @@ export default function CarScroll() {
                     {carArray[2].fullPrice}
                 </CardContent>
                 </CardActionArea>
-            </Card>
+            </Paper>
             
         </div>
     );

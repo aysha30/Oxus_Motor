@@ -36,12 +36,12 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
         },
         card: {
             backgroundColor: "#f7f1e4",
-            width: "20em"
+            width: "25em"
         },
         formControl: {
             
             backgroundColor: "#f7f1e4",
-            minWidth: 400,
+            minWidth: 500,
             borderRadius: 10,
             border: 0,
         },
@@ -83,11 +83,12 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
             <div>
                 <Grid container style={{width: "75%"}}>
                     <Typography variant="h5">
-                        <Box fontWeight="fontWeightBold" p={2}>
+                        <Box fontWeight="fontWeightBold" style={{padding:"20px 0px"}} >
                         Description
                         </Box>
                     </Typography>
                     <Typography paragraph variant="subtitle2" >
+                        
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
                         when an unknown printer took a galley of type and scrambled it to make a type 
@@ -97,12 +98,13 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                         and more recently with desktop publishing software like Aldus PageMaker including 
                         versions of Lorem Ipsum. It has survived not only five centuries, but also the 
                         leap into electronic typesetting, remaining essentially unchanged.
+                    
                     </Typography>
                 </Grid>
                 <Grid container display="flex" spacing={3}>
-                    <Grid container>
+                    <Grid container style={{padding:"20px 10px"}}>
                     <Typography variant="h5">
-                            <Box fontWeight="fontWeightBold" p={2}>
+                            <Box fontWeight="fontWeightBold">
                                 Basic Specs
                             </Box>
                     </Typography>
@@ -461,9 +463,9 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                     </Grid>
                 </Grid>
                 <Grid container display="flex" spacing={3}>
-                    <Grid container style={{padding:"20px 0px 0px"}}>
+                    <Grid container style={{padding:"30px 10px"}}>
                         <Typography variant="h5">
-                                <Box fontWeight="fontWeightBold" p={2}>
+                                <Box fontWeight="fontWeightBold">
                                     Expenses Calculator
                                 </Box>
                         </Typography>

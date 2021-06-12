@@ -6,7 +6,14 @@ import ListCard from './inventory-components/listCard';
 import GridCard from './inventory-components/gridCard';
 import SearchBox from './inventory-components/searchBox';
 import OptionBar from './inventory-components/optionBar';
-import { Box, TextField, Grid, Typography, Button, useMediaQuery, Container } from '@material-ui/core';
+import { 
+    Box, 
+    TextField, 
+    Grid, 
+    Typography, 
+    Button, 
+    useMediaQuery, 
+    Container } from '@material-ui/core';
 import { makeStyles, useTheme, fade } from "@material-ui/core/styles";
 import Pagination from '@material-ui/lab/Pagination';
 import Fab from '@material-ui/core/Fab';
@@ -132,18 +139,7 @@ const carArray = [
     },
 
 ];
-const steps = [
-    {
-      id: '0',
-      message: 'Welcome to react chatbot!',
-      trigger: '1',
-    },
-    {
-      id: '1',
-      message: 'Bye!',
-      end: true,
-    },
-  ];
+
 
 
 
@@ -237,7 +233,7 @@ function Inventory() {
                     </Container>
                 }
                 <Fab color="primary" className={classes.chatFab} 
-                onClick={() => { <ChatBot steps={steps} /> }}
+                // onClick={() => { <ChatBot steps={steps} /> }}
                 >
                 <QuestionAnswerOutlinedIcon />
                 </Fab>
