@@ -10,7 +10,7 @@ const carSchema = new mongoose.Schema({
         required: true
     },
     images: {
-        type: String,
+        type: Array,
         required: false
     },
     description: {
