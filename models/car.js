@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-
 const carSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -9,9 +8,9 @@ const carSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    images: {
-        type: Array,
-        required: false
+    images:{
+        type: [Array],
+        required: true
     },
     description: {
         type: String,
@@ -81,6 +80,7 @@ const carSchema = new mongoose.Schema({
             }
         }],
         required: true
-    }
+    },
+    features: Object
 })
 module.exports = mongoose.model('Car', carSchema)
