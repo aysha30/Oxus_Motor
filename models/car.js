@@ -13,7 +13,7 @@ const carSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    /*description: {
+    description: {
         type: String,
         required: false
     },
@@ -81,6 +81,6 @@ const carSchema = new mongoose.Schema({
             }
         }],
         required: true
-    }*/
+    }
 })
 module.exports = mongoose.model('Car', carSchema)
