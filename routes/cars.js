@@ -19,25 +19,6 @@ router.get('/', async(req, res) => {
     }
 })
 
-router.get('/:pick_loc/:drop_loc/:pick_dateTime/:people/:car_type', async(req, res) => {
-    const pick_loc = req.params.pick_loc
-    const drop_loc = req.params.drop_loc
-    const pick_dateTime = req.params.pick_dateTime
-    const people = req.params.people
-    const car_type = req.params.car_type
-    try{
-        const cars = await Car.find({$and:[{'pick_loc': pick_loc}, {'drop_loc': drop_loc}, {'pick_dateTime': pick_dateTime}, {"max_seat":{$gte:people}}, {'car_type': car_type}]})
-        res.json({
-            "data": cars,
-            "message": "Search Results based on User Request",
-            "status": true,
-            "code": 200
-        })
-    }catch(err){
-        res.send('Error ' + err)
-    }
-})
-
 router.get('/:id', async(req, res) => {
     try{
         const car = await Car.findById(req.params.id)
