@@ -52,14 +52,16 @@ router.get('/:id', async(req, res) => {
     }
 })
 
-router.post('/', upload.single('images'), async(req,res, next) => {
-    console.log(req.file)
+router.post('/',  async(req,res) => {
     const car = new Car({
         name: req.body.name,
-        price: req.body.price
+        price: req.body.price,
+        images: req.body.images,
+        description: req.body.description,
+        basic_specs: req.body.basic_specs
     })
     try{
-        const c1 =  await car.save() 
+        const c1 =  await car.save()
         res.json({
             "data": c1,
             "message": "Car Saved",
