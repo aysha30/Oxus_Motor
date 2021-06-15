@@ -1,130 +1,115 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import "./Carouselcar.css";
-import { Dialog, 
-    DialogTitle, 
-    DialogContent, 
-    Box, 
-    Select, 
+import {  
+    Box,  
     Button, 
     Grid, 
     Typography, 
-    MenuItem, 
-    Container,
-    FormControl,
-    useMediaQuery,
-    InputLabel,
-    Tabs,
-    Tab,
-    Paper,
-    Slider,
-    ButtonGroup,
-    AppBar,
-    Switch,
-    FormGroup,
-    FormControlLabel } from '@material-ui/core';
+    useMediaQuery } from '@material-ui/core';
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import axios from 'axios';
 
-const carArray = [
-    {
-        src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-        name: "Mercedes Benz1",
-        fullPrice: "  $50,000",
-        monthly: "  $2,000",
-        year: 2020,
-        fuel: "Diesel",
-        gear: "Full Automatic",
-        km: 37400,
-        bodyType: "SUV",
-        enginePower: "125 hp"
-    },
-    {
-        src: "https://freepngimg.com/thumb/car/4-2-car-png-hd.png",
-        name: "Mercedes Benz2",
-        fullPrice: "  $50,000",
-        monthly: "  $2,000",
-        year: 2020,
-        fuel: "Diesel",
-        gear: "Full Automatic",
-        km: 37400,
-        bodyType: "SUV",
-        enginePower: "125 hp"
-    },
-    {
-        src: "https://i.pinimg.com/originals/dc/19/e9/dc19e9b94a372ebc21ffeb7623d5632a.png",
-        name: "Mercedes Benz3",
-        fullPrice: "  $50,000",
-        monthly: "  $2,000",
-        year: 2020,
-        fuel: "Diesel",
-        gear: "Full Automatic",
-        km: 37400,
-        bodyType: "SUV",
-        enginePower: "125 hp"
-    },
-    {
-        src: "https://www.nicepng.com/png/detail/936-9365791_free-png-download-car-png-images-background-png.png",
-        name: "Mercedes Benz4",
-        fullPrice: "  $50,000",
-        monthly: "  $2,000",
-        year: 2020,
-        fuel: "Diesel",
-        gear: "Full Automatic",
-        km: 37400,
-        bodyType: "SUV",
-        enginePower: "125 hp"
-    },
-    {
-        src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-        name: "Mercedes Benz5",
-        fullPrice: "  $50,000",
-        monthly: "  $2,000",
-        year: 2020,
-        fuel: "Diesel",
-        gear: "Full Automatic",
-        km: 37400,
-        bodyType: "SUV",
-        enginePower: "125 hp"
-    },
-    {
-        src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-        name: "Mercedes Benz6",
-        fullPrice: "  $50,000",
-        monthly: "  $2,000",
-        year: 2020,
-        fuel: "Diesel",
-        gear: "Full Automatic",
-        km: 37400,
-        bodyType: "SUV",
-        enginePower: "125 hp"
-    },
-    {
-        src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-        name: "Mercedes Benz7",
-        fullPrice: "  $50,000",
-        monthly: "  $2,000",
-        year: 2020,
-        fuel: "Diesel",
-        gear: "Full Automatic",
-        km: 37400,
-        bodyType: "SUV",
-        enginePower: "125 hp"
-    },
-    {
-        src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-        name: "Mercedes Benz8",
-        fullPrice: "  $50,000",
-        monthly: "  $2,000",
-        year: 2020,
-        fuel: "Diesel",
-        gear: "Full Automatic",
-        km: 37400,
-        bodyType: "SUV",
-        enginePower: "125 hp"
-    },
+// const carArray = [
+//     {
+//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
+//         name: "Mercedes Benz1",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     },
+//     {
+//         src: "https://freepngimg.com/thumb/car/4-2-car-png-hd.png",
+//         name: "Mercedes Benz2",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     },
+//     {
+//         src: "https://i.pinimg.com/originals/dc/19/e9/dc19e9b94a372ebc21ffeb7623d5632a.png",
+//         name: "Mercedes Benz3",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     },
+//     {
+//         src: "https://www.nicepng.com/png/detail/936-9365791_free-png-download-car-png-images-background-png.png",
+//         name: "Mercedes Benz4",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     },
+//     {
+//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
+//         name: "Mercedes Benz5",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     },
+//     {
+//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
+//         name: "Mercedes Benz6",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     },
+//     {
+//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
+//         name: "Mercedes Benz7",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     },
+//     {
+//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
+//         name: "Mercedes Benz8",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     },
 
-];
+// ];
 
 const useStyles = makeStyles((theme) => ({
     carousel :{
@@ -187,18 +172,75 @@ const useStyles = makeStyles((theme) => ({
     }
     
 }))
+const initialCarArray = {
+    "images": [
+        "https://i.pinimg.com/originals/5d/4d/b6/5d4db6e517a689e87c4266f61d77f803.png",
+        "https://freepngimg.com/thumb/car/6-2-car-png-file.png"
+    ],
+    "_id": "60c864a5ae911b029c443070",
+    "name": "initial CAr",
+    "price": "$200.000",
+    "description": "This is BMW car",
+    "basic_specs": [
+        {
+            "_id": "60c864a5ae911b029c443071",
+            "mileage": "27 MPG",
+            "engine": "RU I-4, 2.0L",
+            "drive_train": "FWD",
+            "style_name": "Tacoma TRD Sport",
+            "body_style": "SUV",
+            "brake_type": "4-Wheel Disc",
+            "air_bags": "All Seats",
+            "night_vision": "No",
+            "passanger_capacity": 5,
+            "abs_brake": "4-Wheel",
+            "backup_cam": "Yes",
+            "stereo_sound": "Yes",
+            "traction_control": "Yes",
+            "parking_assistant": "Yes",
+            "mp3_player": "Yes"
+        }
+    ],
+    "__v": 0
+}
 
-function Carouselcar() {
+function Carouselcar({ id }) {
     const classes = useStyles();
     const theme = useTheme();
     const matches = useMediaQuery(theme.breakpoints.down("xs"));
     const [currImg, setCurrImg] = useState(0);
+    const [ carArray, setCarArray ] = useState(initialCarArray);
 
+    // console.log(id);
+    
+    // console.log("inicar" + carArray);
+
+    useEffect(()=>{
+        loadById();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[]);
+
+
+
+    const loadById = async () => {
+        // console.log("useeffect of carousel");
+        await axios
+        .get('http://localhost:3000/cars/'+id)
+        .then(res => {
+            // console.log("id "+ id);
+            // console.log(res.data.data);
+            setCarArray(res.data.data);
+        })
+        .catch(err => {
+            console.log(err)
+        }) 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }
     return (
         <div className={classes.carousel}>
         <div
             className={classes.carouselInner}
-            style={{ backgroundImage: `url(${carArray[currImg].src})` }}
+            style={{ backgroundImage: `url(${carArray?.images[currImg]})` }}
         >
             <div
                 className={classes.left}
@@ -213,22 +255,22 @@ function Carouselcar() {
                 container
                 display="flex"
                 direction="row"
-                justify="center"
+                justify="space-between"
                 alignItems="flex-end"
-                gutterBottom>
+                >
                     <Grid item> 
                         <Typography className={classes.carName} variant={(matches) ? "button" : "h4"}  align="left" gutterBottom>
                             <Box fontWeight="fontWeightBold">
-                            {carArray[currImg].year} {carArray[currImg].name}
+                            {carArray.name}
                             </Box> 
                         </Typography>
                         <Typography className={classes.carName} variant={(matches) ? "button" : "h4"} align="left" gutterBottom>
                             <Box fontWeight="fontWeightBold">
-                            {carArray[currImg].fullPrice}
+                            {carArray.price}
                             </Box> 
                         </Typography>
                     </Grid>
-                    <Grid item gutterbottom>
+                    <Grid item>
                         <Button className={classes.getContactBtn} variant="contained" >
                             Get Contact
                         </Button>
@@ -238,7 +280,7 @@ function Carouselcar() {
             <div
                 className={classes.right}
                 onClick={() => {
-                    currImg < carArray.length - 1 && setCurrImg(currImg + 1);
+                    currImg < carArray.images.length - 1 && setCurrImg(currImg + 1);
                 }}
                 >
                     <ArrowForwardIosIcon style={{ fontSize: 30 }} />

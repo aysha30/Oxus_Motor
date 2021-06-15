@@ -2,24 +2,10 @@ import React, { useState } from 'react';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {
     Box, 
-    Select, 
-    FormControl,
-    InputLabel,
-    Button,
     Grid, 
-    Tabs,
-    Tab,
-    Radio,
-    RadioGroup,
-    FormControlLabel,
-    FormLabel,
-    Paper, 
     Typography, 
-    MenuItem,
     Divider,
-    InputAdornment,
     Card, 
-    FilledInput,
     CardActionArea,
     CardContent, } from '@material-ui/core';
     import LocalCarWashIcon from '@material-ui/icons/LocalCarWash';
@@ -34,7 +20,7 @@ import {
         },
     }))
 
-    export default function Overview() {
+    export default function Specification({carArray}) {
         const classes = useStyles();
         return(
             <div>
@@ -59,7 +45,7 @@ import {
                                             <Typography>
                                                 Mileage <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].mileage}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -79,9 +65,10 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Engine <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {/* 27 MPG */}
+                                                {carArray?.basic_specs[0].engine}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -101,9 +88,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Drivetrain <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].drive_train}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -123,9 +110,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Style Name <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].style_name}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -145,9 +132,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Body Style <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].body_style}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -167,9 +154,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Passenger Capacity <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].passanger_capacity}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -196,9 +183,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Engine <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].engine}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -218,9 +205,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Fuel Sysytem <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].fuel_system}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -240,9 +227,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Drivetrain <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].drive_train}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -262,9 +249,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Brake Type <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].brake_type}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -284,9 +271,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                ABS Brake System <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].abs_brake}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -306,9 +293,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Wheel Size <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].wheel_size}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -335,9 +322,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Airbags <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].air_bags}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -357,9 +344,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                ABS Brake System <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].abs_brake}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -379,9 +366,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Traction Control <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].traction_control}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -401,9 +388,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Night Vision <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].night_vision}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -423,9 +410,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Backup Camera <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].backup_cam}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -445,9 +432,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Parking Assistant <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].parking_assistant}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -474,9 +461,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Stereo Sound Setup <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].stereo_sound}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -496,9 +483,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                CD Player <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].cd_player}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -518,9 +505,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                DVD Player <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].dvd_player}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -540,9 +527,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                MP3 Player <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].mp3_player}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -562,9 +549,9 @@ import {
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Radio <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].radio}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -573,28 +560,7 @@ import {
                             </CardActionArea>
                         </Card>
                     </Grid>
-                    <Grid item>
-                        <Card className={classes.card}>
-                            <CardActionArea>
-                                <CardContent >
-                                    <Grid container alignItems="center" >
-                                        <Grid item style={{padding:"15px"}}>
-                                            <BuildIcon />
-                                        </Grid>
-                                        <Divider orientation="vertical" flexItem />
-                                        <Grid item style={{padding:"0px 20px"}}>
-                                            <Typography>
-                                                Mileage <br/>
-                                                <Box fontWeight="fontWeightBold">
-                                                27 MPG
-                                                </Box>
-                                            </Typography>
-                                        </Grid>
-                                    </Grid>
-                                </CardContent>
-                            </CardActionArea>
-                        </Card>
-                    </Grid>
+                    
                 </Grid>
             </div>
         )

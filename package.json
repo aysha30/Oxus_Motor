@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "chat-ui-react": "^0.2.13",
     "google-maps-react": "^2.0.6",
