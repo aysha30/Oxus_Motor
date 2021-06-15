@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const Car = require('../models/car')
-const Features = require('./features')
 
 router.get('/', async(req, res) => {
     try{
@@ -32,15 +31,8 @@ router.get('/:id', async(req, res) => {
 })
 
 router.post('/',  async(req,res) => {
-    const features = new Features(req.body.features.colour, req.body.features.weight)
-    const car = new Car({
-        name: req.body.name,
-        price: req.body.price,
-        images: req.body.images,
-        description: req.body.description,
-        basic_specs: req.body.basic_specs,
-        features: features
-    })
+    let info = req.body
+    const car = new Car(info)
     try{
         const c1 =  await car.save()
         res.json({
