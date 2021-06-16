@@ -209,9 +209,9 @@ export default function About() {
                 <Grid item container direction="row" className={classes.paraCont}>
                     <Grid item >
                         <img 
-                        className={classes.img}
+                        className={classes.img} 
                         src="https://thumbs.dreamstime.com/b/image-empty-car-dealership-showroom-interior-paris-france-oct-wide-angle-view-empty-car-dealership-showroom-interior-169124184.jpg"
-                        alt="car image"  />
+                        alt="car"  />
                     </Grid>
                     <Grid item className={classes.para} >
                         <Typography variant="subtitle2">
@@ -286,7 +286,7 @@ export default function About() {
                         <img 
                         className={classes.img}
                         src="https://thumbs.dreamstime.com/b/image-empty-car-dealership-showroom-interior-paris-france-oct-wide-angle-view-empty-car-dealership-showroom-interior-169124184.jpg"
-                        alt="car image"  />
+                        alt="car"  />
                     </Grid>
                 </Grid>
                 </Grid>

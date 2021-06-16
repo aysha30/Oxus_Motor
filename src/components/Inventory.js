@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState, useEffect } from 'react';
+// import ReactDOM from 'react-dom';
 import Navbar from './modules/Navbar';
 import Footer from './modules/Footer';
 import ListCard from './inventory-components/listCard';
@@ -8,19 +8,15 @@ import SearchBox from './inventory-components/searchBox';
 import OptionBar from './inventory-components/optionBar';
 import { 
     Box, 
-    TextField, 
     Grid, 
-    Typography, 
-    Button, 
-    useMediaQuery, 
+    Typography,  
     Container } from '@material-ui/core';
-import { makeStyles, useTheme, fade } from "@material-ui/core/styles";
-import Pagination from '@material-ui/lab/Pagination';
+import { makeStyles } from "@material-ui/core/styles";
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import QuestionAnswerOutlinedIcon from '@material-ui/icons/QuestionAnswerOutlined';
-import Details from './details';
-import ChatBot from 'react-simple-chatbot';
+
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -40,105 +36,105 @@ const useStyles = makeStyles((theme) => ({
         zIndex: theme.zIndex.tooltip,
     }
 }))
-const carArray = [
-    {
-        src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-        name: "Mercedes Benz1",
-        fullPrice: "  $50,000",
-        monthly: "  $2,000",
-        year: 2020,
-        fuel: "Diesel",
-        gear: "Full Automatic",
-        km: 37400,
-        bodyType: "SUV",
-        enginePower: "125 hp"
-    },
-    {
-        src: "https://freepngimg.com/thumb/car/4-2-car-png-hd.png",
-        name: "Mercedes Benz2",
-        fullPrice: "  $50,000",
-        monthly: "  $2,000",
-        year: 2020,
-        fuel: "Diesel",
-        gear: "Full Automatic",
-        km: 37400,
-        bodyType: "SUV",
-        enginePower: "125 hp"
-    },
-    {
-        src: "https://i.pinimg.com/originals/dc/19/e9/dc19e9b94a372ebc21ffeb7623d5632a.png",
-        name: "Mercedes Benz3",
-        fullPrice: "  $50,000",
-        monthly: "  $2,000",
-        year: 2020,
-        fuel: "Diesel",
-        gear: "Full Automatic",
-        km: 37400,
-        bodyType: "SUV",
-        enginePower: "125 hp"
-    },
-    {
-        src: "https://www.nicepng.com/png/detail/936-9365791_free-png-download-car-png-images-background-png.png",
-        name: "Mercedes Benz4",
-        fullPrice: "  $50,000",
-        monthly: "  $2,000",
-        year: 2020,
-        fuel: "Diesel",
-        gear: "Full Automatic",
-        km: 37400,
-        bodyType: "SUV",
-        enginePower: "125 hp"
-    },
-    {
-        src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-        name: "Mercedes Benz5",
-        fullPrice: "  $50,000",
-        monthly: "  $2,000",
-        year: 2020,
-        fuel: "Diesel",
-        gear: "Full Automatic",
-        km: 37400,
-        bodyType: "SUV",
-        enginePower: "125 hp"
-    },
-    {
-        src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-        name: "Mercedes Benz6",
-        fullPrice: "  $50,000",
-        monthly: "  $2,000",
-        year: 2020,
-        fuel: "Diesel",
-        gear: "Full Automatic",
-        km: 37400,
-        bodyType: "SUV",
-        enginePower: "125 hp"
-    },
-    {
-        src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-        name: "Mercedes Benz7",
-        fullPrice: "  $50,000",
-        monthly: "  $2,000",
-        year: 2020,
-        fuel: "Diesel",
-        gear: "Full Automatic",
-        km: 37400,
-        bodyType: "SUV",
-        enginePower: "125 hp"
-    },
-    {
-        src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-        name: "Mercedes Benz8",
-        fullPrice: "  $50,000",
-        monthly: "  $2,000",
-        year: 2020,
-        fuel: "Diesel",
-        gear: "Full Automatic",
-        km: 37400,
-        bodyType: "SUV",
-        enginePower: "125 hp"
-    },
+// const carArray = [
+//     {
+//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
+//         name: "Mercedes Benz1",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     },
+//     {
+//         src: "https://freepngimg.com/thumb/car/4-2-car-png-hd.png",
+//         name: "Mercedes Benz2",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     },
+//     {
+//         src: "https://i.pinimg.com/originals/dc/19/e9/dc19e9b94a372ebc21ffeb7623d5632a.png",
+//         name: "Mercedes Benz3",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     },
+//     {
+//         src: "https://www.nicepng.com/png/detail/936-9365791_free-png-download-car-png-images-background-png.png",
+//         name: "Mercedes Benz4",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     },
+//     {
+//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
+//         name: "Mercedes Benz5",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     },
+//     {
+//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
+//         name: "Mercedes Benz6",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     },
+//     {
+//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
+//         name: "Mercedes Benz7",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     },
+//     {
+//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
+//         name: "Mercedes Benz8",
+//         fullPrice: "  $50,000",
+//         monthly: "  $2,000",
+//         year: 2020,
+//         fuel: "Diesel",
+//         gear: "Full Automatic",
+//         km: 37400,
+//         bodyType: "SUV",
+//         enginePower: "125 hp"
+//     },
 
-];
+// ];
 
 
 
@@ -146,17 +142,26 @@ const carArray = [
 function Inventory() {
 
     const classes = useStyles();
-    const theme = useTheme();
-    const matches = useMediaQuery(theme.breakpoints.down("xs"));
+    // const matches = useMediaQuery(theme.breakpoints.down("xs"));
 
-    const [ listItems, setListImtems ] = useState(carArray);
+    const [ listItems, setListItems ] = useState([]);
     const [ listvisible, setListVisible ] = useState(3);
     const moreListItems = () => {
         setListVisible((prevValue)=> prevValue + 3);
     }
     const [ view, setView ] = useState("list");
 
-    
+    useEffect(() => {
+        axios
+        .get('http://localhost:3000/cars')
+        .then(res => {
+            // console.log(res.data.data);
+            setListItems(res.data.data);
+        })
+        .catch(err => {
+            console.log(err)
+        }) 
+    }, []);
 
     return (
         <React.Fragment>

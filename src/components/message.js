@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
             height: "100%",
         },
         flexGrow: 1,
-      },
+    },
     grid:{
         margin: "0px",
         width: "100%",
@@ -130,10 +130,10 @@ export default function Message() {
     const mapStyles = {        
         height: "200px",
         width: "100%"};
-      
+    
     const defaultCenter = {
         lat: 25.348766, lng: 55.405403
-      }
+    }
 
     return(
         <div>

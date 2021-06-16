@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import {
     Box, 
     Select, 
@@ -7,13 +7,9 @@ import {
     InputLabel,
     Button,
     Grid, 
-    Tabs,
-    Tab,
     Radio,
     RadioGroup,
     FormControlLabel,
-    FormLabel,
-    Paper, 
     Typography, 
     MenuItem,
     Divider,
@@ -26,8 +22,6 @@ import LocalCarWashIcon from '@material-ui/icons/LocalCarWash';
 import EvStationIcon from '@material-ui/icons/EvStation';
 import BuildIcon from '@material-ui/icons/Build';
 import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
-import ToggleButton from '@material-ui/lab/ToggleButton';
-import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -50,46 +44,50 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
         },
     }))
 
-    export default function Overview() {
+    export default function Overview({ carArray }) {
         const classes = useStyles();
 
-        const [creditScore, setCreditScore] = React.useState('');
+        const [creditScore, setCreditScore] = useState('');
 
         const handleCreditScore = (event) => {
             setCreditScore(event.target.value);
         };
 
-        const [loanTerm, setLoanTerm] = React.useState(12);
+        const [loanTerm, setLoanTerm] = useState(12);
 
         const handleLoanTerm = (event) => {
             setLoanTerm(event.target.value);
         };
-        const [vehiclePrice, setVehiclePrice] = React.useState(140.000);
+        const [vehiclePrice, setVehiclePrice] = useState(140.000);
 
         const handleVehiclePrice = (event) => {
             setVehiclePrice(event.target.value);
         };
-        const [salesTax, setSalesTax] = React.useState(0);
+        const [salesTax, setSalesTax] = useState(0);
 
         const handleSalesTax = (event) => {
             setSalesTax(event.target.value);
         };
-        const [apr, setApr] = React.useState("yesApr");
+        const [apr, setApr] = useState("yesApr");
 
         const handleApr = (event) => {
             setApr(event.target.value);
         };
+        // console.log(carArray);
         return(
             <div>
-                <Grid container style={{width: "75%"}}>
+                <Grid container direction="column" style={{width: "75%"}}>
+                    <Grid item>
                     <Typography variant="h5">
                         <Box fontWeight="fontWeightBold" style={{padding:"20px 0px"}} >
                         Description
                         </Box>
                     </Typography>
-                    <Typography paragraph variant="subtitle2" >
-                        
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </Grid>
+                    <Grid item>
+                    <Typography variant="subtitle2" >
+                        {carArray.description}
+                        {/* Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
                         when an unknown printer took a galley of type and scrambled it to make a type 
                         specimen book. It has survived not only five centuries, but also the leap into 
@@ -97,9 +95,10 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                         the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
                         and more recently with desktop publishing software like Aldus PageMaker including 
                         versions of Lorem Ipsum. It has survived not only five centuries, but also the 
-                        leap into electronic typesetting, remaining essentially unchanged.
+                        leap into electronic typesetting, remaining essentially unchanged. */}
                     
                     </Typography>
+                    </Grid>
                 </Grid>
                 <Grid container display="flex" spacing={3}>
                     <Grid container style={{padding:"20px 10px"}}>
@@ -122,7 +121,8 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                                             <Typography>
                                                 Mileage <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                
+                                                {carArray?.basic_specs[0]?.mileage}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -142,9 +142,9 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Engine <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].engine}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -164,9 +164,9 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                            Drivetrain <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].drive_train}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -186,9 +186,9 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Style Name <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].style_name}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -208,9 +208,9 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Body Style <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].body_style}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -230,9 +230,9 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Brake Type <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].brake_type}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -252,9 +252,9 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Airbags <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].air_bags}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -274,9 +274,9 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Night Vision <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].night_vision}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -296,9 +296,9 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Passenger Capacity <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].passanger_capacity}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -318,9 +318,9 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                ABS Brake System <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].abs_brake}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -340,9 +340,9 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Backup Camera <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].backup_cam}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -362,9 +362,9 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Stereo Sound <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].stereo_sound}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -384,9 +384,9 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                ABS Brake System <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].abs_brake}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -406,9 +406,9 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Traction Control <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].traction_control}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -428,9 +428,9 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                Parking Assistant <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].parking_assistant}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -450,9 +450,9 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                                         <Divider orientation="vertical" flexItem />
                                         <Grid item style={{padding:"0px 20px"}}>
                                             <Typography>
-                                                Mileage <br/>
+                                                MP3 Player <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                27 MPG
+                                                {carArray.basic_specs[0].mp3_player}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -549,10 +549,10 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                         <InputLabel htmlFor="filled-adornment-amount">Vehicle Price</InputLabel>
                         <FilledInput
                             style={{height: "55px"}}
-                            id="filled-adornment-amount"
+                            id="filled-adornment-amount-1"
                             value={vehiclePrice}
                             onChange={handleVehiclePrice}
-                            startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                            startAdornment={<InputAdornment position="start">{" $ "}</InputAdornment>}
                         />
                     </FormControl>
                     </Grid>
@@ -561,10 +561,10 @@ import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
                         <InputLabel htmlFor="filled-adornment-amount">Sales Tax</InputLabel>
                         <FilledInput
                             style={{height: "55px"}}
-                            id="filled-adornment-amount"
+                            id="filled-adornment-amount-2"
                             value={salesTax}
                             onChange={handleSalesTax}
-                            startAdornment={<InputAdornment position="start">%</InputAdornment>}
+                            startAdornment={<InputAdornment position="start">{" % "}</InputAdornment>}
                         />
                     </FormControl>
                     </Grid>
