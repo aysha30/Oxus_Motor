@@ -18,7 +18,7 @@ router.get('/', async(req, res) => {
 
 router.get('/name/:name', async(req, res) => {
     try{
-        const cars = await Car.find({'name': req.body.name})
+        const cars = await Car.find({name: req.body.name})
         res.json({
             "data": cars,
             "message": "List of all " + req.body.name + " cars.",
