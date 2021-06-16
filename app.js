@@ -18,6 +18,9 @@ app.use(express.json())
 const carRouter = require('./routes/cars')
 app.use('/cars', carRouter)
 
+const inventoryRouter = require('./routes/inventory')
+app.use('/inventory', inventoryRouter)
+
 
 const Port = process.env.PORT || 3000;
 
