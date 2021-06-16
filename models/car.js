@@ -75,6 +75,26 @@ const carSchema = new mongoose.Schema({
     mp3_player: {
         type: String,
         required: true
+    },
+    year: {
+        type: Number,
+        required: false
+    },
+    fuel_type: {
+        type: String,
+        required: true
+    },
+    gear: {
+        type: String,
+        required: true
+    },
+    km: {
+        type: Number,
+        required: true
+    },
+    Engine_power: {
+        type: String,
+        required: true
     }
 })
 module.exports = mongoose.model('Car', carSchema)
