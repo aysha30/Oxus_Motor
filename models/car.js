@@ -92,7 +92,7 @@ const carSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    Engine_power: {
+    engine_power: {
         type: String,
         required: true
     }
