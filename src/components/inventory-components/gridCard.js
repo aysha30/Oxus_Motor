@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Box, Grid, Container, Typography, Paper, Button, Link, CardActionArea, CardHeader } from '@material-ui/core';
-import { Card, CardMedia, CardContent, CardAction } from '@material-ui/core';
+import { Box, Typography, CardActionArea, CardHeader } from '@material-ui/core';
+import { CardMedia, CardContent } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ToggleButton from '@material-ui/lab/ToggleButton';
+import { useHistory, generatePath } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -48,13 +49,18 @@ function GridCard({ carArray }) {
     const classes = useStyles();
 
     const [ selected, setSelected ] = useState(false);
+    const [ id, setId ] = useState();
+    const history = useHistory();
 
     return(
         
         <div >
             {/* <Card> */}
             
-                <CardActionArea>
+                <CardActionArea 
+                onClick={()=> {
+                    setId(carArray._id)
+                    id && history.push(generatePath("/cars/:id", { id }))}}>
                 <CardHeader 
                     title={carArray?.name}
                     action={
@@ -70,7 +76,7 @@ function GridCard({ carArray }) {
                                 <FavoriteBorderIcon />
                         </ToggleButton>
                     } />
-                    <CardMedia image={carArray?.src} 
+                    <CardMedia image={carArray?.images[0]} 
                     className={classes.img} />
                         <CardContent>
                             <Box display="flex" 
@@ -81,7 +87,7 @@ function GridCard({ carArray }) {
                                     <Typography>Full Price</Typography> 
                                 </Box>
                                 <Box color="#ceba97" > 
-                                    {carArray?.fullPrice} 
+                                {carArray?.price} 
                                 </Box>
                             </Box>
                             <Box display="flex" pl={3} >
@@ -89,7 +95,7 @@ function GridCard({ carArray }) {
                                 <Typography>Monthly </Typography>
                                 </Box>
                                 <Box color="#ceba97"> 
-                                {carArray?.monthly} 
+                                {carArray?.price}
                                 </Box>
                             </Box>
                             </Box>

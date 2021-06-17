@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './modules/Navbar';
 import Footer from './modules/Footer';
 import Message from './message';
-import { Box, TextField, useMediaQuery, Grid, Typography, Button, Container } from '@material-ui/core';
+import { Box, useMediaQuery, Typography, Container } from '@material-ui/core';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 

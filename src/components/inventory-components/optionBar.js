@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { Box, Select, Toolbar, FormControl, 
-    Button, Grid, Typography, MenuItem, InputLabel } from '@material-ui/core';
+    Grid, MenuItem, InputLabel } from '@material-ui/core';
 import { makeStyles} from "@material-ui/core/styles";
 import ListIcon from '@material-ui/icons/List';
 import AppsIcon from '@material-ui/icons/Apps';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
-import { propTypes } from 'react-bootstrap/esm/Image';
 
 
 const useStyles = makeStyles((theme) => ({

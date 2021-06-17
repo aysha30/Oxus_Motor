@@ -15,12 +15,10 @@ import { Dialog,
     InputLabel,
     Tabs,
     Tab,
-    Paper,
     Slider,
     ButtonGroup,
     AppBar,
     Switch,
-    FormGroup,
     FormControlLabel } from '@material-ui/core';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import CloseIcon from '@material-ui/icons/Close';

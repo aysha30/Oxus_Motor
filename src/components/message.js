@@ -4,8 +4,9 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import LanguageIcon from '@material-ui/icons/Language';
 import CallIcon from '@material-ui/icons/Call';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { useForm } from 'react-hook-form';
+ 
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,13 +17,12 @@ const useStyles = makeStyles((theme) => ({
         },
         [theme.breakpoints.down('xs')]:{
             margin: "5px auto",
-            width: "80%",
+            width: "70%",
             height: "100%",
         },
         flexGrow: 1,
     },
     grid:{
-        margin: "0px",
         width: "100%",
         height: "100%",
         
@@ -92,7 +92,21 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.between("600px", "1000px")]: {
             width:"100%",
             height:"100%",
-          },
+        },
+    }, 
+    paper: {
+        display: "flex",
+        
+        border: 1,
+        boxShadow: "10px 10px 10px #aaaaaa",
+        [theme.breakpoints.down('xs')]:{
+            width: "100%",
+            marginBottom: "100px"
+        },
+        [theme.breakpoints.up('sm')]:{
+            width: "80%", 
+            margin : "0px 150px 100px"
+        },
     }
 
 }));
@@ -127,18 +141,35 @@ export default function Message() {
         console.log(data);
     };
 
-    const mapStyles = {        
-        height: "200px",
-        width: "100%"};
+    // const mapStyles = {        
+    //     height: "200px",
+    //     width: "100%"};
     
-    const defaultCenter = {
-        lat: 25.348766, lng: 55.405403
-    }
+    // const defaultCenter = {
+    //     lat: 25.348766, lng: 55.405403
+    // }
+    // const AnyReactComponent = ({ text }) => (
+    //     <div 
+    //     // style={{
+    //     //     color: 'white', 
+    //     //     background: 'grey',
+    //     //     // padding: '15px 10px',
+    //     //     display: 'inline-flex',
+    //     //     textAlign: 'center',
+    //     //     alignItems: 'center',
+    //     //     justifyContent: 'center',
+    //     //     borderRadius: '100%',
+    //     //     // transform: 'translate(-50%, -50%)'
+    //     //     }}>
+    //     >
+    //         {text}
+    //         </div>
+    //     );
 
     return(
         <div>
         <Paper 
-            className="flex-justify shadow ma5" 
+            className={classes.paper}
             align="left" >
         <Grid container={true} className={classes.grid} >
             
@@ -168,14 +199,26 @@ export default function Message() {
                     </Typography>
                 </Box>
                     <Box className={classes.googlemap} mt={5}>
-                            <LoadScript
+                    <iframe title="g-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230818.73494937457!2d55.406180553978885!3d25.319562846321514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f5fede7964b%3A0x2a830aa19c1f6d89!2sSharjah%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1623924574886!5m2!1sen!2sin" width="100%" height="250" style={{border:0}} allowFullScreen="" loading="lazy"></iframe>
+                    {/* <GoogleMapReact
+                    bootstrapURLKeys={{ key: 'AIzaSyC7-LvOYyeea5bXKREIe5wrxjlm5c5kgMo' }}
+                    defaultCenter={defaultCenter}
+                    defaultZoom={11}
+                    >
+                    <AnyReactComponent
+                        lat={25.348766}
+                        lng={55.405403}
+                        text="My Marker"
+                    />
+                    </GoogleMapReact> */}
+                            {/* <LoadScript
                             googleMapsApiKey='AIzaSyBLVHqBpK4pTUHkxRLctTj6a3nHrt1d-uI'>
                                 <GoogleMap
                                 mapContainerStyle={mapStyles}
                                 zoom={15}
                                 center={defaultCenter}
                                 />
-                            </LoadScript>
+                            </LoadScript> */}
                         </Box>
                         
                 </Box>

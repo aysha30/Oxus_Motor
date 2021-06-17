@@ -140,11 +140,9 @@ import Footer from "./modules/Footer";
 import { makeStyles } from "@material-ui/core/styles";
 import { 
     Box, 
-    TextField, 
     Grid, 
     Typography, 
-    Button, 
-    useMediaQuery, 
+    Button,  
     Container } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({

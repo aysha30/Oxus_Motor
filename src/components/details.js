@@ -256,7 +256,7 @@ function Details() {
         .then((res) => res.json())
         .then(res => {
             // console.log("id "+ id);
-            console.log(res.data);
+            // console.log(res.data);
             setCarArray(res.data);
             // console.log(carArray);
         })

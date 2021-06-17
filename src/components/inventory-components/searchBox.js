@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Box, TextField, Grid, Typography, Button, useMediaQuery, Container, InputBase } from '@material-ui/core';
-import { makeStyles, useTheme, fade } from "@material-ui/core/styles";
+import {  Grid, Button } from '@material-ui/core';
+import { makeStyles } from "@material-ui/core/styles";
 import AdvSearch from "./advSearch";
 
 const useStyles = makeStyles((theme) => ({

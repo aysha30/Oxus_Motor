@@ -64,6 +64,10 @@ function ListCard({ carArray }) {
                     <Paper component={Box}  xs={2}
                     bgcolor="#fcfafc"
                     // onClick={()=> setOpenDetail(true)}
+                    onClick={()=> {
+                        // console.log(typeof(carArray._id));
+                        setId(carArray._id)
+                        id && history.push(generatePath("/cars/:id", { id }))}}
                     >
                         <CardActionArea 
                         // component={Link}
