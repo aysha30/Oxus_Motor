@@ -21,6 +21,8 @@ app.use('/cars', carRouter)
 const inventoryRouter = require('./routes/inventory')
 app.use('/inventory', inventoryRouter)
 
+const contactUsRouter = require('./routes/contactUs')
+app.use('/contactUs', contactUsRouter)
 
 const Port = process.env.PORT || 3000;
 
