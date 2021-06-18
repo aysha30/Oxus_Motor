@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     grid:{
         width: "100%",
         height: "100%",
+        display: "flex",
         
     },
     wrapIcon: {
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     reachusbox:{
-        height: "100%",
+        height: "auto",
         [theme.breakpoints.down('xs')]:{
             width: "100%",
         },
@@ -53,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
         height: "auto",
     },
     sendus:{
+        padding: "50px",
         [theme.breakpoints.down('xs')]:{
             width: "100%",
             height: "100%",
@@ -69,10 +71,10 @@ const useStyles = makeStyles((theme) => ({
             height: "50px",
         },
         [theme.breakpoints.up('sm')]:{
-            margin: "10px 0px",
-            padding: "10px",
-            width: "40%",
-            height: "70px",
+            margin: "15px 0px",
+            padding: "20px 5px",
+            width: "50%",
+            height: "auto",
         },
         
     },
@@ -82,22 +84,21 @@ const useStyles = makeStyles((theme) => ({
             height: "50px",
         },
         [theme.breakpoints.up('sm')]:{
-            padding: "10px", 
-            width: "80%", 
-            height: "70px" ,
+            margin: "15px 0px",
+            padding: "20px 0px",
+            width: "100%",
+            height: "auto",
         },
     },
     googlemap : {
         align: "flex-end",
         [theme.breakpoints.between("600px", "1000px")]: {
-            width:"100%",
-            height:"100%",
+            width:"auto",
+            height:"auto",
         },
     }, 
     paper: {
         display: "flex",
-        
-        border: 1,
         boxShadow: "10px 10px 10px #aaaaaa",
         [theme.breakpoints.down('xs')]:{
             width: "100%",
@@ -105,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
         },
         [theme.breakpoints.up('sm')]:{
             width: "80%", 
-            margin : "0px 150px 100px"
+            margin : "0px 170px 100px"
         },
     }
 
@@ -171,7 +172,7 @@ export default function Message() {
         <Paper 
             className={classes.paper}
             align="left" >
-        <Grid container={true} className={classes.grid} >
+        <Grid container direction="row" className={classes.grid} >
             
             <Box 
                 className={classes.reachusbox}
@@ -199,7 +200,7 @@ export default function Message() {
                     </Typography>
                 </Box>
                     <Box className={classes.googlemap} mt={5}>
-                    <iframe title="g-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230818.73494937457!2d55.406180553978885!3d25.319562846321514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f5fede7964b%3A0x2a830aa19c1f6d89!2sSharjah%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1623924574886!5m2!1sen!2sin" width="100%" height="250" style={{border:0}} allowFullScreen="" loading="lazy"></iframe>
+                    <iframe title="g-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230818.73494937457!2d55.406180553978885!3d25.319562846321514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f5fede7964b%3A0x2a830aa19c1f6d89!2sSharjah%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1623924574886!5m2!1sen!2sin" width="100%" height="270" style={{border:0}} allowFullScreen="" loading="lazy"></iframe>
                     {/* <GoogleMapReact
                     bootstrapURLKeys={{ key: 'AIzaSyC7-LvOYyeea5bXKREIe5wrxjlm5c5kgMo' }}
                     defaultCenter={defaultCenter}
@@ -226,7 +227,7 @@ export default function Message() {
                     className={classes.sendus} 
                     bgcolor="white" 
                     color="text.primary" 
-                    p={5} pr={5}
+                    
                 >
                     <Typography variant="h6">
                         Send us a message
@@ -336,7 +337,7 @@ export default function Message() {
                         <Button
                             variant="contained"
                             type="submit" 
-                            style={{ padding: "10px", width: "80%", height: "50px", }}
+                            style={{ padding: "10px", width: "100%", height: "auto", marginTop: "10px" }}
                             color="primary"
                             // onClick={createMessage}
                         >

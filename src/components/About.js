@@ -158,24 +158,32 @@ const useStyles = makeStyles((theme) => ({
         height: "auto",
         
     },
+    imgCont: {
+        [theme.breakpoints.down('md')]:{
+            width: "100%",
+        },
+        [theme.breakpoints.up('md')]:{
+            width: "40%"
+        },
+    },
     img: {
         // height: 350,
         // backgroundColor: "#eae9ea",
-        [theme.breakpoints.down(1200)]:{
+        [theme.breakpoints.down('md')]:{
             width: "100%",
-            height: "auto",
-            margin: "0px 10px",
+            height: "100%",
+            // margin: "0px 15px",
         },
-        [theme.breakpoints.up(1201)]:{
-            width: 500,
+        [theme.breakpoints.up('md')]:{
+            width: "100%",
         },
     },
     para: {
         padding: "20px",
-        [theme.breakpoints.down(1200)]:{
-            width: "auto",
+        [theme.breakpoints.down('md')]:{
+            width: "",
         },
-        [theme.breakpoints.up(1201)]:{
+        [theme.breakpoints.up('md')]:{
             width: "60%",
             // display:"flex",
         },
@@ -205,7 +213,7 @@ export default function About() {
                 </Container>
                 <Grid container spacing={3} >
                 <Grid item container direction="row" className={classes.paraCont}>
-                    <Grid item >
+                    <Grid item className={classes.imgCont} >
                         <img 
                         className={classes.img} 
                         src="https://thumbs.dreamstime.com/b/image-empty-car-dealership-showroom-interior-paris-france-oct-wide-angle-view-empty-car-dealership-showroom-interior-169124184.jpg"
@@ -280,7 +288,7 @@ export default function About() {
                             Read more ...
                         </Button>
                     </Grid>
-                    <Grid item >
+                    <Grid item className={classes.imgCont} >
                         <img 
                         className={classes.img}
                         src="https://thumbs.dreamstime.com/b/image-empty-car-dealership-showroom-interior-paris-france-oct-wide-angle-view-empty-car-dealership-showroom-interior-169124184.jpg"

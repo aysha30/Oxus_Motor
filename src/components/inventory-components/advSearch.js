@@ -31,7 +31,7 @@ const useStyle = makeStyles((theme) => ({
     },
     closeButton:{
         height: 50,
-        backgroundColor: "#ffd1d1",
+        // backgroundColor: "#ffd1d1",
         color: "#f70707",
         borderRadius: 50, 
         margin: 20, 
