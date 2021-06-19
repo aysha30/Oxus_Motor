@@ -78,7 +78,7 @@ router.get('/luxury', async(req, res) => {
 
 router.get('/', async(req, res) => {
     try{
-        const cars = await Car.find().sort({$id:-1})
+        const cars = await Car.find().sort({_id:-1})
         res.json({
             "data": cars,
             "message": "List of all cars",
