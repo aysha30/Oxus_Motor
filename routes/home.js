@@ -2,21 +2,31 @@ const express = require('express')
 const router = express.Router()
 const Car = require('../models/car')
 
-router.get('/:company/:model/:trim/:year', async(req, res) => {
+router.get('/recent', async(req, res) => {
     try{
-        const company = req.params.company
-        const model = req.params.model
-        const trim = req.params.trim
-        const year = req.params.year
-        const car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}]})
+        const cars = await Car.find().sort({_id:-1}).limit(2)
         res.json({
-            "data": car,
-            "message": "Search result based on user request",
+            "data": cars,
+            "message": "List of 2 recent cars",
             "status": true,
             "code": 200
         })
     }catch(err){
-        res.send('Error ' + err)
+        res.send('Error: ' + err)
+    }
+})
+
+router.get('/:id', async(req, res) => {
+    try{
+        const cars = await Car.findByID(req.params.id)
+        res.json({
+            "data": cars,
+            "message": "Car by id: " + req.params.id,
+            "status": true,
+            "code": 200
+        })
+    }catch(err){
+        res.send('Error: ' + err)
     }
 })
 
@@ -67,7 +77,7 @@ router.get('/luxury', async(req, res) => {
         const car = await Car.find({'body_style': 'Luxury'})
         res.json({
             "data": car,
-            "message": "List of all sedan cars.",
+            "message": "List of all luxury cars.",
             "status": true,
             "code": 200
         })
@@ -76,17 +86,21 @@ router.get('/luxury', async(req, res) => {
     }
 })
 
-router.get('/', async(req, res) => {
+router.get('/:company/:model/:trim/:year', async(req, res) => {
     try{
-        const cars = await Car.find().sort({_id:-1}).limit(2)
+        const company = req.params.company
+        const model = req.params.model
+        const trim = req.params.trim
+        const year = req.params.year
+        const car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}]})
         res.json({
-            "data": cars,
-            "message": "List of all cars",
+            "data": car,
+            "message": "List of all cars based on user search request",
             "status": true,
             "code": 200
         })
     }catch(err){
-        res.send('Error: ' + err)
+        res.send('Error ' + err)
     }
 })
 
