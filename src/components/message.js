@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     reachus:{
-        padding: "20px",
+        padding: "50px 50px 0px 50px",
         width: "100%",
         height: "auto",
     },
@@ -106,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
         },
         [theme.breakpoints.up('sm')]:{
             width: "80%", 
-            margin : "0px 170px 100px"
+            marginBottom: "100px"
         },
     }
 
@@ -142,37 +142,15 @@ export default function Message() {
         console.log(data);
     };
 
-    // const mapStyles = {        
-    //     height: "200px",
-    //     width: "100%"};
     
-    // const defaultCenter = {
-    //     lat: 25.348766, lng: 55.405403
-    // }
-    // const AnyReactComponent = ({ text }) => (
-    //     <div 
-    //     // style={{
-    //     //     color: 'white', 
-    //     //     background: 'grey',
-    //     //     // padding: '15px 10px',
-    //     //     display: 'inline-flex',
-    //     //     textAlign: 'center',
-    //     //     alignItems: 'center',
-    //     //     justifyContent: 'center',
-    //     //     borderRadius: '100%',
-    //     //     // transform: 'translate(-50%, -50%)'
-    //     //     }}>
-    //     >
-    //         {text}
-    //         </div>
-    //     );
 
     return(
         <div>
-        <Paper 
+        <Grid container justify="center" alignItems="center" >
+            <Paper 
             className={classes.paper}
             align="left" >
-        <Grid container direction="row" className={classes.grid} >
+            <Grid container direction="row" className={classes.grid} >
             
             <Box 
                 className={classes.reachusbox}
@@ -201,25 +179,7 @@ export default function Message() {
                 </Box>
                     <Box className={classes.googlemap} mt={5}>
                     <iframe title="g-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230818.73494937457!2d55.406180553978885!3d25.319562846321514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f5fede7964b%3A0x2a830aa19c1f6d89!2sSharjah%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1623924574886!5m2!1sen!2sin" width="100%" height="270" style={{border:0}} allowFullScreen="" loading="lazy"></iframe>
-                    {/* <GoogleMapReact
-                    bootstrapURLKeys={{ key: 'AIzaSyC7-LvOYyeea5bXKREIe5wrxjlm5c5kgMo' }}
-                    defaultCenter={defaultCenter}
-                    defaultZoom={11}
-                    >
-                    <AnyReactComponent
-                        lat={25.348766}
-                        lng={55.405403}
-                        text="My Marker"
-                    />
-                    </GoogleMapReact> */}
-                            {/* <LoadScript
-                            googleMapsApiKey='AIzaSyBLVHqBpK4pTUHkxRLctTj6a3nHrt1d-uI'>
-                                <GoogleMap
-                                mapContainerStyle={mapStyles}
-                                zoom={15}
-                                center={defaultCenter}
-                                />
-                            </LoadScript> */}
+                    
                         </Box>
                         
                 </Box>
@@ -337,7 +297,7 @@ export default function Message() {
                         <Button
                             variant="contained"
                             type="submit" 
-                            style={{ padding: "10px", width: "100%", height: "auto", marginTop: "10px" }}
+                            style={{ padding: "10px", width: "100%", height: "auto", marginTop: "40px" }}
                             color="primary"
                             // onClick={createMessage}
                         >
@@ -350,6 +310,8 @@ export default function Message() {
                 </Box>
         </Grid>
         </Paper>
+        </Grid>
+    
         </div>
     )
 }

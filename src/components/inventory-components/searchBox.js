@@ -19,9 +19,10 @@ const useStyles = makeStyles((theme) => ({
         
     },
     gridSearch: {
-        border: 0,
+        // border: 0,
         [theme.breakpoints.down('xs')]:{
-            width: "100%",
+            width: "400px",
+            margin: 0
         },
         [theme.breakpoints.up('sm')]:{
             // marginLeft:"100px",
@@ -55,21 +56,21 @@ const useStyles = makeStyles((theme) => ({
         height: "100%",
         width: "100%",
         border: 1,
-        boxShadow: "1px 1px 10px #aaaaaa",
+        boxShadow: "0px 0px 100px 0px #b2b5ba",
         borderRadius: 5,
     },
     searchButton: {
         height: "100%",
         width: "auto",
         borderRadius: 0,
-        boxShadow: "1px 1px 10px #aaaaaa",
+        // boxShadow: "1px 1px 10px #aaaaaa",
     },
     advanceButton: {
         height: "100%",
         width: "180px",
         borderRadius: 5,
         backgroundColor: "#b59b70",
-        boxShadow: "1px 1px 20px #aaaaaa",
+        // boxShadow: "1px 1px 20px #aaaaaa",
         color: "#ffffff"
     },
 }))

@@ -25,12 +25,15 @@ export default function Contact() {
             <Navbar />
             <h1 >"  "</h1>
             <Box className={classes.root}>
-            <Container style={{marginBottom: 20}} >
+            <Container style={{marginBottom: 20, marginTop: "40px"}} >
                     <Typography variant="h4" 
                     align="center" 
                     color="textPrimary"
-                    mt={8} gutterBottom >
-                        Contact Us
+                    mt={9} gutterBottom >
+                    <Box fontWeight="fontWeightBold">
+                    Contact Us
+                    </Box>
+                        
                     </Typography>
                     <Typography 
                     className="pa4"

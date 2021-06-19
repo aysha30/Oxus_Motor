@@ -73,7 +73,8 @@ function OptionBar(props) {
                 direction="row"
                 alignItems="center"
                 justify="center" >
-                <Grid item className={classes.carItem}>
+                <Grid item container alignItems="flex-end"
+                justify="flex-start" className={classes.carItem}>
                     <ToggleButtonGroup
                         // className={classes.carItem}
                         value={car}

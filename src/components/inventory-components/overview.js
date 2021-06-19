@@ -30,12 +30,22 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
         },
         card: {
             backgroundColor: "#f7f1e4",
-            width: "25em"
+            [theme.breakpoints.down("xs")]:{
+                width: "300px",
+            },
+            [theme.breakpoints.up('sm')]:{
+                width: "25em",
+            },
         },
         formControl: {
             
             backgroundColor: "#f7f1e4",
-            minWidth: 500,
+            [theme.breakpoints.down("xs")]:{
+                width: "300px",
+            },
+            [theme.breakpoints.up('sm')]:{
+                width: "400px",
+            },
             borderRadius: 10,
             border: 0,
         },
@@ -109,7 +119,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                     </Typography>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -132,7 +142,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent >
                                     <Grid container alignItems="center" >
@@ -154,7 +164,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -176,7 +186,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent direction="row">
                                     <Grid container alignItems="center" >
@@ -198,7 +208,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -220,7 +230,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent >
                                     <Grid container alignItems="center" >
@@ -242,7 +252,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -264,7 +274,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent direction="row">
                                     <Grid container alignItems="center" >
@@ -286,7 +296,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -308,7 +318,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent >
                                     <Grid container alignItems="center" >
@@ -330,7 +340,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -352,7 +362,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent direction="row">
                                     <Grid container alignItems="center" >
@@ -374,7 +384,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -396,7 +406,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent >
                                     <Grid container alignItems="center" >
@@ -418,7 +428,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -440,7 +450,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent direction="row">
                                     <Grid container alignItems="center" >
@@ -471,7 +481,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                         </Typography>
                     </Grid>
                     <Grid item>
-                    <FormControl variant="filled" className={classes.formControl}>
+                    <FormControl variant="filled" className={classes.formControl} >
                         <InputLabel id="demo-simple-select-filled-label">Credit Score</InputLabel>
                         <Select
                         labelId="demo-simple-select-filled-label"
@@ -569,17 +579,17 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                     </FormControl>
                     </Grid>
                     <Grid item>
-                        <Typography className={classes.formControl} style={{height:"55px", padding:"15px"}}>
+                        <Typography className={classes.formControl} style={{height:"auto", padding:"15px"}}>
                             Estimated Payment $600/mo
                         </Typography>
                     </Grid>
                     <Grid item>
-                        <Typography className={classes.formControl} style={{height:"55px", padding:"15px"}}>
+                        <Typography className={classes.formControl} style={{height:"auto", padding:"15px"}}>
                             Vehicle Price $140.000
                         </Typography>
                     </Grid>
-                    <Grid item>
-                    <FormControl component="fieldset" className={classes.formControl} style={{height:"55px", padding:"8px"}}>
+                    <Grid item >
+                    <FormControl component="fieldset" className={classes.formControl} style={{height:"auto", padding:"5px 20px 0px 20px"}}>
                         <RadioGroup row name="Apr" value={apr} onChange={handleApr}>
                             <FormControlLabel value="yesApr" control={<Radio />} label="Estimate my APR" />
                             <FormControlLabel value="noAPR" control={<Radio />} label="I know my APR" />
@@ -589,7 +599,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                     <Grid item>
                         <Button
                             variant="contained"
-                            // type="submit" 
+                            type="submit" 
                             style={{ padding: "10px", width: "200px", height: "50px", }}
                             color="primary"
                             // onClick={createMessage}

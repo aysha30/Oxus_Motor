@@ -16,7 +16,12 @@ import {
     const useStyles = makeStyles((theme) => ({
         card: {
             backgroundColor: "#f7f1e4",
-            width: "25em"
+            [theme.breakpoints.down("xs")]:{
+                width: "300px",
+            },
+            [theme.breakpoints.up('sm')]:{
+                width: "25em",
+            }
         },
     }))
 
@@ -33,7 +38,7 @@ import {
                         </Typography>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -55,7 +60,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent >
                                     <Grid container alignItems="center" >
@@ -78,7 +83,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -100,7 +105,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent direction="row">
                                     <Grid container alignItems="center" >
@@ -122,7 +127,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -144,7 +149,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent >
                                     <Grid container alignItems="center" >
@@ -173,7 +178,7 @@ import {
                         </Typography>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -195,7 +200,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent >
                                     <Grid container alignItems="center" >
@@ -217,7 +222,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -239,7 +244,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent direction="row">
                                     <Grid container alignItems="center" >
@@ -261,7 +266,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -283,7 +288,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent >
                                     <Grid container alignItems="center" >
@@ -312,7 +317,7 @@ import {
                         </Typography>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -334,7 +339,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent >
                                     <Grid container alignItems="center" >
@@ -356,7 +361,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -378,7 +383,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent direction="row">
                                     <Grid container alignItems="center" >
@@ -400,7 +405,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -422,7 +427,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent >
                                     <Grid container alignItems="center" >
@@ -451,7 +456,7 @@ import {
                         </Typography>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -473,7 +478,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent >
                                     <Grid container alignItems="center" >
@@ -495,7 +500,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -517,7 +522,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent direction="row">
                                     <Grid container alignItems="center" >
@@ -539,7 +544,7 @@ import {
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card}>
+                        <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >

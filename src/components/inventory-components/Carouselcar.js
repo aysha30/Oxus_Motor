@@ -10,6 +10,7 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import axios from 'axios';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 // const carArray = [
 //     {
@@ -162,9 +163,10 @@ const useStyles = makeStyles((theme) => ({
         cursor: "pointer",
     },
     getContactBtn: {
-        backgroundColor: "primary.main",
+        backgroundColor: theme.palette.primary.main,
         // opacity: 0.6,
-        // color: "white",
+        color: "white",
+        padding: "10px 20px 10px 20px"
     },
     carName: {
         color: "white",
@@ -272,7 +274,7 @@ function Carouselcar({ id }) {
                     </Grid>
                     <Grid item>
                         <Button className={classes.getContactBtn} variant="contained" >
-                            Get Contact
+                            <MailOutlineIcon />&nbsp; Get Contact
                         </Button>
                     </Grid>
                 </Grid>

@@ -170,7 +170,7 @@ function Inventory() {
             className={classes.root}
             >
             <Container style={{ marginTop: "100px"}} >
-                    <Typography variant="h5" 
+                    <Typography variant="h4" 
                     align="center" 
                     color="textPrimary"
                     gutterBottom >
@@ -181,7 +181,7 @@ function Inventory() {
                     <Typography 
                     align="center" 
                     color="textSecondary" 
-                    variant="subtitle2"
+                    variant="h6"
                     paragraph >
                     Our company's car inventory
                     </Typography>

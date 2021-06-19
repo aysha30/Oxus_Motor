@@ -5,6 +5,7 @@ import {
     CardActionArea,
     CardMedia,
     CardContent} from '@material-ui/core';
+    import { useHistory, generatePath } from 'react-router-dom';
 
 // const carArray = [
 //     {
@@ -115,7 +116,7 @@ const initialCars = {
             ],
             "_id": "60c8648eae911b029c44306e",
             "name": "BMW 3ini",
-            "price": "$100.000",
+            "price": "$00100.000",
             "description": "This is BMW car",
             "basic_specs": [
                 {
@@ -244,6 +245,8 @@ function CarScroll() {
 
     // const classes = useStyles();
     const [ carArray, setCarArray ] = useState(initialCars);
+    const [ id, setId ] = useState();
+    const history = useHistory();
     
     const getUrl = 'http://localhost:3000/cars';
 
@@ -284,13 +287,19 @@ function CarScroll() {
         {carArray.data.slice(0, 3).map((item) => (
             
             <Paper square elevation={0}>
-                <CardActionArea>
+                <CardActionArea 
+                onClick={()=> {
+                        setId(item._id);
+                        console.log(id);
+                        id && history.push(generatePath("/cars/:id", { id }))
+                    }}>
                     <CardMedia
                     component="img"
                     alt="car1"
                     height="150"
                     image={item.images[1]}
                     title={item.name}
+                    
                     />
                 <CardContent>
                     <Typography>
@@ -301,58 +310,6 @@ function CarScroll() {
                 </CardActionArea>
             </Paper>
         ))}
-            {/* <Paper square elevation={0}>
-                <CardActionArea>
-                    <CardMedia
-                    component="img"
-                    alt="car1"
-                    height="150"
-                    image={carArray1[0].images[0]}
-                    title={carArray1.name}
-                    />
-                <CardContent>
-                    <Typography>
-                    {carArray1[0].name}
-                    </Typography>
-                    {carArray1[0].price}
-                </CardContent>
-                </CardActionArea>
-            </Paper> */}
-            {/* <Paper square elevation={0}>
-                <CardActionArea>
-                    <CardMedia
-                    component="img"
-                    alt="car1"
-                    height="150"
-                    image={carArray[1].src}
-                    title={carArray[1].name}
-                    />
-                <CardContent>
-                    <Typography>
-                    {carArray[1].name}
-                    </Typography>
-                    {carArray[1].fullPrice}
-                </CardContent>
-                </CardActionArea>
-            </Paper>
-            <Paper square elevation={0}>
-                <CardActionArea>
-                    <CardMedia
-                    component="img"
-                    alt="car1"
-                    height="150"
-                    image={carArray[2].src}
-                    title={carArray[2].name}
-                    />
-                <CardContent>
-                    <Typography>
-                    {carArray[2].name}
-                    </Typography>
-                    {carArray[2].fullPrice}
-                </CardContent>
-                </CardActionArea>
-            </Paper> */}
-            
         </div>
     );
 }

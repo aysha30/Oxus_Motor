@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#eae9ea",
         [theme.breakpoints.down(840)]:{
             // padding: "10px",
-            width: "auto",
+            width: "100%",
         },
         [theme.breakpoints.up('sm')]:{
             width: 400,
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     favBox: {
         [theme.breakpoints.down("xs")]:{
             // padding: "10px",
-            width: "100%",
+            width: "auto",
             display:"flex",
             position: "relative",
             paddingLeft: "100px",
@@ -61,7 +61,7 @@ function ListCard({ carArray }) {
             <Container >
                 <Box>
                 <div className={classes.root} >
-                    <Paper component={Box}  xs={2}
+                    <Paper elevation={0} component={Box}
                     bgcolor="#fcfafc"
                     // onClick={()=> setOpenDetail(true)}
                     onClick={()=> {
@@ -166,10 +166,7 @@ function ListCard({ carArray }) {
                                         <FavoriteBorderIcon />
                                     </ToggleButton>
                                     <Typography 
-                                    // href="/details/:{id}"
-                                    // to={<Details carId={id} />} 
                                     onClick={()=> {
-                                        // console.log(typeof(carArray._id));
                                         setId(carArray._id)
                                         id && history.push(generatePath("/cars/:id", { id }))}}
                                     >

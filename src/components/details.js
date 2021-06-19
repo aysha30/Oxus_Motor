@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     imgContainer: {
         [theme.breakpoints.down(1200)]:{
             padding: "0px 0px",
+            width: "100%"
         },
         [theme.breakpoints.up(1201)]:{
             padding: "0px 70px",
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     carouselContainer:{
         
         [theme.breakpoints.down(1200)]:{
-            height: "300px",
+            height: "400px",
             width:"100%",
         },
         [theme.breakpoints.up(1201)]:{
