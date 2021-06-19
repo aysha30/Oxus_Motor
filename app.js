@@ -24,6 +24,9 @@ app.use('/inventory', inventoryRouter)
 const contactUsRouter = require('./routes/contactUs')
 app.use('/contactUs', contactUsRouter)
 
+const homeRouter = require('./routes/home')
+app.use('/home', homeRouter)
+
 const Port = process.env.PORT || 3000;
 
 app.listen(Port, () => {
