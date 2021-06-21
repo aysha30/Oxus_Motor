@@ -29,6 +29,7 @@ import img2 from "../assets/car3.png";
 import img3 from "../assets/car4.png";
 import Slider from "react-slick"
 import CssBaseline from "@material-ui/core/CssBaseline";
+import RecentInOxus from "./recent";
 
 const images = [img1, img2, img3, deals]
 
@@ -369,7 +370,7 @@ export default function Home() {
                Recent In Oxus
             </Box>
          </Typography>
-
+<RecentInOxus />
          {/* <Box p={5} m={3}>
             <Slider>
                <img src={img1} width="200" height="100" alt={img1} />
