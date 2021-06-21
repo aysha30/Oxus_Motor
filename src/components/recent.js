@@ -4,9 +4,9 @@ import '../recent.css';
 import { 
     Box, 
     Typography, 
-    Card,
+    Paper,
     CardActionArea, 
-    CardMedia, 
+    Grid,
     CardContent ,
     useMediaQuery,
     CardHeader } from '@material-ui/core';
@@ -21,8 +21,12 @@ import img3 from "../assets/car4.png";
 const useStyles = makeStyles((theme) => ({
     root: {
         width: "100%",
-        height: "100%",
-        paddingBottom: "100px"
+        height: "400px",
+        paddingBottom: "100px",
+        alignContent: "center"
+    },
+    paper: {
+        borderRadius: 10,
     }
 }))
 
@@ -59,9 +63,9 @@ function RecentInOxus() {
         slidesToShow: 5,
         speed: 300,
         autoplay: true,
-        autoplaySpeed: 1000,
+        autoplaySpeed: 3000,
         lazyLoad: true,
-        dots: true,
+        // dots: true,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
         beforeChange: (current, next) => setImageIndex(next),
@@ -92,11 +96,51 @@ function RecentInOxus() {
         ]
     };
     return (
-        <div className={classes.root}>
+        <div className='recent'>
             <Slider {...settings}>
             {images.map((img, idx) => (
                 <div className={idx === imageIndex ? "slide activeSlide" : "slide"}>
-                    <img src={img} alt={img} />
+                    {/* <img src={img} alt={img} /> */}
+                    <Paper className={classes.paper}>
+                        <CardActionArea>
+                            <CardHeader title={
+                                <Typography align="center" >
+                                    <Box fontWeight="fontWeighBold" >
+                                        BMW Car
+                                    </Box>
+                                </Typography>
+                            } />
+                            {/* <CardMedia image={img}  /> */}
+                            <CardContent>
+                                <img src={img} height="200px" alt={img} />
+                                <Box display="flex">
+                                    <Grid item container justify="center">
+                                        <Box fontWeight="fontWeightMedium" >
+                                            <Typography variant='caption'>Full Price&nbsp;</Typography> 
+                                        </Box>
+                                        <Box > 
+                                            <Typography variant='caption'> $1025.25</Typography>
+                                        </Box>
+                                    </Grid>
+                                    <Grid item container justify="center">
+                                        <Box fontWeight="fontWeightMedium" >
+                                            <Typography variant='caption'>Monthly&nbsp; </Typography>  
+                                        </Box>
+                                        <Box> 
+                                            <Typography variant='caption'>$1025.25</Typography>
+                                        </Box>
+                                    </Grid>
+                                </Box>
+                                {(idx === imageIndex) ? 
+                                <Grid container justify="center">
+                                    <Typography align="center" variant='caption'>
+                                        View details
+                                    </Typography>
+                                </Grid>
+                                : ""}
+                            </CardContent>
+                        </CardActionArea>
+                    </Paper>
                 </div>
             ))}
             </Slider>
