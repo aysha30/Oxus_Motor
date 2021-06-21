@@ -16,6 +16,20 @@ router.get('/', async(req, res) => {
     }
 })
 
+router.get('/recent', async(req, res) => {
+    try{
+        const cars = await Car.find().sort({_id:-1}).limit(4)
+        res.json({
+            "data": cars,
+            "message": "List of 4 recent cars",
+            "status": true,
+            "code": 200
+        })
+    }catch(err){
+        res.send('Error: ' + err)
+    }
+})
+
 router.get('/:id', async(req, res) => {
     try{
         const car = await Car.findById(req.params.id)
