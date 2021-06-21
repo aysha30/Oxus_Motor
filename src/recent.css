@@ -2,61 +2,70 @@
 @import "~slick-carousel/slick/slick-theme.css";
 
 .recent {
-  width: 100%;
-  margin: 1rem;
-  height: auto;
-  padding-bottom: 100px;
+ width: 100%;
+ margin: 1rem;
+ height: auto;
+ padding-bottom: 100px;
 }
 
 .slide {
-  transform: scale(0.9);
-  transition: transform 300ms;
-  opacity: 0.9;
+ transform: scale(0.8);
+ transition: transform 300ms;
+ opacity: 1;
+ filter: grayscale(100%);
+ background-color: #565d70;
+ border-radius: 25px;
+}
+
+.slide div {
+ background-color: #565d70;
+ border-radius: 25px;
 }
 
 .activeSlide {
-  transform: scale(1);
-  opacity: 1;
-  /* color: #fff; */
+ transform: scale(1);
+ opacity: 1;
+ filter: grayscale(1%);
+ /* color: #fff; */
 }
 
 .activeSlide div {
-  background-color: #565d70;
+ background-color: #565d70;
 }
 
-.activeSlide div .MuiPaper-root{
-  border-radius: 50;
+.activeSlide div .MuiPaper-root {
+ border-radius: 50;
 }
 
 .activeSlide .MuiPaper-root {
-  border-radius: 10%;
+ border-radius: 10%;
 }
 
 .activeSlide .MuiTypography-root {
-  color: #fff;
+ color: #fff;
 }
 
 .arrow {
-  background-color: #fff;
-  position: absolute;
-  cursor: pointer;
-  z-index: 10;
+ background-color: #fff;
+ position: absolute;
+ cursor: pointer;
+ z-index: 10;
 }
 
 .arrow svg {
-  transition: color 300ms;
+ transition: color 300ms;
 }
 
 .arrow svg:hover {
-  color: #bcbcbd;
+ color: #bcbcbd;
 }
 
 .next {
-  right: 10%;
-  top: 50%;
+ right: 10%;
+ top: 50%;
 }
 
 .prev {
-  left: 10%;
-  top: 50%;
+ left: 10%;
+ top: 50%;
 }
