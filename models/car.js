@@ -68,10 +68,6 @@ const carSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    stereo_sound: {
-        type: String,
-        required: true
-    },
     traction_control: {
         type: String,
         required: true
@@ -80,11 +76,11 @@ const carSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    mp3_player: {
+    fuel_type: {
         type: String,
         required: true
     },
-    fuel_type: {
+    fuel_system: {
         type: String,
         required: true
     },
@@ -103,6 +99,54 @@ const carSchema = new mongoose.Schema({
     trim: {
         type: String,
         required: true
+    },
+    wheel_size: {
+        type: String,
+        required: true
+    },
+    epa_class: {
+        type: String,
+        required: false
+    },
+    mp3_player: {
+        type: String,
+        required: false
+    },
+    stereo_sound: {
+        type: String,
+        required: false
+    },
+    cd_player: {
+        type: String,
+        required: false
+    },
+    dvd_player: {
+        type: String,
+        required: false
+    },
+    radio: {
+        type: String,
+        required: false
+    },
+    condition: {
+        type: String,
+        required: false
+    },
+    num_cylinders: {
+        type: String,
+        required: false
+    },
+    cylinders: {
+        type: String,
+        required: false
+    },
+    ext_color: {
+        type: String,
+        required: false
+    },
+    int_color: {
+        type: String,
+        required: false
     }
 })
 module.exports = mongoose.model('Car', carSchema)
