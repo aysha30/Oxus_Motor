@@ -30,6 +30,7 @@ import img3 from "../assets/car4.png";
 import Slider from "react-slick"
 import CssBaseline from "@material-ui/core/CssBaseline";
 import RecentInOxus from "./recent";
+import ExploreCar from "./exploreCar";
 
 
 
@@ -83,20 +84,20 @@ export default function Home() {
    return (
       <React.Fragment>
          <Navbar />
-         <Box bgcolor="primary.main" color="white" mt={7}>
+         <Box bgcolor="primary.main" color="white" style={{height: "600px", marginTop:"60px"}}>
             <Container maxWidth="lg">
                <Typography variant="h4" align="center">
                   <Grid container>
                      <Grid item xs={12} sm={3}></Grid>
                      <Grid item xs={12} sm={6}>
-                        <Box mt={3} fontWeight="fontWeightBold">
+                        <Box pt={3} fontWeight="fontWeightBold">
                            {" "}
                            Cars Dealing Experience.
                         </Box>
                         <Box p={0.5} fontWeight="fontWeightBold">
                            Redefined
                         </Box>
-                        <Box mt={3}>
+                        <Box pt={3}>
                            <Button variant="contained">
                               <Typography color="white" variant="button">
                                  Explore Cars
@@ -107,7 +108,7 @@ export default function Home() {
                      <Grid item xs={12} sm={3}></Grid>
                   </Grid>
                   <Box >
-
+                  <ExploreCar />
                      {/* <Carousel breakPoints={breakPoints}>
                         <img
                            className={classes.img}
