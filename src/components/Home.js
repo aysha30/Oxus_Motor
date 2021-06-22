@@ -31,6 +31,8 @@ import Slider from "react-slick"
 import CssBaseline from "@material-ui/core/CssBaseline";
 import RecentInOxus from "./recent";
 
+
+
 const images = [img1, img2, img3, deals]
 
 const useStyles = makeStyles((theme) => ({
@@ -104,8 +106,9 @@ export default function Home() {
                      </Grid>
                      <Grid item xs={12} sm={3}></Grid>
                   </Grid>
-                  <Box p={6}>
-                     <Carousel breakPoints={breakPoints}>
+                  <Box >
+
+                     {/* <Carousel breakPoints={breakPoints}>
                         <img
                            className={classes.img}
                            style={{ height: "200px", width: "300px" }}
@@ -141,7 +144,7 @@ export default function Home() {
                            style={{ height: "200px", width: "300px" }}
                            src={img1}
                         />
-                     </Carousel>
+                     </Carousel> */}
                   </Box>
                   <Box p={5}></Box>
                   <Box p={5}></Box>
@@ -370,15 +373,9 @@ export default function Home() {
                Recent In Oxus
             </Box>
          </Typography>
-<RecentInOxus />
-         {/* <Box p={5} m={3}>
-            <Slider>
-               <img src={img1} width="200" height="100" alt={img1} />
-               <img src={img2} width="200" height="100" alt={img2} />
-               <img src={img3} width="200" height="100" alt={img3} />
+         <RecentInOxus />
 
-            </Slider>
-         </Box> */}
+
 
          <Footer />
       </React.Fragment>

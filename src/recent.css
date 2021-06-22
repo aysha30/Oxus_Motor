@@ -13,9 +13,12 @@
  transition: transform 300ms;
  opacity: 1;
  filter: grayscale(100%);
- background-color: #565d70;
+
  border-radius: 25px;
 }
+/* .paper {
+ background-color: #000000;
+} */
 
 .slide div {
  background-color: #565d70;
@@ -29,9 +32,9 @@
  /* color: #fff; */
 }
 
-.activeSlide div {
+/* .activeSlide div {
  background-color: #565d70;
-}
+} */
 
 .activeSlide div .MuiPaper-root {
  border-radius: 50;
@@ -63,9 +66,17 @@
 .next {
  right: 10%;
  top: 50%;
+ height: 50px;
+ width: 50px;
+ padding: 12px;
+ border-radius: 25px;
 }
 
 .prev {
  left: 10%;
  top: 50%;
+ height: 50px;
+ width: 50px;
+ padding: 12px;
+ border-radius: 25px;
 }
