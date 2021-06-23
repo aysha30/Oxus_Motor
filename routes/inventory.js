@@ -15,7 +15,7 @@ router.get('/', async(req, res) => {
     }
 })
 
-router.get('/company/:company', async(req, res) => {
+router.get('/company/:company/:num', async(req, res) => {
     try{
         var cars = new Car()
         const num = req.params.num
