@@ -31,6 +31,9 @@ import Slider from "react-slick"
 import CssBaseline from "@material-ui/core/CssBaseline";
 import RecentInOxus from "./recent";
 import ExploreCar from "./exploreCar";
+import Brands from './home-component/brands';
+import SignUp from './home-component/signUp';
+import LatestNews from './home-component/latestNews';
 
 
 
@@ -84,7 +87,7 @@ export default function Home() {
    return (
       <React.Fragment>
          <Navbar />
-         <Box bgcolor="primary.main" color="white" style={{height: "600px", marginTop:"60px"}}>
+         <Box bgcolor="primary.main" color="white" style={{ height: "600px", marginTop: "60px" }}>
             <Container maxWidth="lg">
                <Typography variant="h4" align="center">
                   <Grid container>
@@ -108,7 +111,7 @@ export default function Home() {
                      <Grid item xs={12} sm={3}></Grid>
                   </Grid>
                   <Box >
-                  <ExploreCar />
+                     <ExploreCar />
                      {/* <Carousel breakPoints={breakPoints}>
                         <img
                            className={classes.img}
@@ -375,8 +378,9 @@ export default function Home() {
             </Box>
          </Typography>
          <RecentInOxus />
-
-
+         {/* <Brands /> */}
+         <SignUp />
+         <LatestNews />
 
          <Footer />
       </React.Fragment>

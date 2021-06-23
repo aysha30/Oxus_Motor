@@ -23,6 +23,8 @@
     "react-chatbot-kit": "^1.1.20",
     "react-dom": "^17.0.2",
     "react-elastic-carousel": "^0.11.5",
+    "react-hexagon-grid": "^1.1.1",
+    "react-hexgrid": "^1.0.3",
     "react-hook-form": "^7.8.2",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",

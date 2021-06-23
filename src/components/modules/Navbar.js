@@ -220,7 +220,9 @@ export default function Navbar() {
          <AppBar>
             <Toolbar>
                <Typography variant="h6" noWrap>
-                  <img src={logo} width="80" height="30" alt="OXUS" />
+                  <img src={logo} 
+                  height="30" 
+                  alt="OXUS" />
                </Typography>
 
                <div className={classes.grow} />

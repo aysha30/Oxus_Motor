@@ -5,6 +5,10 @@ import Box from "@material-ui/core/Box";
 import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
+import FacebookIcon from '@material-ui/icons/Facebook';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import logo from "../../assets/logo-big.png";
 
 export default function Footer() {
  return (
@@ -14,7 +18,7 @@ export default function Footer() {
      <Typography>
       <Grid container spacing={10}>
        <Grid item xs={12} sm={2}>
-        LOGO
+        <img src={logo} alt={logo} />
        </Grid>
        <Grid item xs={12} sm={3}>
         <Box fontWeight="fontWeightBold" fontSize="h6.fontSize" mb={2}>
@@ -96,9 +100,16 @@ export default function Footer() {
          </Link>
         </Box>
        </Grid>
-       <Grid item xs={12} sm={1}>
-        {" "}
-        SOCIALs
+       <Grid item container spacing={2} direction="row" justify="center" xs={12} sm={2}>
+        {/* {" "} */}
+        <Grid item>
+        <FacebookIcon /></Grid>
+        <Grid item>
+        <InstagramIcon /></Grid>
+        <Grid item>
+        <TwitterIcon/></Grid>
+        
+        
        </Grid>
       </Grid>
      </Typography>
