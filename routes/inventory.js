@@ -39,7 +39,7 @@ router.get('/company/:company/:num', async(req, res) => {
 router.get('/body_style/:body_style/:num', async(req, res) => {
     try{
         const num = req.params.num
-        const cars = new Car()
+        var cars = new Car()
         if(num == 1)
             cars = await Car.find({'body_style': req.params.body_style}).sort({_id:-1}).limit(2)
         else if(num == 2)
@@ -71,7 +71,7 @@ router.get('/advance-search/basic/:company/:model/:trim/:year/:lprice/:hprice/:l
         const hmileage = req.params.hmileage
         const lmileage = req.params.lmileage
         const num = req.params.num
-        const car = new Car()
+        var car = new Car()
         if(num == 1)
             car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'price': {$gte: lprice, $lte: hprice}}, {'mileage': {$gte: lmileage, $lte: hmileage}}, {'num_cyliners': num_cyliners}, {'cylinders': cylinders}, {'condition': condition}]}).sort({_id:-1}).limit(2)
         else if(num == 2)
@@ -99,7 +99,7 @@ router.get('/advance-search/custom/:company/:model/:trim/:year/:ext_color/:int_c
         const int_color = req.params.int_color
         const ext_type = req.params.ext_type
         const num = req.params.num
-        const car = new Car()
+        var car = new Car()
         if(num == 1)
             car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'ext_color': ext_color}, {'int_color': int_color}, {'ext_type': ext_type}]}).sort({_id:-1}).limit(2)
         else if(num == 2)
