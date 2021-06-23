@@ -4,10 +4,10 @@ const Car = require('../models/car')
 
 router.get('/recent', async(req, res) => {
     try{
-        const cars = await Car.find().sort({_id:-1}).limit(2)
+        const cars = await Car.find().sort({_id:-1}).limit(5)
         res.json({
             "data": cars,
-            "message": "List of 2 recent cars",
+            "message": "List of 5 recent cars",
             "status": true,
             "code": 200
         })
