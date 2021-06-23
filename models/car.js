@@ -133,7 +133,7 @@ const carSchema = new mongoose.Schema({
         required: false
     },
     num_cylinders: {
-        type: String,
+        type: Number,
         required: false
     },
     cylinders: {
