@@ -17,7 +17,7 @@ router.get('/', async(req, res) => {
 
 router.get('/name/:name', async(req, res) => {
     try{
-        let cars = new Car()
+        var cars = new Car()
         //if(req.params.num == "1")
             cars = await Car.find({'name': req.params.name}).sort({_id:-1}).limit(2)
         /*else if(req.params.num == "2")
