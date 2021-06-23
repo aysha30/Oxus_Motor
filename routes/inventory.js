@@ -63,8 +63,8 @@ router.get('/advance-search/basic/:company/:model/:trim/:year/:num', async(req, 
         const model = req.params.model
         const trim = req.params.trim
         const year = req.params.year
-        /*const num_cyliners = req.params.num_cyliners
-        const cylinders = req.params.cylinders
+        const num_cyliners = req.params.num_cyliners
+        /*const cylinders = req.params.cylinders
         const condition = req.params.condition
         const lprice = req.params.lprice
         const hprice = req.params.hprice
@@ -73,7 +73,7 @@ router.get('/advance-search/basic/:company/:model/:trim/:year/:num', async(req, 
         const num = req.params.num
         var car = new Car()
         if(num == 1)
-            car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}]}).sort({_id:-1}).limit(2)
+            car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'num_cyliners': num_cyliners}]}).sort({_id:-1}).limit(2)
         else if(num == 2)
             car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}]}).sort({price: 1}).limit(2)
         else
