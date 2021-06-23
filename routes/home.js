@@ -18,7 +18,7 @@ router.get('/recent', async(req, res) => {
 
 router.get('/:id', async(req, res) => {
     try{
-        const cars = await Car.findByID(req.params.id)
+        const cars = await Car.findById(req.params.id)
         res.json({
             "data": cars,
             "message": "Car by id: " + req.params.id,
