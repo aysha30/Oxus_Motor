@@ -17,11 +17,10 @@ router.get('/', async(req, res) => {
 
 router.get('/name/:name/:num', async(req, res) => {
     try{
-        let num = req.params.num
         const cars = new Car()
-        if(num == 1)
+        if(req.params.num == 1)
             cars = await Car.find({'name': req.params.name}).sort({_id:-1}).limit(2)
-        else if(num == 2)
+        else if(req.params.num == 2)
             cars = await Car.find({'name': req.params.name}).sort({price: 1}).limit(2)
         else
             cars = await Car.find({'name': req.params.name}).sort({price: -1}).limit(2)
