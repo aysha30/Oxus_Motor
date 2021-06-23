@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const Car = require('../models/car')
-
 router.get('/', async(req, res) => {
     try{
         const cars = await Car.find()
@@ -18,6 +17,7 @@ router.get('/', async(req, res) => {
 
 router.get('/name/:name/:num', async(req, res) => {
     try{
+        const num = req.params.num
         const cars = new Car()
         if(num == 1)
             cars = await Car.find({'name': req.params.name}).sort({_id:-1}).limit(2)
@@ -38,6 +38,7 @@ router.get('/name/:name/:num', async(req, res) => {
 
 router.get('/body_style/:body_style/:num', async(req, res) => {
     try{
+        const num = req.params.num
         const cars = new Car()
         if(num == 1)
             cars = await Car.find({'body_style': req.params.body_style}).sort({_id:-1}).limit(2)
@@ -56,7 +57,7 @@ router.get('/body_style/:body_style/:num', async(req, res) => {
     }
 })
 
-router.get('/advance-search/basic/:company/:model/:trim/:year/:lprice/:hprice/:lmileage/:hmileage/:num_cyliners/:cylinders/:condition', async(req, res) => {
+router.get('/advance-search/basic/:company/:model/:trim/:year/:lprice/:hprice/:lmileage/:hmileage/:num_cyliners/:cylinders/:condition/:num', async(req, res) => {
     try{
         const company = req.params.company
         const model = req.params.model
@@ -69,6 +70,7 @@ router.get('/advance-search/basic/:company/:model/:trim/:year/:lprice/:hprice/:l
         const hprice = req.params.hprice
         const hmileage = req.params.hmileage
         const lmileage = req.params.lmileage
+        const num = req.params.num
         const car = new Car()
         if(num == 1)
             car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'price': {$gte: lprice, $lte: hprice}}, {'mileage': {$gte: lmileage, $lte: hmileage}}, {'num_cyliners': num_cyliners}, {'cylinders': cylinders}, {'condition': condition}]}).sort({_id:-1}).limit(2)
@@ -87,7 +89,7 @@ router.get('/advance-search/basic/:company/:model/:trim/:year/:lprice/:hprice/:l
     }
 })
 
-router.get('/advance-search/custom/:company/:model/:trim/:year/:ext_color/:int_color', async(req, res) => {
+router.get('/advance-search/custom/:company/:model/:trim/:year/:ext_color/:int_color/:num', async(req, res) => {
     try{
         const company = req.params.company
         const model = req.params.model
@@ -96,6 +98,7 @@ router.get('/advance-search/custom/:company/:model/:trim/:year/:ext_color/:int_c
         const ext_color = req.params.ext_color
         const int_color = req.params.int_color
         const ext_type = req.params.ext_type
+        const num = req.params.num
         const car = new Car()
         if(num == 1)
             car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'ext_color': ext_color}, {'int_color': int_color}, {'ext_type': ext_type}]}).sort({_id:-1}).limit(2)
