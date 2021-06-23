@@ -2,11 +2,11 @@ const mongoose = require('mongoose')
 const carSchema = new mongoose.Schema({
     company: {
         type: String,
-        required: true
+        required: false
     },
     model: {
         type: String,
-        required: true
+        required: false
     },
     year: {
         type: Number,
@@ -14,11 +14,11 @@ const carSchema = new mongoose.Schema({
     },
     price: {
         type: String,
-        required: true
+        required: false
     },
     images:{
         type: Array,
-        required: true
+        required: false
     },
     description: {
         type: String,
@@ -26,83 +26,83 @@ const carSchema = new mongoose.Schema({
     },
     mileage: {
         type: String,
-        required: true
+        required: false
     },
     engine: {
         type: String,
-        required: true
+        required: false
     },
     drive_train: {
         type: String,
-        required: true
+        required: false
     },
     style_name: {
         type: String,
-        required: true
+        required: false
     },
     body_style: {
         type: String,
-        required: true
+        required: false
     },
     brake_type: {
         type: String,
-        required: true
+        required: false
     },
     air_bags: {
         type: String,
-        required: true
+        required: false
     },
     night_vision: {
         type: String,
-        required: true
+        required: false
     },
     passanger_capacity: {
         type: Number,
-        required: true
+        required: false
     },
     abs_brake: {
         type: String,
-        required: true
+        required: false
     },
     backup_cam: {
         type: String,
-        required: true
+        required: false
     },
     traction_control: {
         type: String,
-        required: true
+        required: false
     },
     parking_assistant: {
         type: String,
-        required: true
+        required: false
     },
     fuel_type: {
         type: String,
-        required: true
+        required: false
     },
     fuel_system: {
         type: String,
-        required: true
+        required: false
     },
     gear: {
         type: String,
-        required: true
+        required: false
     },
     km: {
         type: Number,
-        required: true
+        required: false
     },
     engine_power: {
         type: String,
-        required: true
+        required: false
     },
     trim: {
         type: String,
-        required: true
+        required: false
     },
     wheel_size: {
         type: String,
-        required: true
+        required: false
     },
     epa_class: {
         type: String,
@@ -145,6 +145,10 @@ const carSchema = new mongoose.Schema({
         required: false
     },
     int_color: {
+        type: String,
+        required: false
+    },
+    ext_type: {
         type: String,
         required: false
     }
