@@ -89,7 +89,7 @@ router.get('/advance-search/basic/:company/:model/:trim/:year/:num_cylinders/:nu
     }
 })
 
-router.get('/advance-search/custom/:company/:model/:trim/:year/:ext_color/:int_color/:num', async(req, res) => {
+router.get('/advance-search/custom/:company/:model/:trim/:year/:ext_color/:int_color/:ext_type/:num', async(req, res) => {
     try{
         const company = req.params.company
         const model = req.params.model
