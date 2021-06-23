@@ -44,7 +44,7 @@ router.get('/company/:company', async(req, res) => {
     }
 })
 
-router.get('/sedan', async(req, res) => {
+router.get('/body_style/sedan', async(req, res) => {
     try{
         const car = await Car.find({'body_style': 'Sedan'})
         res.json({
@@ -58,7 +58,7 @@ router.get('/sedan', async(req, res) => {
     }
 })
 
-router.get('/SUV', async(req, res) => {
+router.get('/body_style/SUV', async(req, res) => {
     try{
         const car = await Car.find({'body_style': 'SUV'})
         res.json({
@@ -72,7 +72,7 @@ router.get('/SUV', async(req, res) => {
     }
 })
 
-router.get('/luxury', async(req, res) => {
+router.get('/body_style/luxury', async(req, res) => {
     try{
         const car = await Car.find({'body_style': 'Luxury'})
         res.json({
