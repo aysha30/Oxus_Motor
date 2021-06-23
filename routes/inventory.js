@@ -57,7 +57,7 @@ router.get('/body_style/:body_style/:num', async(req, res) => {
     }
 })
 
-router.get('/advance-search/basic/:company/:model/:trim/:year/:num', async(req, res) => {
+router.get('/advance-search/basic/:company/:model/:trim/:year/:num_cyliners/:num', async(req, res) => {
     try{
         const company = req.params.company
         const model = req.params.model
