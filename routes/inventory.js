@@ -57,13 +57,13 @@ router.get('/body_style/:body_style/:num', async(req, res) => {
     }
 })
 
-router.get('/advance-search/basic/:company/:model/:trim/:year/:num_cylinders/:cylinders/:condition/:num', async(req, res) => {
+router.get('/advance-search/basic/:company/:model/:trim/:year/:cylinders/:condition/:num', async(req, res) => {
     try{
         const company = req.params.company
         const model = req.params.model
         const trim = req.params.trim
         const year = req.params.year
-        const num_cylinders = req.params.num_cylinders
+        //const num_cylinders = req.params.num_cylinders
         const cylinders = req.params.cylinders
         const condition = req.params.condition
         /*const lprice = req.params.lprice
@@ -73,11 +73,11 @@ router.get('/advance-search/basic/:company/:model/:trim/:year/:num_cylinders/:cy
         const num = req.params.num
         var car = new Car()
         if(num == 1)
-            car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'num_cylinders': num_cylinders}, {'cylinders': cylinders}, {'condition': condition}]}).sort({_id:-1}).limit(2)
+            car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'cylinders': cylinders}, {'condition': condition}]}).sort({_id:-1}).limit(2)
         else if(num == 2)
-            car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'num_cylinders': num_cylinders}, {'cylinders': cylinders}, {'condition': condition}]}).sort({price: 1}).limit(2)
+            car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'cylinders': cylinders}, {'condition': condition}]}).sort({price: 1}).limit(2)
         else
-            car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'num_cylinders': num_cylinders}, {'cylinders': cylinders}, {'condition': condition}]}).sort({price: -1}).limit(2)
+            car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'cylinders': cylinders}, {'condition': condition}]}).sort({price: -1}).limit(2)
         res.json({
             "data": car,
             "message": "List of all cars based on user search request",
