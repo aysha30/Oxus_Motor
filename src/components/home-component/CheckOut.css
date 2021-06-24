@@ -1,0 +1,63 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+.sli img {
+  align-self: center;
+  max-width: 85%;
+  height: auto;
+  width: auto\9;
+}
+
+.sli {
+  transform: scale(0.8);
+  transition: transform 300ms;
+  height: auto;
+  align-self: center;
+  filter: brightness(45%);
+}
+
+/* .sli .MuiBox {
+  position: absolute;
+} */
+
+.aSlide img {
+  margin: 0;
+  align-self: center;
+}
+
+.aSlide {
+  transform: scale(1.5);
+  transition: transform 300ms;
+  filter: brightness(100%);
+}
+
+.ar {
+  background-color: #fff;
+  color: #000;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.ar svg {
+  transition: color 300ms;
+}
+
+.ar svg:hover {
+  color: #bcbcbd;
+  align-self: center;
+}
+
+.nt {
+  right: 10%;
+  top: 50%;
+  padding-inline: 5px;
+  border-radius: 50px;
+}
+
+.pv {
+  left: 10%;
+  top: 50%;
+  padding-inline: 5px;
+  border-radius: 50px;
+}

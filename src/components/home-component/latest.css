@@ -6,12 +6,18 @@
 .slides {
     transform: scale(0.8);
     transition: transform 300ms;
-    height: max-content;
+    
     align-self: center;
 }
 
+.MuiPaper-root {
+    max-width: 100%;
+    height: auto;
+    width: auto\9;
+}
+
 .actSlides {
-    transform: scale(1.1);
+    transform: scale(1.3);
 }
 
 .container {
@@ -42,17 +48,34 @@
     color: white;
 }
 
-.arrow {
-    border: 2px;
+.arw {
+    /* border: 2px; */
     background-color: rgb(202, 198, 198);
+    color: #000;
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
 }
 
-.next {
+.arw svg {
+    transition: color 300ms;
+}
+
+.arw svg:hover {
+    color: #bcbcbd;
+    align-self: center;
+}
+
+.nx {
     top: 50%;
     right: -10px;
+    padding-inline: 2px;
+    border-radius: 50px;
 }
 
-.prev {
+.pr {
     top: 50%;
     left: -10px;
+    padding-inline: 2px;
+    border-radius:50px;
 }

@@ -34,6 +34,7 @@ import ExploreCar from "./exploreCar";
 import Brands from './home-component/brands';
 import SignUp from './home-component/signUp';
 import LatestNews from './home-component/latestNews';
+import CheckOut from './home-component/CheckOut';
 
 
 
@@ -381,7 +382,7 @@ export default function Home() {
          {/* <Brands /> */}
          <SignUp />
          <LatestNews />
-
+         <CheckOut/>
          <Footer />
       </React.Fragment>
    );

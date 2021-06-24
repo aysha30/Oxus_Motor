@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     paper: {
-        width: "100%"
+        width: "450px"
     }
 
 }));
@@ -39,7 +39,7 @@ function LatestNews() {
     const classes = useStyles();
     const NextArrow = ({ onClick }) => {
         return (
-            <div className="arrow next" onClick={onClick}>
+            <div className="arw nx" onClick={onClick}>
                 <KeyboardArrowRightIcon />
             </div>
         )
@@ -47,7 +47,7 @@ function LatestNews() {
 
     const PrevArrow = ({ onClick }) => {
         return (
-            <div className="arrow prev" onClick={onClick}>
+            <div className="arw pr" onClick={onClick}>
                 <KeyboardArrowLeftIcon />
             </div>
         )
@@ -96,7 +96,7 @@ function LatestNews() {
     };
     return (
         <div className={classes.root}>
-            <Typography variant="h6"
+            <Typography variant="h5"
                 align="center"
                 color="textPrimary">
                 <Box fontSize={12}>Articles from blogs</Box>

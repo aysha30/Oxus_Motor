@@ -37,7 +37,7 @@
   transition: color 300ms;
 }
 
-.arrow svg:hover {
+.arr svg:hover {
   color: #bcbcbd;
   align-self: center;
 }
