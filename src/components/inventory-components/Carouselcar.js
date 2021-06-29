@@ -268,7 +268,7 @@ function Carouselcar({ id }) {
                         </Typography>
                         <Typography className={classes.carName} variant={(matches) ? "button" : "h4"} align="left" gutterBottom>
                             <Box fontWeight="fontWeightBold">
-                            {carArray.price}
+                            ${carArray.price}
                             </Box> 
                         </Typography>
                     </Grid>

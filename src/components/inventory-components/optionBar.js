@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Box, Select, Toolbar, FormControl, 
     Grid, MenuItem, InputLabel } from '@material-ui/core';
 import { makeStyles} from "@material-ui/core/styles";
@@ -6,6 +6,7 @@ import ListIcon from '@material-ui/icons/List';
 import AppsIcon from '@material-ui/icons/Apps';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+import { InventoryContext } from '../../Context/InventoryContext/inventoryContext';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -40,24 +41,23 @@ const useStyles = makeStyles((theme) => ({
 
 function OptionBar(props) {
 
-    const [ car, setCar ] = useState("luxury");
-    const [ sort, setSort ] = useState("");
-    // const [ view, setView ] = useState("list");
-    // let view = "grid";
+    const { setAdvFilter } = useContext(InventoryContext)
 
     const handleCar = (event, newCar) => {
         if ( newCar != null ){
-            setCar(newCar);
+            setAdvFilter(false);
+            props.passBodyStyle(newCar);
         }
     };
 
-    const handleSort = (event) => {
-        setSort(event.target.value);
+    const handleSort = (event, newSort) => {
+        if( newSort != null ){
+            props.passSort(newSort.props.value);
+        }
     };
 
     const handleView = (event, newView) => {
         if ( newView != null ){
-            // view = newView;
             props.passView(newView);
         }
     };
@@ -77,25 +77,25 @@ function OptionBar(props) {
                 justify="flex-start" className={classes.carItem}>
                     <ToggleButtonGroup
                         // className={classes.carItem}
-                        value={car}
+                        value={props.bodyStyle}
                         exclusive
                         variant="text"
                         // fullwidth="true"
                         onChange={handleCar}
                     >
-                        <ToggleButton  value="luxury" style={{ borderRadius: 50, margin: 5, border: 2 }}  >
+                        <ToggleButton  value="Luxury" style={{ borderRadius: 50, margin: 5, border: 2 }}  >
                             Luxury
                         </ToggleButton>
-                        <ToggleButton value="suv" style={{ borderRadius: 50, margin: 5, border: 2 }} >
+                        <ToggleButton value="SUV" style={{ borderRadius: 50, margin: 5, border: 2 }} >
                             SUV
                         </ToggleButton>
-                        <ToggleButton value="sedan" style={{ borderRadius: 50, margin: 5, border: 2 }} >
+                        <ToggleButton value="Sedan" style={{ borderRadius: 50, margin: 5, border: 2 }} >
                             Sedan
                         </ToggleButton>
-                        <ToggleButton value="sport" style={{ borderRadius: 50, margin: 5, border: 2 }} >
+                        <ToggleButton value="Sport" style={{ borderRadius: 50, margin: 5, border: 2 }} >
                             Sport
                         </ToggleButton>
-                        <ToggleButton value="coupe" style={{ borderRadius: 50, margin: 5, border: 2 }} >
+                        <ToggleButton value="Coupe" style={{ borderRadius: 50, margin: 5, border: 2 }} >
                             Coupe
                         </ToggleButton>
                     </ToggleButtonGroup>
@@ -109,14 +109,13 @@ function OptionBar(props) {
                         <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        value={sort}
+                        value={props.sort}
                         onChange={handleSort}
                         >
                         
-                        <MenuItem value={"Recently Added"} >  Recently Added</MenuItem>
-                        <MenuItem value={"Price: Low to High"}>  Price: Low to High</MenuItem>
-                        <MenuItem value={"Price: High to Low"}>  Price: High to Low</MenuItem>
-                        <MenuItem value={"Newest Arrival"}>  Newest Arrival</MenuItem>
+                        <MenuItem value={1} >  Recently Added</MenuItem>
+                        <MenuItem value={2}>  Price: Low to High</MenuItem>
+                        <MenuItem value={3}>  Price: High to Low</MenuItem>
                         
                         </Select>
                     </FormControl>

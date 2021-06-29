@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-function SearchBox(props) {
+function SearchBox({searchChange}) {
 
     const [ openAdvSch, setOpenAdvSch ] = useState(false);
     const classes = useStyles();
@@ -99,15 +99,17 @@ function SearchBox(props) {
                         className={classes.gridItem}>
                         <input 
                             className={classes.textField}
-                            placeholder="Find a Car..."    
-                            
+                            placeholder="Find a Car..." 
+                            type='search'
+                            onChange={searchChange} 
                             />
                     </Grid>
                     <Grid item>
                         <Button 
                             className={classes.searchButton}
                             variant="contained" 
-                            color="primary"
+                            color="primary" 
+                            type='submit' 
                             >
                             search
                         </Button>

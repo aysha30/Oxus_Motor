@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { Dialog, 
@@ -17,12 +17,15 @@ import { Dialog,
     Tab,
     Slider,
     ButtonGroup,
-    AppBar,
+    Link,
     Switch,
     FormControlLabel } from '@material-ui/core';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import CloseIcon from '@material-ui/icons/Close';
 import {ToggleButtonGroup, ToggleButton} from '@material-ui/lab';
+import axios from 'axios';
+
+import { InventoryContext } from '../../Context/InventoryContext/inventoryContext';
 
 const useStyle = makeStyles((theme) => ({
     root: {
@@ -223,63 +226,68 @@ function valueDayText(dayValue) {
 export default function AdvSearch( props ) {
     const classes = useStyle();
     const theme = useTheme();
+
+    const {
+        listItems, setListItems,
+        make, setMake,
+        model, setModel,
+        trim, setTrim,
+        year, setYear,
+        priceValue, setPriceValue,
+        mileageValue, setMileageValue,
+        dayValue, setDayValue,
+        cylinder, setCylinder,
+        cylinderType, setCylinderType,
+        condition, setCondition,
+        extColor, setExtColor,
+        intColor, setIntColor,
+        extColType, setExtColType,
+        photo, setPhoto,
+        sort,
+        advFilter, setAdvFilter } = useContext(InventoryContext);
+
     const [value, setValue] = useState(0);
-    // const [ tabValue, setTabValue ] = useState(0);
-    const [priceValue, setPriceValue] = useState([10,40]);
-    const [millageValue, setMillageValue] = useState([2,8]);
-    const [dayValue, setDayValue] = useState([40,160]);
-
-    const [ cylinder, setCylinder ] = useState(4);
-    const [ cylinderType, setCylinderType ] = useState("any");
-    const [ condition, setCondition ] = useState("new");
-
-    const [ extColor, setExtColor ] = useState("any");
-    const [ intColor, setIntColor ] = useState("any");
-    const [ extColType, setExtColType ] = useState("Convertible")
-
-    const [ photo, setPhoto ] = useState(true);
-
-    const handlePhotoChange = (event, newValue) => {
-        setPhoto(newValue);
-    };
-
-    const handleExtColType = (event, newValue) => {
-        setExtColType(newValue);
-    };
-
-    const handleCylinder = (event, newValue) => {
-        setCylinder(newValue);
-    };
-    const handleCylinderType = (event, newValue) => {
-        setCylinderType(newValue);
-    };
-    const handleCondition = (event, newValue) => {
-        setCondition(newValue);
-    };
-
-
     
-    const handlePriceChange = (event, newValue) => {
-        setPriceValue(newValue);
-    };
-    const handleMillageChange = (event, newValue) => {
-        setMillageValue(newValue);
-    };
-    const handleDayChange = (event, newValue) => {
-        setDayValue(newValue);
-    };
-    
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-    // const handleTabChange = (event, newValue) => {
-    //     setTabValue(newValue);
-    // };
-    const handleChangeIndex = (index) => {
-        setValue(index);
-    };
     const { openAdvSch, setOpenAdvSch } = props;
+console.log(make, model, trim, year, 
+    priceValue[0]*1000 ,priceValue[1]*1000, mileageValue[0]*1000, 
+    mileageValue[1]*1000, cylinder, cylinderType, condition, 
+    extColor, intColor, extColType, sort);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    async function fetchData() {
+        await axios
+        .get(`http://localhost:3000/inventory/advance-search/${make}/${model}/${trim}/${year}/${priceValue[0]*1000}/${priceValue[1]*1000}/${mileageValue[0]*1000}/${mileageValue[1]*1000}/${cylinder}/${cylinderType}/${condition}/${extColor}/${intColor}/${extColType}/${sort}`)
+        .then(res => {
+            console.log(res.data.data)
+            if(res.data.data.length !== 0){
+                setListItems([]);
+            setListItems(res.data.data)
+            
+        }
+            // console.log(`http://localhost:3000/inventory/advance-search/${make}/${model}/${trim}/${year}/${priceValue[0]*1000}/${priceValue[1]*1000}/${mileageValue[0]*1000}/${mileageValue[1]*1000}/${cylinder}/${cylinderType}/${condition}/${extColor}/${intColor}/${extColType}/${sort}`)
+            
+        })
+        .catch(err => {
+            console.log(err)
+        }) 
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [fetchData])
+
+    const handleFilter = e => {
+        e.preventDefault();
+        setAdvFilter(true);
+        fetchData();
+        setOpenAdvSch(!openAdvSch)
+    }
+    
+
 
     return(
         <div className={classes.root} >
@@ -324,21 +332,18 @@ export default function AdvSearch( props ) {
                 </Grid>
             </DialogTitle>
             <DialogContent>
+            <form onSubmit={handleFilter}>
                 <Container style={{flexGrow:1, height: 450}}>
                 <Grid container>
                     <Grid item  md={3}>
                     <FormControl variant="outlined" className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-outlined-label">Make</InputLabel>
+                        <InputLabel>Make</InputLabel>
                         <Select
-                        labelId="demo-simple-select-outlined-label"
-                        id="demo-simple-select-outlined"
-                        // value={age}
-                        // onChange={handleChange}
+                        value={make}
+                        onChange={(make) => { setMake(make.target.value)}}
                         label="Make"
                         >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
+                        
                         <MenuItem value={"Toyota"}>Toyota</MenuItem>
                         <MenuItem value={"Mercedes"}>Mercedes</MenuItem>
                         <MenuItem value={"Ferari"}>Ferari</MenuItem>
@@ -347,39 +352,35 @@ export default function AdvSearch( props ) {
                     </Grid>
                     <Grid item   md={3}>
                     <FormControl variant="outlined" className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-outlined-label">Model</InputLabel>
+                        <InputLabel>Model</InputLabel>
                         <Select
-                        labelId="demo-simple-select-outlined-label"
-                        id="demo-simple-select-outlined"
-                        // value={age}
-                        // onChange={handleChange}
-                        label="Mode"
+                        value={model}
+                        onChange={(model) => setModel(model.target.value)}
+                        label="Model"
                         >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
-                        <MenuItem value={"CH - R"}>CH - R</MenuItem>
-                        <MenuItem value={"MT - Q"}>MT - Q</MenuItem>
-                        <MenuItem value={"KL - T"}>KL - T</MenuItem>
+                        
+                        <MenuItem value={"CH-R"}>CH - R</MenuItem>
+                        <MenuItem value={"MT-Q"}>MT - Q</MenuItem>
+                        <MenuItem value={"KL-T"}>KL - T</MenuItem>
                         </Select>
                     </FormControl>
                     </Grid>
                     <Grid item  md={3}>
                     <FormControl variant="outlined" className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-outlined-label">Trim</InputLabel>
+                        <InputLabel>Trim</InputLabel>
                         <Select
                         labelId="demo-simple-select-outlined-label"
                         id="demo-simple-select-outlined"
-                        // value={age}
-                        // onChange={handleChange}
+                        value={trim}
+                        onChange={(trim) => { setTrim(trim.target.value)}}
                         label="Trim"
                         >
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
+                        <MenuItem value="XLE">XLE</MenuItem>
+                        <MenuItem value="TLE">TLE</MenuItem>
+                        <MenuItem value="MLE">MLE</MenuItem>
                         </Select>
                     </FormControl>
                     </Grid>
@@ -389,22 +390,23 @@ export default function AdvSearch( props ) {
                         <Select
                         labelId="demo-simple-select-outlined-label"
                         id="demo-simple-select-outlined"
-                        // value={age}
-                        // onChange={handleChange}
+                        value={year}
+                        onChange={(year) => { setYear(year.target.value)}}
                         label="Year"
                         >
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
+                        <MenuItem value="2019">2019</MenuItem>
+                        <MenuItem value="2020">2020</MenuItem>
+                        <MenuItem value="2021">2021</MenuItem>
                         </Select>
                     </FormControl>
                     </Grid>
                 </Grid>
                 <Grid container p={5}>
-                    <AppBar position="static" color="default">
+                    <Grid container justify="center">
+                    <div position="static" fullWidth color="default">
                         <Tabs
                         value={value}
                         onChange={handleChange}
@@ -417,11 +419,13 @@ export default function AdvSearch( props ) {
                         <Tab label="Customization" {...a11yProps(1)} />
                         <Tab label="Documents" {...a11yProps(2)} />
                         </Tabs>
-                    </AppBar>
+                    </div>
+                    </Grid>
+                    
                         <SwipeableViews
                             axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
                             index={value}
-                            onChangeIndex={handleChangeIndex}
+                            onChangeIndex={handleChange}
                         >
                             <TabPanel value={value} index={0} dir={theme.direction} 
                             style={{width: "100%"}} 
@@ -443,7 +447,7 @@ export default function AdvSearch( props ) {
                                             step={1}
                                             max={50}
                                             // scale={(x) => x * 50}
-                                            onChange={handlePriceChange}
+                                            onChange={(event, newValue) => { setPriceValue(newValue); }}
                                             valueLabelDisplay="auto"
                                             aria-labelledby="range-slider"
                                             getAriaValueText={valuePriceText}
@@ -454,17 +458,17 @@ export default function AdvSearch( props ) {
                                     <Grid item p={2} sm={4} >
                                         <div className={classes.rootSlider}>
                                         <Typography id="range-slider" gutterBottom>
-                                            Millage<Typography variant="body2" color="textSecondary">
+                                            Mileage<Typography variant="body2" color="textSecondary">
                                                 (0 Miles to 10,000)
                                             </Typography>
                                         </Typography>
                                         <Slider
-                                            value={millageValue}
+                                            value={mileageValue}
                                             min={0}
                                             step={0.5}
                                             max={10}
                                             // scale={(x) => x * 50}
-                                            onChange={handleMillageChange}
+                                            onChange={(event, newValue) => { setMileageValue(newValue); }}
                                             valueLabelDisplay="auto"
                                             aria-labelledby="range-slider"
                                             getAriaValueText={valuePriceText}
@@ -485,7 +489,7 @@ export default function AdvSearch( props ) {
                                             step={5}
                                             max={200}
                                             // scale={(x) => x * 50}
-                                            onChange={handleDayChange}
+                                            onChange={(event, newValue) => { setDayValue(newValue); }}
                                             valueLabelDisplay="auto"
                                             aria-labelledby="range-slider"
                                             getAriaValueText={valueDayText}
@@ -500,17 +504,17 @@ export default function AdvSearch( props ) {
                                     <ToggleButtonGroup
                                         value={cylinder}
                                         exclusive
-                                        onChange={handleCylinder}
+                                        onChange={(event, newValue) => { setCylinder(newValue); }}
                                         aria-label="text alignment"
                                         size="large"
                                         >
-                                        <ToggleButton value={4} aria-label="left aligned">
+                                        <ToggleButton value={4} aria-label="left aligned" style={{ borderRadius: 50, border: 0 }}>
                                             4
                                         </ToggleButton>
-                                        <ToggleButton value={6} aria-label="centered">
+                                        <ToggleButton value={6} aria-label="centered" style={{ borderRadius: 50, border: 0 }}>
                                             6
                                         </ToggleButton>
-                                        <ToggleButton value={8} aria-label="right aligned">
+                                        <ToggleButton value={8} aria-label="right aligned" style={{ borderRadius: 50, border: 0 }}>
                                             8
                                         </ToggleButton>
                                     </ToggleButtonGroup>
@@ -521,17 +525,17 @@ export default function AdvSearch( props ) {
                                     <ToggleButtonGroup
                                         value={cylinderType}
                                         exclusive
-                                        onChange={handleCylinderType}
+                                        onChange={(event, newValue) => { setCylinderType(newValue); }}
                                         aria-label="text alignment"
                                         size="large"
                                         >
-                                        <ToggleButton value="any" aria-label="left aligned">
+                                        <ToggleButton value="any" style={{ borderRadius: 50, border: 0 }}>
                                             Any
                                         </ToggleButton>
-                                        <ToggleButton value="auto" aria-label="centered">
+                                        <ToggleButton value="auto" style={{ borderRadius: 50, border: 0 }}>
                                             Auto
                                         </ToggleButton>
-                                        <ToggleButton value="manual" aria-label="right aligned">
+                                        <ToggleButton value="manual" style={{ borderRadius: 50, border: 0 }}>
                                             Manual
                                         </ToggleButton>
                                     </ToggleButtonGroup>
@@ -542,17 +546,17 @@ export default function AdvSearch( props ) {
                                     <ToggleButtonGroup
                                         value={condition}
                                         exclusive
-                                        onChange={handleCondition}
+                                        onChange={(event, newValue) => { setCondition(newValue); }}
                                         aria-label="text alignment"
                                         size="large"
                                         >
-                                        <ToggleButton value="new" aria-label="left aligned" >
+                                        <ToggleButton value="new" style={{ borderRadius: 50, border: 0 }} >
                                             New
                                         </ToggleButton>
-                                        <ToggleButton value="used" aria-label="centered">
+                                        <ToggleButton value="used" style={{ borderRadius: 50, border: 0 }}>
                                             Used
                                         </ToggleButton>
-                                        <ToggleButton value="salvage" aria-label="right aligned">
+                                        <ToggleButton value="salvage" style={{ borderRadius: 50, border: 0 }}>
                                             Salvage
                                         </ToggleButton>
                                     </ToggleButtonGroup>
@@ -571,14 +575,19 @@ export default function AdvSearch( props ) {
                                     
                                     <Button variant="contained" className={classes.colbtn1} 
                                     onClick={()=> {setExtColor("white")}} ></Button>
+
                                     <Button variant="contained" className={classes.colbtn2} 
                                     onClick={()=> {setExtColor("black")}} ></Button>
+
                                     <Button variant="contained" className={classes.colbtn3} 
                                     onClick={()=> {setExtColor("lightgrey")}} ></Button>
+
                                     <Button variant="contained" className={classes.colbtn4} 
                                     onClick={()=> {setExtColor("darkgrey")}} ></Button>
+
                                     <Button variant="contained" className={classes.colbtn5} 
                                     onClick={()=> {setExtColor("red")}} ></Button>
+
                                     <Button variant="contained" className={classes.colbtn6} 
                                     onClick={()=> {setExtColor("any")}} >?</Button>
                                     
@@ -590,14 +599,19 @@ export default function AdvSearch( props ) {
                                     
                                     <Button variant="contained" className={classes.colbtn7} 
                                     onClick={()=> {setIntColor("black")}} ></Button>
+
                                     <Button variant="contained" className={classes.colbtn8} 
                                     onClick={()=> {setIntColor("green")}} ></Button>
+
                                     <Button variant="contained" className={classes.colbtn9} 
                                     onClick={()=> {setIntColor("lightbrown")}} ></Button>
+
                                     <Button variant="contained" className={classes.colbtn10} 
-                                    onClick={()=> {setIntColor("lightgrey")}} ></Button>
+                                    onClick={()=> {setIntColor("grey")}} ></Button>
+
                                     <Button variant="contained" className={classes.colbtn11} 
                                     onClick={()=> {setIntColor("brown")}} ></Button>
+
                                     <Button variant="contained" className={classes.colbtn12} 
                                     onClick={()=> {setIntColor("any")}} >?</Button>
                                     
@@ -610,23 +624,23 @@ export default function AdvSearch( props ) {
                                 <ToggleButtonGroup
                                         value={extColType}
                                         exclusive
-                                        onChange={handleExtColType}
+                                        onChange={(event, newValue) => { setExtColType(newValue) }}
                                         aria-label="text alignment"
                                         size="large"
                                         >
-                                        <ToggleButton value="Convertible" aria-label="left aligned" >
+                                        <ToggleButton value="Convertible" style={{ borderRadius: 50, border: 0 }} >
                                             Convertible
                                         </ToggleButton>
-                                        <ToggleButton value="Sedan" aria-label="centered">
+                                        <ToggleButton value="Sedan" style={{ borderRadius: 50, border: 0 }}>
                                             Sedan
                                         </ToggleButton>
-                                        <ToggleButton value="Hatchback" aria-label="right aligned">
+                                        <ToggleButton value="Hatchback" style={{ borderRadius: 50, border: 0 }}>
                                             Hatchback
                                         </ToggleButton>
-                                        <ToggleButton value="Sports" aria-label="right aligned">
+                                        <ToggleButton value="Sports" style={{ borderRadius: 50, border: 0 }}>
                                             Sports
                                         </ToggleButton>
-                                        <ToggleButton value="Trucks" aria-label="right aligned">
+                                        <ToggleButton value="Trucks" style={{ borderRadius: 50, border: 0 }}>
                                             Trucks
                                         </ToggleButton>
                                     </ToggleButtonGroup>
@@ -635,22 +649,22 @@ export default function AdvSearch( props ) {
                             </Grid>
                             </TabPanel>
                             <TabPanel value={value} index={2} dir={theme.direction}>
-                            {/* <FormControl component="fieldset"> */}
-                            {/* <FormGroup aria-label="position" row> */}
+                                <Grid container justify="center">
                                 <FormControlLabel
-                                value="start"
-                                control={<Switch checked={photo} onChange={handlePhotoChange} inputProps={{ 'aria-label': 'primary checkbox' }} />}
-                                label="Has Photos Attached"
-                                labelPlacement="start"
-                                />
-                            {/* </FormGroup> */}
-                            {/* </FormControl> */}
-                            {/* <Switch inputProps={{ 'aria-label': 'primary checkbox' }} /> */}
+                                    value="start"
+                                    control={<Switch checked={photo} 
+                                    onChange={(event, newValue) => { setPhoto(newValue) }} 
+                                    inputProps={{ 'aria-label': 'primary checkbox' }} />}
+                                    label="Has Photos Attached"
+                                    labelPlacement="start"
+                                    />
+                                </Grid>
                             </TabPanel>
                         </SwipeableViews>
                 </Grid>
                 <Grid container justify="center">
                     <Button 
+                        type='submit'
                         variant="contained" 
                         style={{height: 50, width: 200, padding: "2px"}}
                         color="primary"  >
@@ -658,6 +672,7 @@ export default function AdvSearch( props ) {
                     </Button>
                 </Grid>
                 </Container>
+                </form>
             </DialogContent>
         </Dialog>
         </div>

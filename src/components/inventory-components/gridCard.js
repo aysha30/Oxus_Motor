@@ -62,7 +62,7 @@ function GridCard({ carArray }) {
                     setId(carArray._id)
                     id && history.push(generatePath("/cars/:id", { id }))}}>
                 <CardHeader 
-                    title={carArray?.name}
+                    title={`${carArray?.company} ${carArray?.model}`}
                     action={
                         <ToggleButton
                             value={selected}

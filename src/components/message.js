@@ -5,7 +5,7 @@ import LanguageIcon from '@material-ui/icons/Language';
 import CallIcon from '@material-ui/icons/Call';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { useForm } from 'react-hook-form';
- 
+import axios from 'axios';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -116,13 +116,12 @@ export default function Message() {
 
 
     const classes = useStyles();
-    const theme = useTheme();
 
 
     const [ firstName, setFirstName ] = useState('');
     const [ lastName, setLastName ] = useState('');
     const [ email, setEmail ] = useState('');
-    const [ phone, setPhone ] = useState(0);
+    const [ phone, setPhone ] = useState('');
     const [ message, setMessage ] = useState('');
 
     // const createMessage = () => {
@@ -140,7 +139,24 @@ export default function Message() {
 
     const onSubmit = (data) => {
         console.log(data);
+        // axios
+        // .post('http://localhost:3000/contactUs')
+        fetch('http://localhost:3000/contactUs', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                name: data.firstName,
+                surname: data.lastName,
+                email: data.email,
+                phone: data.phone,
+                message: data.message
+            })
+        })
+        .then(res => res.json())
+        .catch(err => console.log(err))
     };
+
+    
 
     
 
@@ -197,15 +213,15 @@ export default function Message() {
                             // id="standard-size-normal"
                             className={classes.textf}
                             label="First Name"
-                            // fullWidth
+                            type="text"
                             InputLabelProps={{
                                 shrink: true,
                             }}
                             name="firstName"
                             placeholder="John"
-                            // onChange={(e) => {
-                            //     setFirstName(e.target.value);
-                            // }}
+                            onChange={(e) => {
+                                setFirstName(e.target.value);
+                            }}
                             {...register("firstName", {
                                 required: "First Name is required.",
                             })}
@@ -217,6 +233,7 @@ export default function Message() {
                             id="standard-size-normal"
                             className={classes.textf}
                             label="Last Name"
+                            type="text"
                             name="lastName"
                             InputLabelProps={{
                                 shrink: true,
@@ -227,9 +244,9 @@ export default function Message() {
                             })}
                             error={Boolean(errors.lastName)}
                             helperText={errors.lastName?.message}
-                            // onChange={(e) => {
-                            //     setLastName(e.target.value);
-                            // }}
+                            onChange={(e) => {
+                                setLastName(e.target.value);
+                            }}
 
                         /> <br/>
                         <TextField 
@@ -247,9 +264,9 @@ export default function Message() {
                             })}
                             error={Boolean(errors.email)}
                             helperText={errors.email?.message}
-                            // onChange={(e) => {
-                            //     setEmail(e.target.value);
-                            // }}
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                            }}
 
                         /><TextField 
                             id="standard-size-normal"
@@ -270,9 +287,9 @@ export default function Message() {
                             })}
                             error={Boolean(errors.phone)}
                             helperText={errors.phone?.message}
-                            // onChange={(e) => {
-                            //     setPhone(e.target.value);
-                            // }}
+                            onChange={(e) => {
+                                setPhone(e.target.value);
+                            }}
                             
                         /><br />
                         <TextField 
@@ -289,9 +306,9 @@ export default function Message() {
                             })}
                             error={Boolean(errors.message)}
                             helperText={errors.message?.message}
-                            // onChange={(e) => {
-                            //     setMessage(e.target.value);
-                            // }}
+                            onChange={(e) => {
+                                setMessage(e.target.value);
+                            }}
 
                         /><br/>
                         <Button

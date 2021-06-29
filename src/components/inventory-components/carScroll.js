@@ -298,14 +298,14 @@ function CarScroll() {
                     alt="car1"
                     height="150"
                     image={item.images[1]}
-                    title={item.name}
+                    title={item?.company}
                     
                     />
                 <CardContent>
                     <Typography>
-                    {item.name}
+                    {item.company}{" "}{item.model}
                     </Typography>
-                    {item.price}
+                    ${item.price}
                 </CardContent>
                 </CardActionArea>
             </Paper>

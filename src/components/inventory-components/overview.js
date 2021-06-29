@@ -97,15 +97,6 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                     <Grid item>
                     <Typography variant="subtitle2" >
                         {carArray.description}
-                        {/* Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        when an unknown printer took a galley of type and scrambled it to make a type 
-                        specimen book. It has survived not only five centuries, but also the leap into 
-                        electronic typesetting, remaining essentially unchanged. It was popularised in 
-                        the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-                        and more recently with desktop publishing software like Aldus PageMaker including 
-                        versions of Lorem Ipsum. It has survived not only five centuries, but also the 
-                        leap into electronic typesetting, remaining essentially unchanged. */}
                     
                     </Typography>
                     </Grid>
@@ -132,7 +123,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                                                 Mileage <br/>
                                                 <Box fontWeight="fontWeightBold">
                                                 
-                                                {carArray?.basic_specs[0]?.mileage}
+                                                {carArray?.mileage}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -154,7 +145,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                                             <Typography>
                                                 Engine <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].engine}
+                                                {carArray?.engine}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -176,7 +167,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                                             <Typography>
                                             Drivetrain <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].drive_train}
+                                                {carArray?.drive_train}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -198,7 +189,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                                             <Typography>
                                                 Style Name <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].style_name}
+                                                {carArray?.style_name}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -220,7 +211,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                                             <Typography>
                                                 Body Style <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].body_style}
+                                                {carArray?.body_style}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -242,7 +233,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                                             <Typography>
                                                 Brake Type <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].brake_type}
+                                                {carArray?.brake_type}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -252,7 +243,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                         </Card>
                     </Grid>
                     <Grid item>
-                        <Card className={classes.card} elevation={0}>
+                       <Card className={classes.card} elevation={0}>
                             <CardActionArea>
                                 <CardContent>
                                     <Grid container alignItems="center" >
@@ -264,7 +255,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                                             <Typography>
                                                 Airbags <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].air_bags}
+                                                {carArray?.air_bags}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -286,7 +277,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                                             <Typography>
                                                 Night Vision <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].night_vision}
+                                                {carArray?.night_vision}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -308,7 +299,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                                             <Typography>
                                                 Passenger Capacity <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].passanger_capacity}
+                                                {carArray?.passanger_capacity}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -330,7 +321,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                                             <Typography>
                                                 ABS Brake System <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].abs_brake}
+                                                {carArray?.abs_brake}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -352,7 +343,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                                             <Typography>
                                                 Backup Camera <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].backup_cam}
+                                                {carArray?.backup_cam}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -374,7 +365,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                                             <Typography>
                                                 Stereo Sound <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].stereo_sound}
+                                                {carArray?.stereo_sound}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -396,7 +387,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                                             <Typography>
                                                 ABS Brake System <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].abs_brake}
+                                                {carArray?.abs_brake}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -418,7 +409,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                                             <Typography>
                                                 Traction Control <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].traction_control}
+                                                {carArray?.traction_control}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -440,7 +431,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                                             <Typography>
                                                 Parking Assistant <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].parking_assistant}
+                                                {carArray?.parking_assistant}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -462,7 +453,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                                             <Typography>
                                                 MP3 Player <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].mp3_player}
+                                                {carArray?.mp3_player}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -470,7 +461,7 @@ import AirportShuttleIcon from '@material-ui/icons/AirportShuttle';
                                 </CardContent>
                             </CardActionArea>
                         </Card>
-                    </Grid>
+                    </Grid> 
                 </Grid>
                 <Grid container display="flex" spacing={3}>
                     <Grid container style={{padding:"30px 10px"}}>

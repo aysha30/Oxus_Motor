@@ -55,7 +55,7 @@ function ListCard({ carArray }) {
 
     const classes = useStyles();
     
-    // console.log(carArray.basic_specs[0].body_style);
+    // console.log(carArray);
     return(
         <div className={classes.root} >
             <Container >
@@ -83,12 +83,12 @@ function ListCard({ carArray }) {
                                     <Box p={2} >
                                         <Typography variant="h5" >
                                             <Box fontWeight="fontWeightBold">
-                                            {carArray?.name}
+                                            {carArray?.company}{" "}{carArray?.model}
                                             </Box>
                                         </Typography>
                                         
                                     </Box>
-                                    <Box display="flex" container direction="row" pt={3} >
+                                    <Box display="flex" direction="row" pt={3} >
                                         {/* <Grid container direction="row" > */}
                                             <Box display="flex"  pl={1}>
                                             {/* <Typography variant="body1" > */}
@@ -96,7 +96,7 @@ function ListCard({ carArray }) {
                                                     Full Price :
                                                 </Box>
                                                 <Box color="#ceba97" > 
-                                                    {carArray?.price} 
+                                                    ${carArray?.price} 
                                                 </Box>
                                             {/* </Typography> */}
                                             </Box>
@@ -106,7 +106,7 @@ function ListCard({ carArray }) {
                                                 Monthly :
                                                 </Box>
                                                 <Box color="#ceba97"> 
-                                                {carArray?.price} 
+                                                ${carArray?.price} 
                                                 </Box>
                                             {/* </Typography> */}
                                             </Box>
@@ -121,33 +121,33 @@ function ListCard({ carArray }) {
                                         pt={5}>
                                         <Grid item  component={Box} p={1}>
                                             <Typography variant="subtitle1" >
-                                            <Box fontWeight="fontWeightBold"> Year</Box> {/*{carArray?.year}*/}2020*
+                                            <Box fontWeight="fontWeightBold"> Year</Box> {carArray?.year}
                                             </Typography>
                                         </Grid>
                                         <Grid item component={Box} p={1}>
                                             <Typography variant="subtitle1">
-                                            <Box fontWeight="fontWeightBold"> Fuel</Box>{/* {carArray?.fuel}*/} Diesel*
+                                            <Box fontWeight="fontWeightBold"> Fuel</Box>{carArray?.fuel_type}
                                             </Typography>
                                         </Grid>
                                         <Grid item component={Box} p={1}>
                                             <Typography variant="subtitle1">
-                                            <Box fontWeight="fontWeightBold">Gear</Box> {/*{carArray?.gear}*/}Fully Automatic*
+                                            <Box fontWeight="fontWeightBold">Gear</Box> {carArray?.gear}
                                             </Typography>
                                         </Grid>
                                         <Grid item component={Box} p={1}>
                                             <Typography variant="subtitle1">
-                                            <Box fontWeight="fontWeightBold">Km</Box> {/*{carArray?.km}*/} 145*
+                                            <Box fontWeight="fontWeightBold">Km</Box> {carArray?.km}
                                             </Typography>
                                         </Grid>
                                         <Grid item component={Box} p={1}>
                                             <Typography variant="subtitle1">
                                             <Box fontWeight="fontWeightBold">Body Type </Box>
-                                            {carArray.basic_specs[0].body_style}-- 
+                                            {carArray?.body_style}
                                             </Typography>
                                         </Grid>
                                         <Grid item component={Box} p={1}>
                                             <Typography variant="subtitle1">
-                                            <Box fontWeight="fontWeightBold">Engine Power</Box>{/*{carArray?.enginePower}*/}125 hp
+                                            <Box fontWeight="fontWeightBold">Engine Power</Box>{carArray?.engine_power}
                                             </Typography>
                                         </Grid>
                                     </Box>
@@ -172,7 +172,6 @@ function ListCard({ carArray }) {
                                     >
                                         <Typography ><Box color="#ceba97" pt={2} >See More Details</Box></Typography>
                                     </Typography>
-                                
                                 </Box>
                             </Grid>
                         </CardActionArea>

@@ -50,7 +50,7 @@ import {
                                             <Typography>
                                                 Mileage <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].mileage}
+                                                {carArray?.mileage}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -73,7 +73,7 @@ import {
                                                 Engine <br/>
                                                 <Box fontWeight="fontWeightBold">
                                                 {/* 27 MPG */}
-                                                {carArray?.basic_specs[0].engine}
+                                                {carArray?.engine}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -95,7 +95,7 @@ import {
                                             <Typography>
                                                 Drivetrain <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].drive_train}
+                                                {carArray?.drive_train}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -117,7 +117,7 @@ import {
                                             <Typography>
                                                 Style Name <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].style_name}
+                                                {carArray?.style_name}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -139,7 +139,7 @@ import {
                                             <Typography>
                                                 Body Style <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].body_style}
+                                                {carArray?.body_style}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -161,7 +161,7 @@ import {
                                             <Typography>
                                                 Passenger Capacity <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].passanger_capacity}
+                                                {carArray?.passanger_capacity}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -190,7 +190,7 @@ import {
                                             <Typography>
                                                 Engine <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].engine}
+                                                {carArray?.engine}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -212,7 +212,7 @@ import {
                                             <Typography>
                                                 Fuel Sysytem <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].fuel_system}
+                                                {carArray?.fuel_system}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -234,7 +234,7 @@ import {
                                             <Typography>
                                                 Drivetrain <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].drive_train}
+                                                {carArray?.drive_train}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -256,7 +256,7 @@ import {
                                             <Typography>
                                                 Brake Type <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].brake_type}
+                                                {carArray?.brake_type}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -278,7 +278,7 @@ import {
                                             <Typography>
                                                 ABS Brake System <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].abs_brake}
+                                                {carArray?.abs_brake}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -300,7 +300,7 @@ import {
                                             <Typography>
                                                 Wheel Size <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].wheel_size}
+                                                {carArray?.wheel_size}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -329,7 +329,7 @@ import {
                                             <Typography>
                                                 Airbags <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].air_bags}
+                                                {carArray?.air_bags}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -351,7 +351,7 @@ import {
                                             <Typography>
                                                 ABS Brake System <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].abs_brake}
+                                                {carArray?.abs_brake}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -373,7 +373,7 @@ import {
                                             <Typography>
                                                 Traction Control <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].traction_control}
+                                                {carArray?.traction_control}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -395,7 +395,7 @@ import {
                                             <Typography>
                                                 Night Vision <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].night_vision}
+                                                {carArray?.night_vision}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -417,7 +417,7 @@ import {
                                             <Typography>
                                                 Backup Camera <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].backup_cam}
+                                                {carArray?.backup_cam}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -439,7 +439,7 @@ import {
                                             <Typography>
                                                 Parking Assistant <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].parking_assistant}
+                                                {carArray?.parking_assistant}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -468,7 +468,7 @@ import {
                                             <Typography>
                                                 Stereo Sound Setup <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].stereo_sound}
+                                                {carArray?.stereo_sound}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -490,7 +490,7 @@ import {
                                             <Typography>
                                                 CD Player <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].cd_player}
+                                                {carArray?.cd_player}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -512,7 +512,7 @@ import {
                                             <Typography>
                                                 DVD Player <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].dvd_player}
+                                                {carArray?.dvd_player}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -534,7 +534,7 @@ import {
                                             <Typography>
                                                 MP3 Player <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].mp3_player}
+                                                {carArray?.mp3_player}
                                                 </Box>
                                             </Typography>
                                         </Grid>
@@ -556,7 +556,7 @@ import {
                                             <Typography>
                                                 Radio <br/>
                                                 <Box fontWeight="fontWeightBold">
-                                                {carArray.basic_specs[0].radio}
+                                                {carArray?.radio}
                                                 </Box>
                                             </Typography>
                                         </Grid>

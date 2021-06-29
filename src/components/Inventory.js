@@ -17,6 +17,7 @@ import AddIcon from '@material-ui/icons/Add';
 import QuestionAnswerOutlinedIcon from '@material-ui/icons/QuestionAnswerOutlined';
 
 import axios from 'axios';
+import { InventoryContext } from '../Context/InventoryContext/inventoryContext';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -137,8 +138,6 @@ const useStyles = makeStyles((theme) => ({
 // ];
 
 
-
-
 function Inventory() {
 
     const classes = useStyles();
@@ -150,22 +149,86 @@ function Inventory() {
         setListVisible((prevValue)=> prevValue + 3);
     }
     const [ view, setView ] = useState("list");
+    const [ sort, setSort ] = useState(1);
+    const [ bodyStyle, setBodyStyle ] = useState("Luxury");
+    const [ searchfield, setSearchfield ] = useState('');
+
+    //Adv search 
+    const [ make, setMake ] = useState('Toyota');
+    const [ model, setModel ] = useState('CH-R');
+    const [ trim, setTrim ] = useState('XLE'); 
+    const [ year, setYear ] = useState(2019);
+
+    const [priceValue, setPriceValue] = useState([10,40]);
+    const [mileageValue, setMileageValue] = useState([2,8]);
+    const [dayValue, setDayValue] = useState([40,160]);
+
+    const [ cylinder, setCylinder ] = useState(4);
+    const [ cylinderType, setCylinderType ] = useState("any");
+    const [ condition, setCondition ] = useState("new");
+
+    const [ extColor, setExtColor ] = useState("any");
+    const [ intColor, setIntColor ] = useState("any");
+    const [ extColType, setExtColType ] = useState("Convertible");
+
+    const [ photo, setPhoto ] = useState(true);
+
+    const [ advFilter, setAdvFilter ] = useState(false);
+    // console.log(cylinder, cylinderType, condition);
+
+    
 
     useEffect(() => {
-        axios
-        .get('http://localhost:3000/cars')
-        .then(res => {
-            // console.log(res.data.data);
-            setListItems(res.data.data);
-        })
-        .catch(err => {
-            console.log(err)
-        }) 
-    }, []);
+        var url = `http://localhost:3000/inventory/`;
+        const apiUrl = (url) => {
+        
+            if(searchfield.length)
+            {
+                url = url + `company/${searchfield}/`;
+            }
+            else {
+                url = url + `body_style/${bodyStyle}/`;
+            }
+            url = url + `${sort}`;
+            return url;
+        };
+        if(!advFilter) {
+            axios
+            .get(apiUrl(url))
+            .then(res => {
+                setListItems(res.data.data);
+            })
+            .catch(err => {
+                console.log(err)
+            }) 
+        }
+        
+    }, [bodyStyle, searchfield, sort, advFilter]);
 
     return (
         <React.Fragment>
             <Navbar />
+            <InventoryContext.Provider 
+            value={{
+                listItems, setListItems,
+                make, setMake, 
+                model, setModel,
+                trim, setTrim,
+                year, setYear,
+                priceValue, setPriceValue,
+                mileageValue, setMileageValue,
+                dayValue, setDayValue,
+                cylinder, setCylinder,
+                cylinderType, setCylinderType,
+                condition, setCondition,
+                extColor, setExtColor,
+                intColor, setIntColor,
+                extColType, setExtColType, 
+                photo, setPhoto,
+                sort,
+                advFilter, setAdvFilter
+                
+            }}>
             <Box 
             className={classes.root}
             >
@@ -188,11 +251,14 @@ function Inventory() {
                 </Container>
 
                 <Grid>
-                    <SearchBox />
+                    <SearchBox searchChange={(e)=>setSearchfield(e.target.value)} />
                 </Grid>
 
                 <Grid>
-                    <OptionBar passView={view => setView(view)} view={view} />
+                    <OptionBar passView={view => setView(view)} view={view} 
+                    passBodyStyle={bodyStyle => setBodyStyle(bodyStyle)} bodyStyle={bodyStyle} 
+                    passSort={sort => setSort(sort)} sort={sort}
+                    />
                 </Grid>
                 {(view === "list")? 
                     <Grid container
@@ -201,7 +267,7 @@ function Inventory() {
                         alignItems="stretch"
                         >
                         {listItems.slice(0, listvisible).map((item) => (
-                            <Grid item >
+                            <Grid item key={item._id} >
                                 <ListCard  carArray={item}  />
                                 {/* <Details /> */}
                             </Grid>
@@ -221,8 +287,8 @@ function Inventory() {
                     <Container className={classes.gridCardContainer}>
                         <Grid container spacing={5}>
                             {listItems.slice(0, listvisible).map((item) => (
-                                <Grid item sm={6} xs={12} md={4}>
-                                    <GridCard carArray={item}  />
+                                <Grid item sm={6} xs={12} md={4} key={item._id}>
+                                    <GridCard carArray={item}   />
                                 </Grid>
                             ))}
                             <Grid container style={{ width: "100%", margin: "10px 0px 70px"}} justify="center" >
@@ -246,6 +312,7 @@ function Inventory() {
                 
                 
             </Box>
+            </InventoryContext.Provider>
             <Footer />
         </React.Fragment>
     );
