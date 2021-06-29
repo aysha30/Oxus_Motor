@@ -15,7 +15,7 @@ router.post('/', async(req, res) =>{
         })
     }catch(err){
         res.send(err)
-    }c
+    }
 });
 
 module.exports = router

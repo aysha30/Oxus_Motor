@@ -1,7 +1,9 @@
 const express = require('express')
 const mongoose = require('mongoose')
+var cors = require('cors')
 const URI = 'mongodb+srv://hritik:123@freecluster.51vdj.mongodb.net/OxusMotors?retryWrites=true&w=majority'
 const app = express()
+app.use(cors())
 
 const connectDB = async () => {
   await mongoose.connect(URI, {
@@ -31,4 +33,5 @@ const Port = process.env.PORT || 3000;
 
 app.listen(Port, () => {
   console.log('Server started')
+  console.log(`app is running on port ${Port}`);
 })

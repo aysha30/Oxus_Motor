@@ -13,7 +13,7 @@ const carSchema = new mongoose.Schema({
         required: false
     },
     price: {
-        type: String,
+        type: Number,
         required: false
     },
     images:{
@@ -25,7 +25,7 @@ const carSchema = new mongoose.Schema({
         required: false
     },
     mileage: {
-        type: String,
+        type: Number,
         required: false
     },
     engine: {
