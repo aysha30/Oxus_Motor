@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Typography, CardActionArea, CardHeader } from '@material-ui/core';
-import { CardMedia, CardContent } from '@material-ui/core';
+import { Grid, CardContent } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ToggleButton from '@material-ui/lab/ToggleButton';
@@ -20,26 +20,23 @@ const useStyles = makeStyles((theme) => ({
         // },
     },
     img: {
-        height : "300px", 
-        width: "100%", 
+        height: 260,
         backgroundColor: "#eae9ea",
-    }
+        [theme.breakpoints.down(840)]:{
+            // padding: "10px",
+            width: "100%",
+        },
+        [theme.breakpoints.up('sm')]:{
+            width: 400,
+        },
+    },
+    // img: {
+    //     height : "300px", 
+    //     width: "100%", 
+    //     backgroundColor: "#eae9ea",
+    //     objectFit: "scale-down",
+    // }
 }))
-
-// const carArray = [
-//     {
-//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-//         name: "Mercedes Benz",
-//         fullPrice: "  $50,000",
-//         monthly: "  $2,000",
-//         year: 2020,
-//         fuel: "Diesel",
-//         gear: "Full Automatic",
-//         km: 37400,
-//         bodyType: "SUV",
-//         enginePower: "125 hp"
-//     }
-// ];
 
 
 function GridCard({ carArray }) {
@@ -76,11 +73,16 @@ function GridCard({ carArray }) {
                                 <FavoriteBorderIcon />
                         </ToggleButton>
                     } />
-                    <CardMedia image={carArray?.images[0]} 
-                    className={classes.img} />
+                    {/* <CardMedia image={carArray?.images[0]} 
+                    className={classes.img} /> */}
                         <CardContent>
+                            <Box>
+                                <Grid item>
+                                    <img className={classes.img} alt="CAR" src={carArray?.images[0]} />
+                                </Grid>
+                            </Box>
                             <Box display="flex" 
-                            // container 
+                            container 
                             direction="row" pt={3} >
                             <Box display="flex"  pl={1}>
                                 <Box color="#919296" fontWeight="fontWeightMedium" >
