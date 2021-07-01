@@ -164,11 +164,11 @@ function Inventory() {
     const [dayValue, setDayValue] = useState([40,160]);
 
     const [ cylinder, setCylinder ] = useState(4);
-    const [ cylinderType, setCylinderType ] = useState("any");
-    const [ condition, setCondition ] = useState("new");
+    const [ cylinderType, setCylinderType ] = useState("Any");
+    const [ condition, setCondition ] = useState("New");
 
-    const [ extColor, setExtColor ] = useState("any");
-    const [ intColor, setIntColor ] = useState("any");
+    const [ extColor, setExtColor ] = useState("Any");
+    const [ intColor, setIntColor ] = useState("Any");
     const [ extColType, setExtColType ] = useState("Convertible");
 
     const [ photo, setPhoto ] = useState(true);

@@ -249,43 +249,64 @@ export default function AdvSearch( props ) {
     const [value, setValue] = useState(0);
     
     const handleChange = (event, newValue) => {
+        if(newValue != null)
         setValue(newValue);
     };
     const { openAdvSch, setOpenAdvSch } = props;
-console.log(make, model, trim, year, 
-    priceValue[0]*1000 ,priceValue[1]*1000, mileageValue[0]*1000, 
-    mileageValue[1]*1000, cylinder, cylinderType, condition, 
-    extColor, intColor, extColType, sort);
+// console.log(make, model, trim, year, 
+//     priceValue[0]*1000 ,priceValue[1]*1000, mileageValue[0]*1000, 
+//     mileageValue[1]*1000, cylinder, cylinderType, condition, 
+//     extColor, intColor, extColType, sort);
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    async function fetchData() {
-        await axios
-        .get(`http://localhost:3000/inventory/advance-search/${make}/${model}/${trim}/${year}/${priceValue[0]*1000}/${priceValue[1]*1000}/${mileageValue[0]*1000}/${mileageValue[1]*1000}/${cylinder}/${cylinderType}/${condition}/${extColor}/${intColor}/${extColType}/${sort}`)
-        .then(res => {
-            console.log(res.data.data)
-            if(res.data.data.length !== 0){
-                setListItems([]);
-            setListItems(res.data.data)
-            
-        }
-            // console.log(`http://localhost:3000/inventory/advance-search/${make}/${model}/${trim}/${year}/${priceValue[0]*1000}/${priceValue[1]*1000}/${mileageValue[0]*1000}/${mileageValue[1]*1000}/${cylinder}/${cylinderType}/${condition}/${extColor}/${intColor}/${extColType}/${sort}`)
-            
-        })
-        .catch(err => {
-            console.log(err)
-        }) 
-    }
+let cancelToken
 
-    useEffect(() => {
-        fetchData()
-    }, [fetchData])
 
-    const handleFilter = e => {
+
+    // useEffect( () => { 
+    //     var url = `http://localhost:3000/inventory/advance-search/${make}/${model}/${trim}/${year}/${priceValue[0]*1000}/${priceValue[1]*1000}/${mileageValue[0]*1000}/${mileageValue[1]*1000}/${cylinder}/${cylinderType}/${condition}/${extColor}/${intColor}/${extColType}/${sort}`;
+
+        
+    //         axios
+    //         .get(url)
+    //         .then(res => {
+    //             // console.log(res.data.data.length);
+    //             // console.log('listItems', listItems)
+    //             if(res.data.data.length && res.data.data !== listItems){
+    //                 setListItems(res.data.data)
+    //             }
+    //             // console.log(`http://localhost:3000/inventory/advance-search/${make}/${model}/${trim}/${year}/${priceValue[0]*1000}/${priceValue[1]*1000}/${mileageValue[0]*1000}/${mileageValue[1]*1000}/${cylinder}/${cylinderType}/${condition}/${extColor}/${intColor}/${extColType}/${sort}`)
+                
+    //         })
+    //         .catch(err => {
+    //             console.log(err)
+    //         }) 
+        
+    // }, [setListItems, listItems, make, model, trim, year, priceValue, mileageValue, cylinder, cylinderType, condition, extColor, intColor, extColType, sort])
+
+    const handleFilter = async e => {
         e.preventDefault();
+        if (typeof cancelToken != typeof undefined) {
+            cancelToken.cancel("Operation canceled due to new request.")
+        }
+        cancelToken = axios.CancelToken.source()
+        var url = `http://localhost:3000/inventory/advance-search/${make}/${model}/${trim}/${year}/${priceValue[0]*1000}/${priceValue[1]*1000}/${mileageValue[0]*1000}/${mileageValue[1]*1000}/${cylinder}/${cylinderType}/${condition}/${extColor}/${intColor}/${extColType}/${sort}`;
+        
+        try {
+            const results = await axios.get(url,
+                { cancelToken: cancelToken.token }
+            )
+                console.log( results.data.data)
+                setListItems(results.data.data)
+            
+        } 
+        catch (error) {
+            console.log(error)
+        }
         setAdvFilter(true);
-        fetchData();
         setOpenAdvSch(!openAdvSch)
     }
+        
+    
     
 
 
@@ -345,8 +366,8 @@ console.log(make, model, trim, year,
                         >
                         
                         <MenuItem value={"Toyota"}>Toyota</MenuItem>
-                        <MenuItem value={"Mercedes"}>Mercedes</MenuItem>
-                        <MenuItem value={"Ferari"}>Ferari</MenuItem>
+                        <MenuItem value={"BMW"}>BMW</MenuItem>
+                        <MenuItem value={"Tata"}>Tata</MenuItem>
                         </Select>
                     </FormControl>
                     </Grid>
@@ -360,8 +381,8 @@ console.log(make, model, trim, year,
                         >
                         
                         <MenuItem value={"CH-R"}>CH - R</MenuItem>
-                        <MenuItem value={"MT-Q"}>MT - Q</MenuItem>
-                        <MenuItem value={"KL-T"}>KL - T</MenuItem>
+                        <MenuItem value={"X7"}>X7</MenuItem>
+                        <MenuItem value={"Harrier"}>Harrier</MenuItem>
                         </Select>
                     </FormControl>
                     </Grid>
@@ -379,7 +400,7 @@ console.log(make, model, trim, year,
                             <em>None</em>
                         </MenuItem>
                         <MenuItem value="XLE">XLE</MenuItem>
-                        <MenuItem value="TLE">TLE</MenuItem>
+                        <MenuItem value="XLA">TLE</MenuItem>
                         <MenuItem value="MLE">MLE</MenuItem>
                         </Select>
                     </FormControl>
@@ -397,9 +418,9 @@ console.log(make, model, trim, year,
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                        <MenuItem value="2019">2019</MenuItem>
-                        <MenuItem value="2020">2020</MenuItem>
-                        <MenuItem value="2021">2021</MenuItem>
+                        <MenuItem value={2019}>2019</MenuItem>
+                        <MenuItem value={2020}>2020</MenuItem>
+                        <MenuItem value={2021}>2021</MenuItem>
                         </Select>
                     </FormControl>
                     </Grid>
@@ -529,13 +550,13 @@ console.log(make, model, trim, year,
                                         aria-label="text alignment"
                                         size="large"
                                         >
-                                        <ToggleButton value="any" style={{ borderRadius: 50, border: 0 }}>
+                                        <ToggleButton value="Any" style={{ borderRadius: 50, border: 0 }}>
                                             Any
                                         </ToggleButton>
-                                        <ToggleButton value="auto" style={{ borderRadius: 50, border: 0 }}>
+                                        <ToggleButton value="Auto" style={{ borderRadius: 50, border: 0 }}>
                                             Auto
                                         </ToggleButton>
-                                        <ToggleButton value="manual" style={{ borderRadius: 50, border: 0 }}>
+                                        <ToggleButton value="Manual" style={{ borderRadius: 50, border: 0 }}>
                                             Manual
                                         </ToggleButton>
                                     </ToggleButtonGroup>
@@ -550,13 +571,13 @@ console.log(make, model, trim, year,
                                         aria-label="text alignment"
                                         size="large"
                                         >
-                                        <ToggleButton value="new" style={{ borderRadius: 50, border: 0 }} >
+                                        <ToggleButton value="New" style={{ borderRadius: 50, border: 0 }} >
                                             New
                                         </ToggleButton>
-                                        <ToggleButton value="used" style={{ borderRadius: 50, border: 0 }}>
+                                        <ToggleButton value="Used" style={{ borderRadius: 50, border: 0 }}>
                                             Used
                                         </ToggleButton>
-                                        <ToggleButton value="salvage" style={{ borderRadius: 50, border: 0 }}>
+                                        <ToggleButton value="Salvage" style={{ borderRadius: 50, border: 0 }}>
                                             Salvage
                                         </ToggleButton>
                                     </ToggleButtonGroup>
@@ -574,22 +595,22 @@ console.log(make, model, trim, year,
                                 <ButtonGroup >
                                     
                                     <Button variant="contained" className={classes.colbtn1} 
-                                    onClick={()=> {setExtColor("white")}} ></Button>
+                                    onClick={()=> {setExtColor("White")}} ></Button>
 
                                     <Button variant="contained" className={classes.colbtn2} 
-                                    onClick={()=> {setExtColor("black")}} ></Button>
+                                    onClick={()=> {setExtColor("Black")}} ></Button>
 
                                     <Button variant="contained" className={classes.colbtn3} 
-                                    onClick={()=> {setExtColor("lightgrey")}} ></Button>
+                                    onClick={()=> {setExtColor("Lightgrey")}} ></Button>
 
                                     <Button variant="contained" className={classes.colbtn4} 
-                                    onClick={()=> {setExtColor("darkgrey")}} ></Button>
+                                    onClick={()=> {setExtColor("Darkgrey")}} ></Button>
 
                                     <Button variant="contained" className={classes.colbtn5} 
-                                    onClick={()=> {setExtColor("red")}} ></Button>
+                                    onClick={()=> {setExtColor("Red")}} ></Button>
 
                                     <Button variant="contained" className={classes.colbtn6} 
-                                    onClick={()=> {setExtColor("any")}} >?</Button>
+                                    onClick={()=> {setExtColor("Any")}} >?</Button>
                                     
                                 </ButtonGroup>
                                 </Grid>
@@ -598,22 +619,22 @@ console.log(make, model, trim, year,
                                 <ButtonGroup >
                                     
                                     <Button variant="contained" className={classes.colbtn7} 
-                                    onClick={()=> {setIntColor("black")}} ></Button>
+                                    onClick={()=> {setIntColor("Black")}} ></Button>
 
                                     <Button variant="contained" className={classes.colbtn8} 
-                                    onClick={()=> {setIntColor("green")}} ></Button>
+                                    onClick={()=> {setIntColor("Green")}} ></Button>
 
                                     <Button variant="contained" className={classes.colbtn9} 
-                                    onClick={()=> {setIntColor("lightbrown")}} ></Button>
+                                    onClick={()=> {setIntColor("Lightbrown")}} ></Button>
 
                                     <Button variant="contained" className={classes.colbtn10} 
-                                    onClick={()=> {setIntColor("grey")}} ></Button>
+                                    onClick={()=> {setIntColor("Grey")}} ></Button>
 
                                     <Button variant="contained" className={classes.colbtn11} 
-                                    onClick={()=> {setIntColor("brown")}} ></Button>
+                                    onClick={()=> {setIntColor("Brown")}} ></Button>
 
                                     <Button variant="contained" className={classes.colbtn12} 
-                                    onClick={()=> {setIntColor("any")}} >?</Button>
+                                    onClick={()=> {setIntColor("Any")}} >?</Button>
                                     
                                 </ButtonGroup>
                                 </Grid>
@@ -676,5 +697,5 @@ console.log(make, model, trim, year,
             </DialogContent>
         </Dialog>
         </div>
-    )
+    );
 }
