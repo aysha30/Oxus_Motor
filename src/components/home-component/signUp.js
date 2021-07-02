@@ -13,7 +13,7 @@ import TelegramIcon from '@material-ui/icons/Telegram';
 const useStyles = makeStyles((theme) => ({
     root: {
         backgroundColor: theme.palette.primary.main,
-        margin: "0 0 100px 0",
+        margin: "50px 0 100px 0",
         [theme.breakpoints.down('sm')]: {
             padding: "50px"
         },

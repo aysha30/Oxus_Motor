@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "./modules/Navbar";
 import Footer from "./modules/Footer";
 import Box from "@material-ui/core/Box";
-import { Button, Container, Grid, Typography } from "@material-ui/core";
+import { Button, Container, Grid, Link, Typography } from "@material-ui/core";
 //import "react-alice-carousel/lib/alice-carousel.css";
 
 import "../App.css";
@@ -29,12 +29,16 @@ import img2 from "../assets/car3.png";
 import img3 from "../assets/car4.png";
 import Slider from "react-slick"
 import CssBaseline from "@material-ui/core/CssBaseline";
-import RecentInOxus from "./recent";
+import RecentInOxus from "./home-component/recent";
 import ExploreCar from "./exploreCar";
 import Brands from './home-component/brands';
 import SignUp from './home-component/signUp';
 import LatestNews from './home-component/latestNews';
 import CheckOut from './home-component/CheckOut';
+import SedanInOxus from './home-component/sedanInOxus';
+import SUVInOxus from './home-component/suvInOxus';
+import LuxuryInOxus from './home-component/luxuryInOxus';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
 
@@ -113,43 +117,6 @@ export default function Home() {
                   </Grid>
                   <Box >
                      <ExploreCar />
-                     {/* <Carousel breakPoints={breakPoints}>
-                        <img
-                           className={classes.img}
-                           style={{ height: "200px", width: "300px" }}
-                           src={img1}
-                        />
-                        <img
-                           className={classes.img}
-                           style={{ height: "200px", width: "300px" }}
-                           src={img2}
-                        />
-                        <img
-                           className={classes.img}
-                           style={{ height: "200px", width: "300px" }}
-                           src={img3}
-                        />
-                        <img
-                           className={classes.img}
-                           style={{ height: "200px", width: "300px" }}
-                           src={img1}
-                        />
-                        <img
-                           className={classes.img}
-                           style={{ height: "200px", width: "300px" }}
-                           src={img2}
-                        />
-                        <img
-                           className={classes.img}
-                           style={{ height: "200px", width: "300px" }}
-                           src={img3}
-                        />
-                        <img
-                           className={classes.img}
-                           style={{ height: "200px", width: "300px" }}
-                           src={img1}
-                        />
-                     </Carousel> */}
                   </Box>
                   <Box p={5}></Box>
                   <Box p={5}></Box>
@@ -375,11 +342,92 @@ export default function Home() {
          </Box>
          <Typography variant="h5" align="center">
             <Box m={3} p={3} fontWeight="fontWeightBold">
-               Recent In Oxus
+               Recent in Oxus
             </Box>
          </Typography>
          <RecentInOxus />
-         {/* <Brands /> */}
+         <Grid container fullwidth='true' justify="center" >
+            <Grid item>
+            <Typography >
+               <Box component={Link}
+               fontWeight="fontWeightBold"
+               variant="string"
+               underline="hover"
+               color="#000"
+               href="/Inventory"
+               >
+                  View all <ExpandMoreIcon />
+               </Box>
+            </Typography>
+            
+            </Grid>
+         </Grid>
+         <Typography variant="h5" align="center">
+            <Box m={3} p={3} fontWeight="fontWeightBold">
+               Sedans in Oxus
+            </Box>
+         </Typography>
+         <SedanInOxus />
+         <Grid container fullwidth='true' justify="center" >
+            <Grid item>
+            <Typography >
+               <Box component={Link}
+               fontWeight="fontWeightBold"
+               variant="string"
+               underline="hover"
+               color="#000"
+               href="/Inventory"
+               >
+                  View all <ExpandMoreIcon />
+               </Box>
+            </Typography>
+            
+            </Grid>
+         </Grid>
+         <Typography variant="h5" align="center">
+            <Box m={3} p={3} fontWeight="fontWeightBold">
+               SUV's in Oxus
+            </Box>
+         </Typography>
+         <SUVInOxus />
+         <Grid container fullwidth='true' justify="center" >
+            <Grid item>
+            <Typography >
+               <Box component={Link}
+               fontWeight="fontWeightBold"
+               variant="string"
+               underline="hover"
+               color="#000"
+               href="/Inventory"
+               >
+                  View all <ExpandMoreIcon />
+               </Box>
+            </Typography>
+            
+            </Grid>
+         </Grid>
+         <Typography variant="h5" align="center">
+            <Box m={3} p={3} fontWeight="fontWeightBold">
+               Luxury in Oxus
+            </Box>
+         </Typography>
+         <LuxuryInOxus />
+         <Grid container fullwidth='true' justify="center" >
+            <Grid item>
+            <Typography >
+               <Box component={Link}
+               fontWeight="fontWeightBold"
+               variant="string"
+               underline="hover"
+               color="#000"
+               href="/Inventory"
+               >
+                  View all <ExpandMoreIcon />
+               </Box>
+            </Typography>
+            
+            </Grid>
+         </Grid>
          <SignUp />
          <LatestNews />
          <CheckOut/>

@@ -12,6 +12,7 @@ import img1 from "../assets/card2.png";
 import img2 from "../assets/car3.png";
 import img3 from "../assets/car4.png";
 import './explore.css';
+import { v4 as uuidv4 } from 'uuid';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -97,7 +98,7 @@ function ExploreCar() {
       <div className={classes.root}>
          <Slider {...settings} style={{height: "400px"}}>
             {images.map((ig, idx) => (
-               <div className={idx === imageIndex ? "sl acSlide" : "sl"}>
+               <div key={uuidv4()} className={idx === imageIndex ? "sl acSlide" : "sl"}>
                   <Box alignSelf="center">
                      <img src={ig} alt={ig} />
                      

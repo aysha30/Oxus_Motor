@@ -13,6 +13,7 @@ import img2 from "./car02.jpg";
 import img3 from "./car03.png";
 import img4 from "./car04.jpeg";
 import './CheckOut.css';
+import { v4 as uuidv4 } from 'uuid';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -113,7 +114,7 @@ function CheckOut() {
                </Typography>
          <Slider {...settings} style={{height: "auto"}}>
             {images.map((imj, idx) => (
-               <div className={idx === imageIndex ? "sli aSlide" : "sli"}>
+               <div key={uuidv4()} className={idx === imageIndex ? "sli aSlide" : "sli"}>
                   <Grid container alignItems="center" justify="center">
                      <img src={imj} 
                      width="450px" 

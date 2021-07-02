@@ -5,7 +5,7 @@
  width: 100%;
  margin: 1rem;
  height: auto;
- padding-bottom: 100px;
+ padding-bottom: 20px;
 }
 
 .slide {
@@ -21,20 +21,20 @@
 } */
 
 .slide div {
- background-color: #565d70;
+ background-color: #ebecee;
  border-radius: 25px;
 }
 
 .activeSlide {
  transform: scale(1);
  opacity: 1;
- filter: grayscale(1%);
+ filter: grayscale(0%);
  /* color: #fff; */
 }
 
-/* .activeSlide div {
+.activeSlide div {
  background-color: #565d70;
-} */
+}
 
 .activeSlide div .MuiPaper-root {
  border-radius: 50;

@@ -4,7 +4,7 @@ import {
     Box,
     Grid,
     Typography, CardContent,
-    Button, Paper, CardActionArea, CardActions, Container,
+    Button, Paper, CardActionArea,
     IconButton,
 } from '@material-ui/core';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
@@ -16,6 +16,7 @@ import Slider from "react-slick";
 import './latest.css';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
+import { v4 as uuidv4 } from 'uuid';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -107,7 +108,7 @@ function LatestNews() {
             </Typography>
             <Slider {...settings}>
                 {images.map((img, idx) => (
-                    <div className={idx === imageIndex ? "slides actSlide" : "slides"}>
+                    <div key={uuidv4()} className={idx === imageIndex ? "slides actSlide" : "slides"}>
                         <Paper className={classes.paper} square elevation={idx === imageIndex ? 7 : 1} >
 
                             {/* <img src={img}height="200px" alt={img} /> */}

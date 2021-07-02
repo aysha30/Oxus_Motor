@@ -1,6 +1,6 @@
 import React from 'react'
 import Slider from "react-slick";
-import '../recent.css';
+import './recent.css';
 import {
    Box,
    Typography,
@@ -14,9 +14,10 @@ import {
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
-import img1 from "../assets/card2.png";
-import img2 from "../assets/car3.png";
-import img3 from "../assets/car4.png";
+import img1 from "./card2.png";
+import img2 from "./car3.png";
+import img3 from "./car4.png";
+import { v4 as uuidv4 } from 'uuid';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -34,11 +35,11 @@ const useStyles = makeStyles((theme) => ({
 
 const images = [img1, img2, img3, img1, img2, img3];
 
-function RecentInOxus() {
+function SUVInOxus() {
 
    const classes = useStyles();
    const theme = useTheme();
-   const matches = useMediaQuery(theme.breakpoints.down("xs"));
+   const matches = useMediaQuery(theme.breakpoints.down(700));
 
    const NextArrow = ({ onClick }) => {
       return (
@@ -101,12 +102,12 @@ function RecentInOxus() {
       <div className='recent'>
          <Slider {...settings}>
             {images.map((img, idx) => (
-               <div className={idx === imageIndex ? "slide activeSlide" : "slide"}>
+               <div key={uuidv4()} className={idx === imageIndex ? "slide activeSlide" : "slide"}>
                   {/* <img src={img} alt={img} /> */}
                   <Paper className={classes.paper}>
                      <CardActionArea>
                         <CardHeader title={
-                           <Typography align="center" >
+                           <Typography align="center" variant="h5"  >
                               <Box fontWeight="fontWeighBold" >
                                  BMW Car
                               </Box>
@@ -114,28 +115,28 @@ function RecentInOxus() {
                         } />
                         {/* <CardMedia image={img}  /> */}
                         <CardContent>
-                           <img src={img} height="200px" alt={img} />
+                           <img src={img} alt={img} />
                            <Box display="flex">
                               <Grid item container justify="center">
                                  <Box fontWeight="fontWeightMedium" >
-                                    <Typography variant='caption'>Full Price&nbsp;</Typography>
+                                    <Typography variant={matches ? 'subtitle1': 'caption'}>Full Price&nbsp;</Typography>
                                  </Box>
                                  <Box >
-                                    <Typography variant='caption'> $1025.25</Typography>
+                                    <Typography variant={matches ? 'subtitle1': 'caption'}> $1025.25</Typography>
                                  </Box>
                               </Grid>
                               <Grid item container justify="center">
                                  <Box fontWeight="fontWeightMedium" >
-                                    <Typography variant='caption'>Monthly&nbsp; </Typography>
+                                    <Typography variant={matches ? 'subtitle1': 'caption'}>Monthly&nbsp; </Typography>
                                  </Box>
                                  <Box>
-                                    <Typography variant='caption'>$1025.25</Typography>
+                                    <Typography variant={matches ? 'subtitle1': 'caption'}>$1025.25</Typography>
                                  </Box>
                               </Grid>
                            </Box>
                            {(idx === imageIndex) ?
                               <Grid container justify="center">
-                                 <Typography align="center" variant='caption'>
+                                 <Typography align="center" variant={matches ? 'subtitle1': 'caption'}>
                                     View details
                                  </Typography>
                               </Grid>
@@ -148,7 +149,7 @@ function RecentInOxus() {
             ))}
          </Slider>
       </div>
-   )
+   );
 }
 
-export default RecentInOxus;
+export default SUVInOxus;
