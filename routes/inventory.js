@@ -43,11 +43,11 @@ router.get('/body_style/:body_style/:num', async(req, res) => {
         const num = req.params.num
         var cars = new Car()
         if(num == 1)
-            cars = await Car.find({'body_style': req.params.body_style}).sort({_id:-1}).limit(2)
+            cars = await Car.find({'body_style': req.params.body_style}).sort({_id:-1})
         else if(num == 2)
-            cars = await Car.find({'body_style': req.params.body_style}).sort({price: 1}).limit(2)
+            cars = await Car.find({'body_style': req.params.body_style}).sort({price: 1})
         else
-            cars = await Car.find({'body_style': req.params.body_style}).sort({price: -1}).limit(2)
+            cars = await Car.find({'body_style': req.params.body_style}).sort({price: -1})
         res.json({
             "data": cars,
             "message": "List of all cars with " + req.params.body_style + " body style.",
