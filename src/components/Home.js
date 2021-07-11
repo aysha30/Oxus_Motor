@@ -22,12 +22,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import deals from "../assets/deals.png";
-import bg from "../assets/bg.jpg";
-import img1 from "../assets/card2.png";
-import img2 from "../assets/car3.png";
-import img3 from "../assets/car4.png";
-import Slider from "react-slick"
-import CssBaseline from "@material-ui/core/CssBaseline";
 import RecentInOxus from "./home-component/recent";
 import ExploreCar from "./exploreCar";
 import Brands from './home-component/brands';
@@ -41,9 +35,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { InventoryContext } from "../Context/InventoryContext/inventoryContext";
 import { WholeContext } from "../App";
 
-
-
-const images = [img1, img2, img3, deals]
 
 const useStyles = makeStyles((theme) => ({
    formControlBtn: {
@@ -326,9 +317,9 @@ export default function Home() {
                </Grid>
             </Container>
          </Box>
-         <Box m={5} p={3}>
+         <Box>
             <Container>
-               <Paper elevation={4} style={{ backgroundImage: `url(${bg})` }}>
+               <Paper elevation={4} style={{ backgroundColor: '#ddd' }}>
                   <Box m={7} pt={4}>
                      <Typography gutterBottom align="center" variant="h5" component="h2">
                         About Us

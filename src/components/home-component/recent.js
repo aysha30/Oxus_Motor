@@ -132,11 +132,11 @@ function RecentInOxus() {
    };
    return (
       <div className='recent'>
-         <Slider {...settings}>
+         <Slider {...settings} style={{width: "100vw", margin:"0px"}}>
             {list.map((item, idx) => (
                <div key={uuidv4()} className={idx === imageIndex ? "slide activeSlide" : "slide"}>
-                  <Paper className={classes.paper}>
-                  
+                  <Grid container justify="center" alignItems="center" >
+                     <Paper className={classes.paper}>
                      <CardActionArea>
                         <CardHeader title={
                            <Typography align="center" variant="h6" >
@@ -187,6 +187,8 @@ function RecentInOxus() {
                      </CardActionArea>
                   </Paper>
 
+                  </Grid>
+                  
                </div>
             ))}
          </Slider>

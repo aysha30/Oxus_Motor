@@ -2,20 +2,17 @@ import React from 'react'
 import Slider from "react-slick";
 import {
    Box,
+   Grid,
    Typography,
    useMediaQuery
 } from '@material-ui/core';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
-import img1 from "../assets/card2.png";
-import img2 from "../assets/car3.png";
-import img3 from "../assets/car4.png";
 import './explore.css';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useHistory, generatePath } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,10 +20,6 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
       paddingTop: "1rem",
       height: "600px"
-   },
-   img: {
-      height: 280,
-      width: "auto",
    }
 }))
 
@@ -113,14 +106,14 @@ function ExploreCar() {
       <div className={classes.root}>
          <Slider {...settings} style={{height: "400px"}}>
             {list.map((item, idx) => (
-               <div key={uuidv4()} className={idx === imageIndex ? "sl acSlide" : "sl"}>
-                  <Box alignSelf="center">
-                  <img className={classes.img} src={item.images[0]} alt={item.company} />
-                     
-                  </Box>
+               <div key={uuidv4()} className={idx === imageIndex ? "sld acSld" : "sld"}>
+                  <Grid container justify="center" alignItems="center" >
+                  <img className="image" src={item.images[0]} alt={item.company} />
+                  
+                  </Grid>
                   {(idx === imageIndex) ? 
                         <Typography align="center">
-                        <Box fontWeight="fontWeightBold"> {item.company}{" "}{item.model} <br/> {item.year}<br/> <br/>{" " }</Box>
+                        <Box fontWeight="fontWeightBold"> {item.company}{" "}{item.model} <br/> {item.year}</Box>
                         
                         </Typography>
                      : ""}

@@ -1,23 +1,22 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 
-.slide img {
+.sld {
+  transform: scale(0.5);
+  transition: transform 300ms;
+  opacity: 0.5;
+}
+.image {
   width: 20rem;
   margin: 0 auto;
 }
 
-.slide {
-  transform: scale(0.7);
-  transition: transform 300ms;
-  opacity: 0.9;
-}
-
-.activeSlide {
+.acSld {
   transform: scale(1.1);
   opacity: 1;
 }
 
-.arrow {
+.arr {
   /* background-color: #fff; */
   color: #000;
   position: absolute;
@@ -33,12 +32,12 @@
   color: #000;
 } */
 
-.next {
+.nxt {
   right: 20%;
   top: 40%;
 }
 
-.prev {
+.prv {
   left: 10%;
   top: 50%;
 }

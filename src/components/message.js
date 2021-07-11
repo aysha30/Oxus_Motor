@@ -123,24 +123,10 @@ export default function Message() {
     const [ email, setEmail ] = useState('');
     const [ phone, setPhone ] = useState('');
     const [ message, setMessage ] = useState('');
-
-    // const createMessage = () => {
-    //     let newMessage = {
-    //         "Name": firstName, 
-    //         "Surname": lastName,
-    //         "Email": email,
-    //         "Phone": phone,
-    //         "Message": message
-    //     };
-    //     console.log(newMessage);
-    // }
     
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data);
-        // axios
-        // .post('http://localhost:3000/contactUs')
         fetch('http://localhost:3000/contactUs', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
@@ -152,8 +138,13 @@ export default function Message() {
                 message: data.message
             })
         })
-        .then(res => res.json())
-        .catch(err => console.log(err))
+        .then(res => {
+            res.json();
+        })
+        .catch(err => console.log(err));
+
+        
+            document.getElementById('formsubmit').reset();
     };
 
     
@@ -208,7 +199,7 @@ export default function Message() {
                     <Typography variant="h6">
                         Send us a message
                     </Typography><hr />
-                    <form onSubmit={handleSubmit(onSubmit)}  >
+                    <form id="formsubmit" onSubmit={handleSubmit(onSubmit)}  >
                         <TextField 
                             // id="standard-size-normal"
                             className={classes.textf}
@@ -292,6 +283,7 @@ export default function Message() {
                             }}
                             
                         /><br />
+
                         <TextField 
                             id="standard-size-normal"
                             className={classes.messagefiels}

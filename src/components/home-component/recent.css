@@ -3,10 +3,10 @@
 
 .recent {
   width: 100%;
-  margin: 1rem;
+  margin: 0;
   height: 300px;
   padding-bottom: 20px;
-justify-self: center;
+  justify-self: center;
 }
 
 .slide {

@@ -9,7 +9,7 @@
 }
 
 .sli {
-  transform: scale(0.8);
+  transform: scale(0.7);
   transition: transform 300ms;
   height: auto;
   align-self: center;
@@ -26,7 +26,7 @@
 }
 
 .aSlide {
-  transform: scale(1.5);
+  transform: scale(1);
   transition: transform 300ms;
   filter: brightness(100%);
 }

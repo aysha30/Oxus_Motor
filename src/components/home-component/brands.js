@@ -43,49 +43,12 @@ export default function Brands() {
       centerMode: true,
       infinite: true,
       slidesToShow: 1,
-      centerPadding:(matches)?"0 0 60px": "0px 0px 150px",
+      centerPadding:"0px",
       speed: 500,
       autoplay: true,
       autoplaySpeed: 3000,
       rows: 1,
-      slidesPerRow: (matches)? 3 : 5,
-      responsive: [
-          {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                infinite: true,
-            }
-          },
-          {
-            breakpoint: 600,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-              initialSlide: 2,
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-            }
-          }
-      ]
-    };
-    const settings1 = {
-      className: "center",
-      centerMode: true,
-      infinite: true,
-      slidesToShow: 1,
-      centerPadding:(matches)?"0px 0px 0px": "0px 0px 0px",
-      speed: 500,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      rows: 1,
-      slidesPerRow: (matches)? 3 : 5,
+      slidesPerRow: (matches)? 3 : 7,
       responsive: [
           {
             breakpoint: 1024,
@@ -114,18 +77,18 @@ export default function Brands() {
     };
 
   let logoList1 = [];
-  for (var i=0; i < 15; i++) {
+  for (var i=0; i < 21; i++) {
     logoList1.push(`https://robohash.org/${i}?100*100`)
   }
   let logoList = [];
-  for (var i=15; i < 30; i++) {
+  for (i=21; i < 42; i++) {
     logoList.push(`https://robohash.org/${i}?100*100`)
   }
 
   return(
     <div className={classes.root}>
       <Slider {...settings} 
-      style={(matches)? {marginBottom:"-20px"}:{marginRight: "0px", marginBottom:"-85px"}}
+      // style={(matches)? {marginBottom:"0px"}:{marginRight: "0px"}}
       >
         {logoList.map((item) => (
           <div id='paper' key={uuidv4()}>
@@ -135,8 +98,8 @@ export default function Brands() {
           </div>
         ))}
       </Slider>
-      <Slider {...settings1} 
-      style={(matches)?{marginTop:"-20px"}:{marginLeft: "0px", marginTop:"-85px"}}
+      <Slider {...settings} 
+      // style={(matches)?{marginTop:"0px"}:{marginLeft: "0px", marginTop:"-85px"}}
       >
         {logoList1.map((item) => (
           <div  id='paper' key={uuidv4()}>
