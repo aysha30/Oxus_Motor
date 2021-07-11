@@ -47,6 +47,7 @@ router.get('/:id', async(req, res) => {
 router.post('/',  async(req,res) => {
     let info = req.body
     const car = new Car(info)
+    car.date = new Date();
     try{
         const c1 =  await car.save()
         res.json({

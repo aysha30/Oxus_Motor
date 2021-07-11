@@ -21,4 +21,4 @@ const formSchema = new mongoose.Schema({
         required: true
     }
 })
-module.exports = mongoose.model('contactUs', formSchema)
+module.exports = mongoose.model('CONTACTUS', formSchema)

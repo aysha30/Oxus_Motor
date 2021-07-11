@@ -20,13 +20,13 @@ router.get('/company/:company/:num', async(req, res) => {
         var cars = new Car()
         const num = req.params.num
         if(num == 1){
-            cars = await Car.find({'company': req.params.company}).sort({_id:-1}).limit(2)
-            // cars = await Car.find({'model': req.params.company}).sort({_id:-1}).limit(2)
+            cars = await Car.find({'company': req.params.company}).sort({_id:-1})
+            // cars = await Car.find({'model': req.params.company}).sort({_id:-1})
         }
         else if(num == 2)
-            cars = await Car.find({'company': req.params.company}).sort({price: 1}).limit(2)
+            cars = await Car.find({'company': req.params.company}).sort({price: 1})
         else
-            cars = await Car.find({'company': req.params.company}).sort({price: -1}).limit(2)
+            cars = await Car.find({'company': req.params.company}).sort({price: -1})
         res.json({
             "data": cars,
             "message": "List of all " + req.params.name + " cars.",
@@ -61,7 +61,7 @@ router.get('/body_style/:body_style/:num', async(req, res) => {
 
 
 
-router.get('/advance-search/:company/:model/:trim/:year/:lprice/:hprice/:lmileage/:hmileage/:num_cylinders/:cylinders/:condition/:ext_color/:int_color/:ext_type/:num', async(req, res) => {
+router.get('/advance-search/:company/:model/:trim/:year/:lprice/:hprice/:lmileage/:hmileage/:ldate/:hdate/:num_cylinders/:cylinders/:condition/:ext_color/:int_color/:ext_type/:num', async(req, res) => {
     try{
         const company = req.params.company
         const model = req.params.model
@@ -74,17 +74,22 @@ router.get('/advance-search/:company/:model/:trim/:year/:lprice/:hprice/:lmileag
         const hprice = req.params.hprice
         const lmileage = req.params.lmileage
         const hmileage = req.params.hmileage
+        var ldate = req.params.ldate
+        var hdate = req.params.hdate
         const ext_color = req.params.ext_color
         const int_color = req.params.int_color
         const ext_type = req.params.ext_type
         const num = req.params.num
+        const cur_date = new Date()
+        ldate = cur_date - ldate*86400000
+        hdate = cur_date - hdate*86400000
         var car = new Car()
         if(num == 1)
-            car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'price': {$gte: lprice, $lte: hprice}}, {'mileage': {$gte: lmileage, $lte: hmileage}}, {'num_cylinders': num_cylinders}, {'cylinders': cylinders}, {'condition': condition}, {'ext_color': ext_color}, {'int_color': int_color}, {'ext_type': ext_type}]}).sort({_id:-1}).limit(2)
+            car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'price': {$gte: lprice, $lte: hprice}}, {'mileage': {$gte: lmileage, $lte: hmileage}}, {'date': {$gte: hdate, $lte: ldate}}, {'num_cylinders': num_cylinders}, {'cylinders': cylinders}, {'condition': condition}, {'ext_color': ext_color}, {'int_color': int_color}, {'ext_type': ext_type}]}).sort({_id:-1})
         else if(num == 2)
-            car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'price': {$gte: lprice, $lte: hprice}}, {'mileage': {$gte: lmileage, $lte: hmileage}}, {'num_cylinders': num_cylinders}, {'cylinders': cylinders}, {'condition': condition}, {'ext_color': ext_color}, {'int_color': int_color}, {'ext_type': ext_type}]}).sort({price: 1}).limit(2)
+            car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'price': {$gte: lprice, $lte: hprice}}, {'mileage': {$gte: lmileage, $lte: hmileage}}, {'date': {$gte: hdate, $lte: ldate}}, {'num_cylinders': num_cylinders}, {'cylinders': cylinders}, {'condition': condition}, {'ext_color': ext_color}, {'int_color': int_color}, {'ext_type': ext_type}]}).sort({price: 1})
         else
-            car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'price': {$gte: lprice, $lte: hprice}}, {'mileage': {$gte: lmileage, $lte: hmileage}}, {'num_cylinders': num_cylinders}, {'cylinders': cylinders}, {'condition': condition}, {'ext_color': ext_color}, {'int_color': int_color}, {'ext_type': ext_type}]}).sort({price: -1}).limit(2)
+            car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'price': {$gte: lprice, $lte: hprice}}, {'mileage': {$gte: lmileage, $lte: hmileage}}, {'date': {$gte: hdate, $lte: ldate}}, {'num_cylinders': num_cylinders}, {'cylinders': cylinders}, {'condition': condition}, {'ext_color': ext_color}, {'int_color': int_color}, {'ext_type': ext_type}]}).sort({price: -1})
             // console.log(Car.find({'company': company}));
         res.json({
         "data": car,
@@ -113,11 +118,11 @@ router.get('/advance-search/:company/:model/:trim/:year/:lprice/:hprice/:lmileag
 //         const num = req.params.num
 //         var car = new Car()
 //         if(num == 1)
-//             car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'price': {$gte: lprice, $lte: hprice}}, {'mileage': {$gte: lmileage, $lte: hmileage}}, {'num_cylinders': num_cylinders}, {'cylinders': cylinders}, {'condition': condition}]}).sort({_id:-1}).limit(2)
+//             car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'price': {$gte: lprice, $lte: hprice}}, {'mileage': {$gte: lmileage, $lte: hmileage}}, {'num_cylinders': num_cylinders}, {'cylinders': cylinders}, {'condition': condition}]}).sort({_id:-1})
 //         else if(num == 2)
-//             car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'price': {$gte: lprice, $lte: hprice}}, {'mileage': {$gte: lmileage, $lte: hmileage}}, {'num_cylinders': num_cylinders}, {'cylinders': cylinders}, {'condition': condition}]}).sort({price: 1}).limit(2)
+//             car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'price': {$gte: lprice, $lte: hprice}}, {'mileage': {$gte: lmileage, $lte: hmileage}}, {'num_cylinders': num_cylinders}, {'cylinders': cylinders}, {'condition': condition}]}).sort({price: 1})
 //         else
-//             car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'price': {$gte: lprice, $lte: hprice}}, {'mileage': {$gte: lmileage, $lte: hmileage}}, {'num_cylinders': num_cylinders}, {'cylinders': cylinders}, {'condition': condition}]}).sort({price: -1}).limit(2)
+//             car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'price': {$gte: lprice, $lte: hprice}}, {'mileage': {$gte: lmileage, $lte: hmileage}}, {'num_cylinders': num_cylinders}, {'cylinders': cylinders}, {'condition': condition}]}).sort({price: -1})
 //         res.json({
 //             "data": car,
 //             "message": "List of all cars based on user search request",
@@ -140,11 +145,11 @@ router.get('/advance-search/:company/:model/:trim/:year/:lprice/:hprice/:lmileag
 //         const num = req.params.num
 //         var car = new Car()
 //         if(num == 1)
-//             car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'ext_color': ext_color}, {'int_color': int_color}, {'ext_type': ext_type}]}).sort({_id:-1}).limit(2)
+//             car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'ext_color': ext_color}, {'int_color': int_color}, {'ext_type': ext_type}]}).sort({_id:-1})
 //         else if(num == 2)
-//             car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'ext_color': ext_color}, {'int_color': int_color}, {'ext_type': ext_type}]}).sort({price: 1}).limit(2)
+//             car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'ext_color': ext_color}, {'int_color': int_color}, {'ext_type': ext_type}]}).sort({price: 1})
 //         else
-//             car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'ext_color': ext_color}, {'int_color': int_color}, {'ext_type': ext_type}]}).sort({price: -1}).limit(2)
+//             car = await Car.find({$and:[{'company': company}, {'model': model}, {'trim': trim}, {'year': year}, {'ext_color': ext_color}, {'int_color': int_color}, {'ext_type': ext_type}]}).sort({price: -1})
 //         res.json({
 //             "data": car,
 //             "message": "List of all cars based on user search request",

@@ -151,6 +151,10 @@ const carSchema = new mongoose.Schema({
     ext_type: {
         type: String,
         required: false
+    },
+    date: {
+        type: Number,
+        required: false
     }
 })
-module.exports = mongoose.model('Car', carSchema)
+module.exports = mongoose.model('CAR', carSchema)
