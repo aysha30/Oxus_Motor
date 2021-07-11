@@ -13,6 +13,9 @@ import img2 from "../assets/car3.png";
 import img3 from "../assets/car4.png";
 import './explore.css';
 import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useHistory, generatePath } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -20,15 +23,12 @@ const useStyles = makeStyles((theme) => ({
       width: "100%",
       paddingTop: "1rem",
       height: "600px"
-      // height: "",
-      // paddingBottom: "100px",
-      // alignContent: "center"
+   },
+   img: {
+      height: 280,
+      width: "auto",
    }
-
-
 }))
-
-const images = [img1, img2, img3, img1, img2, img3];
 
 function ExploreCar() {
 
@@ -53,6 +53,21 @@ function ExploreCar() {
    }
 
    const [imageIndex, setImageIndex] = React.useState(0);
+
+   const [ list, setList ] = useState([]);
+
+   useEffect(() => {
+      var url = `http://localhost:3000/home/recent`;
+      axios
+      .get(url)
+      .then(res => {
+         // console.log(res.data.data);
+         setList(res.data.data);
+      })
+      .catch(err => {
+         console.log(err)
+      }) 
+   }, []);
 
    var settings = {
       centerMode: true,
@@ -97,15 +112,15 @@ function ExploreCar() {
    return (
       <div className={classes.root}>
          <Slider {...settings} style={{height: "400px"}}>
-            {images.map((ig, idx) => (
+            {list.map((item, idx) => (
                <div key={uuidv4()} className={idx === imageIndex ? "sl acSlide" : "sl"}>
                   <Box alignSelf="center">
-                     <img src={ig} alt={ig} />
+                  <img className={classes.img} src={item.images[0]} alt={item.company} />
                      
                   </Box>
                   {(idx === imageIndex) ? 
                         <Typography align="center">
-                        <Box fontWeight="fontWeightBold"> Car Name and type <br/> Year<br/> <br/>{" " }</Box>
+                        <Box fontWeight="fontWeightBold"> {item.company}{" "}{item.model} <br/> {item.year}<br/> <br/>{" " }</Box>
                         
                         </Typography>
                      : ""}

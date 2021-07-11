@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {  Grid, Button } from '@material-ui/core';
 import { makeStyles } from "@material-ui/core/styles";
 import AdvSearch from "./advSearch";
+import { WholeContext } from '../../App';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -77,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
 
 function SearchBox({searchChange}) {
 
-    const [ openAdvSch, setOpenAdvSch ] = useState(false);
+    const { openAdvSch, setOpenAdvSch } = useContext(WholeContext);
     const classes = useStyles();
 
     return(

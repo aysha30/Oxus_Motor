@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "./modules/Navbar";
 import Footer from "./modules/Footer";
 import Box from "@material-ui/core/Box";
-import { Button, Container, Grid, Link, Typography } from "@material-ui/core";
+import { Button, Container, Grid, Link, MenuItem, Typography } from "@material-ui/core";
 //import "react-alice-carousel/lib/alice-carousel.css";
 
 import "../App.css";
 //import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Carousel from "react-elastic-carousel";
 
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -39,13 +38,15 @@ import SedanInOxus from './home-component/sedanInOxus';
 import SUVInOxus from './home-component/suvInOxus';
 import LuxuryInOxus from './home-component/luxuryInOxus';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { InventoryContext } from "../Context/InventoryContext/inventoryContext";
+import { WholeContext } from "../App";
 
 
 
 const images = [img1, img2, img3, deals]
 
 const useStyles = makeStyles((theme) => ({
-   formControl: {
+   formControlBtn: {
       margin: theme.spacing(3),
       minWidth: 170,
       minHeight: 50,
@@ -55,6 +56,10 @@ const useStyles = makeStyles((theme) => ({
    },
    diffPaper: {
       margin: theme.spacing(2),
+   },
+   formControl: {
+      margin: theme.spacing(1),
+      minWidth: 200,
    },
 }));
 
@@ -72,14 +77,14 @@ export default function Home() {
       width: "100",
    };
 
-   const [make, setMake] = React.useState("");
-   const handleCh1 = (e) => setMake(e.target.value);
 
-   const [model, setModel] = React.useState("");
-   const handleCh2 = (e) => setModel(e.target.value);
+   const [ make, setMake ] = useState('Toyota');
+   const [ model, setModel ] = useState('CH-R');
+   const [ trim, setTrim ] = useState('XLE'); 
+   const [ year, setYear ] = useState(2019);
+      // console.log(make, model, trim, year);
+   const {setOpenAdvSch} = useContext(WholeContext)
 
-   const [trim, setTrim] = React.useState("");
-   const handleCh3 = (e) => setTrim(e.target.value);
    const settings = {
       infinite: true,
       lazyload: true,
@@ -91,6 +96,13 @@ export default function Home() {
 
    return (
       <React.Fragment>
+      <InventoryContext.Provider 
+            value={{
+               make, setMake, 
+               model, setModel,
+               trim, setTrim,
+               year, setYear,
+            }}>
          <Navbar />
          <Box bgcolor="primary.main" color="white" style={{ height: "600px", marginTop: "60px" }}>
             <Container maxWidth="lg">
@@ -136,75 +148,82 @@ export default function Home() {
                         </Typography>
                      </Grid>
                      <Grid item xs={12} sm>
-                        <Box>
-                           <FormControl className={classes.formControl}>
-                              <InputLabel>Make</InputLabel>
-                              <Select native onChange={handleCh1}>
-                                 <option aria-label="None" value="" />
-                                 <option value={1}>Toyota</option>
-                                 <option value={2}>Maserati</option>
-                                 <option value={3}>Porsche</option>
-                                 <option value={4}>Tesla</option>
-                              </Select>
-                           </FormControl>
-                        </Box>{" "}
+                     <FormControl variant="outlined" className={classes.formControl}>
+                        <InputLabel>Make</InputLabel>
+                        <Select
+                        value={make}
+                        onChange={(make) => { setMake(make.target.value)}}
+                        label="Make"
+                        >
+                        
+                        <MenuItem value={"Toyota"}>Toyota</MenuItem>
+                        <MenuItem value={"BMW"}>BMW</MenuItem>
+                        <MenuItem value={"Tata"}>Tata</MenuItem>
+                        </Select>
+                     </FormControl>
                      </Grid>
                      <Grid item xs={12} sm>
-                        <Box>
-                           <FormControl className={classes.formControl}>
-                              <InputLabel>Model</InputLabel>
-                              <Select native onChange={handleCh2}>
-                                 <option aria-label="None" value="" />
-                                 <option value={1}>A</option>
-                                 <option value={2}>B</option>
-                                 <option value={3}>C</option>
-                                 <option value={4}>D</option>
-                              </Select>
-                           </FormControl>
-                        </Box>{" "}
+                     <FormControl variant="outlined" className={classes.formControl}>
+                        <InputLabel>Model</InputLabel>
+                        <Select
+                        value={model}
+                        onChange={(model) => setModel(model.target.value)}
+                        label="Model"
+                        >
+                        
+                        <MenuItem value={"CH-R"}>CH - R</MenuItem>
+                        <MenuItem value={"X7"}>X7</MenuItem>
+                        <MenuItem value={"Harrier"}>Harrier</MenuItem>
+                        </Select>
+                     </FormControl>
                      </Grid>
                      <Grid item xs={12} sm>
-                        <Box>
-                           <FormControl className={classes.formControl}>
-                              <InputLabel>Trim</InputLabel>
-                              <Select native onChange={handleCh3}>
-                                 <option aria-label="None" value="" />
-                                 <option value={1}>1</option>
-                                 <option value={2}>2</option>
-                                 <option value={3}>3</option>
-                                 <option value={4}>4</option>
-                              </Select>
-                           </FormControl>
-                        </Box>
+                     <FormControl variant="outlined" className={classes.formControl}>
+                        <InputLabel>Trim</InputLabel>
+                        <Select
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
+                        value={trim}
+                        onChange={(trim) => { setTrim(trim.target.value)}}
+                        label="Trim"
+                        >
+                        <MenuItem value="XLE">XLE</MenuItem>
+                        <MenuItem value="XLA">TLE</MenuItem>
+                        <MenuItem value="MLE">MLE</MenuItem>
+                        </Select>
+                     </FormControl>
                      </Grid>
                      <Grid item xs={12} sm>
-                        <Box>
-                           {" "}
-                           <FormControl className={classes.formControl}>
-                              <InputLabel htmlFor="stp-native-select">Year</InputLabel>
-                              <Select native defaultValue="" id="stp-native-select">
-                                 <option aria-label="None" disabled value="" />
-                                 <option value={1}>Option 1</option>
-                                 <option value={2}>Option 2</option>
-                                 <option value={3}>Option 3</option>
-                                 <option value={4}>Option 4</option>
-                              </Select>
-                           </FormControl>
-                        </Box>
+                     <FormControl variant="outlined" className={classes.formControl}>
+                        <InputLabel id="demo-simple-select-outlined-label">Year</InputLabel>
+                        <Select
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
+                        value={year}
+                        onChange={(year) => { setYear(year.target.value)}}
+                        label="Year"
+                        >
+                        <MenuItem value={2019}>2019</MenuItem>
+                        <MenuItem value={2020}>2020</MenuItem>
+                        <MenuItem value={2021}>2021</MenuItem>
+                        </Select>
+                     </FormControl>
                      </Grid>
-                     <Box>
+                     
                         <Grid item xs={12} sm>
-                           <Box>
-                              <FormControl className={classes.formControl}>
-                                 <Button variant="contained" color="primary">
-                                    <Typography color="white" variant="button">
-                                       Search
-                                    </Typography>
-                                 </Button>
-                              </FormControl>
-                           </Box>
+                           <a href="/Inventory">
+                           <Button
+                              onClick={() => setOpenAdvSch(true)}
+                              type='submit'
+                              variant="contained" 
+                              style={{height: 50, width: 150, padding: "2px", margin:"10px" }}
+                              color="primary"  >
+                              Search
+                           </Button>
+                           </a>
+                        
                         </Grid>
-                     </Box>
+                     
                   </Grid>
                </Paper>
             </Container>
@@ -346,7 +365,7 @@ export default function Home() {
             </Box>
          </Typography>
          <RecentInOxus />
-         <Grid container fullwidth='true' justify="center" >
+         <Grid container fullwidth='true' justify="center" style={{marginTop: "90px"}} >
             <Grid item>
             <Typography >
                <Box component={Link}
@@ -362,13 +381,22 @@ export default function Home() {
             
             </Grid>
          </Grid>
+
+         <Typography variant="h5" align="center">
+            <Box m={3} p={3} fontWeight="fontWeightBold">
+               Browse by brand
+            </Box>
+         </Typography>
+         <Brands/>
+
+
          <Typography variant="h5" align="center">
             <Box m={3} p={3} fontWeight="fontWeightBold">
                Sedans in Oxus
             </Box>
          </Typography>
          <SedanInOxus />
-         <Grid container fullwidth='true' justify="center" >
+         <Grid container fullwidth='true' justify="center" style={{marginTop: "90px"}} >
             <Grid item>
             <Typography >
                <Box component={Link}
@@ -390,7 +418,7 @@ export default function Home() {
             </Box>
          </Typography>
          <SUVInOxus />
-         <Grid container fullwidth='true' justify="center" >
+         <Grid container fullwidth='true' justify="center" style={{marginTop: "90px"}} >
             <Grid item>
             <Typography >
                <Box component={Link}
@@ -412,7 +440,7 @@ export default function Home() {
             </Box>
          </Typography>
          <LuxuryInOxus />
-         <Grid container fullwidth='true' justify="center" >
+         <Grid container fullwidth='true' justify="center" style={{marginTop: "90px"}} >
             <Grid item>
             <Typography >
                <Box component={Link}
@@ -432,6 +460,7 @@ export default function Home() {
          <LatestNews />
          <CheckOut/>
          <Footer />
+         </InventoryContext.Provider>
       </React.Fragment>
    );
 }

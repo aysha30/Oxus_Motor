@@ -13,9 +13,6 @@ import {
     Typography, 
     Tabs,
     Tab } from '@material-ui/core';
-
-
-    // import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -70,105 +67,6 @@ const useStyles = makeStyles((theme) => ({
     
 }))
 
-// const carArray = [
-//     {
-//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-//         name: "Mercedes Benz1",
-//         fullPrice: "  $50,000",
-//         monthly: "  $2,000",
-//         year: 2020,
-//         fuel: "Diesel",
-//         gear: "Full Automatic",
-//         km: 37400,
-//         bodyType: "SUV",
-//         enginePower: "125 hp"
-//     },
-//     {
-//         src: "https://freepngimg.com/thumb/car/4-2-car-png-hd.png",
-//         name: "Mercedes Benz2",
-//         fullPrice: "  $50,000",
-//         monthly: "  $2,000",
-//         year: 2020,
-//         fuel: "Diesel",
-//         gear: "Full Automatic",
-//         km: 37400,
-//         bodyType: "SUV",
-//         enginePower: "125 hp"
-//     },
-//     {
-//         src: "https://i.pinimg.com/originals/dc/19/e9/dc19e9b94a372ebc21ffeb7623d5632a.png",
-//         name: "Mercedes Benz3",
-//         fullPrice: "  $50,000",
-//         monthly: "  $2,000",
-//         year: 2020,
-//         fuel: "Diesel",
-//         gear: "Full Automatic",
-//         km: 37400,
-//         bodyType: "SUV",
-//         enginePower: "125 hp"
-//     },
-//     {
-//         src: "https://www.nicepng.com/png/detail/936-9365791_free-png-download-car-png-images-background-png.png",
-//         name: "Mercedes Benz4",
-//         fullPrice: "  $50,000",
-//         monthly: "  $2,000",
-//         year: 2020,
-//         fuel: "Diesel",
-//         gear: "Full Automatic",
-//         km: 37400,
-//         bodyType: "SUV",
-//         enginePower: "125 hp"
-//     },
-//     {
-//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-//         name: "Mercedes Benz5",
-//         fullPrice: "  $50,000",
-//         monthly: "  $2,000",
-//         year: 2020,
-//         fuel: "Diesel",
-//         gear: "Full Automatic",
-//         km: 37400,
-//         bodyType: "SUV",
-//         enginePower: "125 hp"
-//     },
-//     {
-//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-//         name: "Mercedes Benz6",
-//         fullPrice: "  $50,000",
-//         monthly: "  $2,000",
-//         year: 2020,
-//         fuel: "Diesel",
-//         gear: "Full Automatic",
-//         km: 37400,
-//         bodyType: "SUV",
-//         enginePower: "125 hp"
-//     },
-//     {
-//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-//         name: "Mercedes Benz7",
-//         fullPrice: "  $50,000",
-//         monthly: "  $2,000",
-//         year: 2020,
-//         fuel: "Diesel",
-//         gear: "Full Automatic",
-//         km: 37400,
-//         bodyType: "SUV",
-//         enginePower: "125 hp"
-//     },
-//     {
-//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-//         name: "Mercedes Benz8",
-//         fullPrice: "  $50,000",
-//         monthly: "  $2,000",
-//         year: 2020,
-//         fuel: "Diesel",
-//         gear: "Full Automatic",
-//         km: 37400,
-//         bodyType: "SUV",
-//         enginePower: "125 hp"
-//     },
-
-// ];
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;

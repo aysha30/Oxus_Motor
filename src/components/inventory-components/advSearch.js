@@ -26,6 +26,7 @@ import {ToggleButtonGroup, ToggleButton} from '@material-ui/lab';
 import axios from 'axios';
 
 import { InventoryContext } from '../../Context/InventoryContext/inventoryContext';
+import { WholeContext } from '../../App';
 
 const useStyle = makeStyles((theme) => ({
     root: {
@@ -244,58 +245,34 @@ export default function AdvSearch( props ) {
         extColType, setExtColType,
         photo, setPhoto,
         sort,
-        advFilter, setAdvFilter } = useContext(InventoryContext);
-
+        advFilter, setAdvFilter} = useContext(InventoryContext);
+    const { openAdvSch, setOpenAdvSch } = props;
+// console.log(openAdvSch)
     const [value, setValue] = useState(0);
     
     const handleChange = (event, newValue) => {
         if(newValue != null)
         setValue(newValue);
     };
-    const { openAdvSch, setOpenAdvSch } = props;
 // console.log(make, model, trim, year, 
 //     priceValue[0]*1000 ,priceValue[1]*1000, mileageValue[0]*1000, 
 //     mileageValue[1]*1000, cylinder, cylinderType, condition, 
 //     extColor, intColor, extColType, sort);
 
 let cancelToken
-
-
-
-    // useEffect( () => { 
-    //     var url = `http://localhost:3000/inventory/advance-search/${make}/${model}/${trim}/${year}/${priceValue[0]*1000}/${priceValue[1]*1000}/${mileageValue[0]*1000}/${mileageValue[1]*1000}/${cylinder}/${cylinderType}/${condition}/${extColor}/${intColor}/${extColType}/${sort}`;
-
-        
-    //         axios
-    //         .get(url)
-    //         .then(res => {
-    //             // console.log(res.data.data.length);
-    //             // console.log('listItems', listItems)
-    //             if(res.data.data.length && res.data.data !== listItems){
-    //                 setListItems(res.data.data)
-    //             }
-    //             // console.log(`http://localhost:3000/inventory/advance-search/${make}/${model}/${trim}/${year}/${priceValue[0]*1000}/${priceValue[1]*1000}/${mileageValue[0]*1000}/${mileageValue[1]*1000}/${cylinder}/${cylinderType}/${condition}/${extColor}/${intColor}/${extColType}/${sort}`)
-                
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //         }) 
-        
-    // }, [setListItems, listItems, make, model, trim, year, priceValue, mileageValue, cylinder, cylinderType, condition, extColor, intColor, extColType, sort])
-
     const handleFilter = async e => {
         e.preventDefault();
         if (typeof cancelToken != typeof undefined) {
             cancelToken.cancel("Operation canceled due to new request.")
         }
         cancelToken = axios.CancelToken.source()
-        var url = `http://localhost:3000/inventory/advance-search/${make}/${model}/${trim}/${year}/${priceValue[0]*1000}/${priceValue[1]*1000}/${mileageValue[0]*1000}/${mileageValue[1]*1000}/${cylinder}/${cylinderType}/${condition}/${extColor}/${intColor}/${extColType}/${sort}`;
+        var url = `http://localhost:3000/inventory/advance-search/${make}/${model}/${trim}/${year}/${priceValue[0]*1000}/${priceValue[1]*1000}/${mileageValue[0]*1000}/${mileageValue[1]*1000}/${dayValue[0]}/${dayValue[1]}/${cylinder}/${cylinderType}/${condition}/${extColor}/${intColor}/${extColType}/${sort}`;
         
         try {
             const results = await axios.get(url,
                 { cancelToken: cancelToken.token }
             )
-                console.log( results.data.data)
+                console.log(`http://localhost:3000/inventory/advance-search/${make}/${model}/${trim}/${year}/${priceValue[0]*1000}/${priceValue[1]*1000}/${mileageValue[0]*1000}/${mileageValue[1]*1000}/${dayValue[0]}/${dayValue[1]}/${cylinder}/${cylinderType}/${condition}/${extColor}/${intColor}/${extColType}/${sort}`)
                 setListItems(results.data.data)
             
         } 
@@ -303,7 +280,7 @@ let cancelToken
             console.log(error)
         }
         setAdvFilter(true);
-        setOpenAdvSch(!openAdvSch)
+        setOpenAdvSch(false);
     }
         
     

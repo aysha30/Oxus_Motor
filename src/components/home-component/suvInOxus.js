@@ -9,15 +9,15 @@ import {
    Grid,
    CardContent,
    useMediaQuery,
-   CardHeader
+   CardHeader, Divider
 } from '@material-ui/core';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
-import img1 from "./card2.png";
-import img2 from "./car3.png";
-import img3 from "./car4.png";
 import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useHistory, generatePath } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,11 +29,19 @@ const useStyles = makeStyles((theme) => ({
    },
    paper: {
       borderRadius: 10,
+      margin: 0,
+      padding: 0,
    },
-
+   img: {
+      height: 200,
+      [theme.breakpoints.down(840)]:{
+         width: "100%",
+      },
+      [theme.breakpoints.up('sm')]:{
+         width: 300,
+      },
+   },
 }))
-
-const images = [img1, img2, img3, img1, img2, img3];
 
 function SUVInOxus() {
 
@@ -59,6 +67,23 @@ function SUVInOxus() {
 
    const [imageIndex, setImageIndex] = React.useState(0);
 
+   const [ id, setId ] = useState();
+   const history = useHistory();
+
+   const [ list, setList ] = useState([]);
+
+   useEffect(() => {
+      var url = `http://localhost:3000/home/body_style/SUV`;
+      axios
+      .get(url)
+      .then(res => {
+         // console.log(res.data.data);
+         setList(res.data.data);
+      })
+      .catch(err => {
+         console.log(err)
+      }) 
+   }, []);
    var settings = {
       centerMode: true,
       infinite: true,
@@ -101,28 +126,33 @@ function SUVInOxus() {
    return (
       <div className='recent'>
          <Slider {...settings}>
-            {images.map((img, idx) => (
+            {list.map((item, idx) => (
                <div key={uuidv4()} className={idx === imageIndex ? "slide activeSlide" : "slide"}>
                   {/* <img src={img} alt={img} /> */}
                   <Paper className={classes.paper}>
                      <CardActionArea>
                         <CardHeader title={
-                           <Typography align="center" variant="h5"  >
+                           <Typography align="center" variant="h6"  >
                               <Box fontWeight="fontWeighBold" >
-                                 BMW Car
+                              {item.company}{" "}{item.model}
                               </Box>
                            </Typography>
-                        } />
+                        } /><Divider/>
                         {/* <CardMedia image={img}  /> */}
                         <CardContent>
-                           <img src={img} alt={img} />
+                           <img className={classes.img} src={item.images[0]} alt={item.company} />
+                           </CardContent>
+                        
+                        <Divider/>
+                        
+                        <CardContent>
                            <Box display="flex">
                               <Grid item container justify="center">
                                  <Box fontWeight="fontWeightMedium" >
                                     <Typography variant={matches ? 'subtitle1': 'caption'}>Full Price&nbsp;</Typography>
                                  </Box>
                                  <Box >
-                                    <Typography variant={matches ? 'subtitle1': 'caption'}> $1025.25</Typography>
+                                    <Typography variant={matches ? 'subtitle1': 'caption'}> ${item.price}</Typography>
                                  </Box>
                               </Grid>
                               <Grid item container justify="center">
@@ -130,13 +160,17 @@ function SUVInOxus() {
                                     <Typography variant={matches ? 'subtitle1': 'caption'}>Monthly&nbsp; </Typography>
                                  </Box>
                                  <Box>
-                                    <Typography variant={matches ? 'subtitle1': 'caption'}>$1025.25</Typography>
+                                    <Typography variant={matches ? 'subtitle1': 'caption'}>${item.price}</Typography>
                                  </Box>
                               </Grid>
                            </Box>
                            {(idx === imageIndex) ?
                               <Grid container justify="center">
-                                 <Typography align="center" variant={matches ? 'subtitle1': 'caption'}>
+                                 <Typography align="center" variant={matches ? 'subtitle1': 'caption'}
+                                 onClick={()=> {
+                                    setId(item._id)
+                                    id && history.push(generatePath("/cars/:id", { id }))}}
+                                 >
                                     View details
                                  </Typography>
                               </Grid>

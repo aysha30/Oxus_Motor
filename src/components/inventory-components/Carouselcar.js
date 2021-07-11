@@ -263,7 +263,7 @@ function Carouselcar({ id }) {
                     <Grid item> 
                         <Typography className={classes.carName} variant={(matches) ? "button" : "h4"}  align="left" gutterBottom>
                             <Box fontWeight="fontWeightBold">
-                            {carArray.name}
+                            {carArray.company}{" "}{carArray.model}
                             </Box> 
                         </Typography>
                         <Typography className={classes.carName} variant={(matches) ? "button" : "h4"} align="left" gutterBottom>

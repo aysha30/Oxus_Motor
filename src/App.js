@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from "./components/Home";
 import Contact from "./components/Contact";
@@ -6,9 +6,14 @@ import Inventory from "./components/Inventory";
 import Details from "./components/details";
 import About from "./components/About";
 import "./App.css";
+export const WholeContext = createContext({});
 
 function App() {
+  
+  const [ openAdvSch, setOpenAdvSch ] = useState(false);
+  // console.log(openAdvSch)
   return (
+    <WholeContext.Provider value={{openAdvSch, setOpenAdvSch}}>
     <BrowserRouter>
       <Switch>
         <Route exact component={Home} path='/' />
@@ -21,6 +26,7 @@ function App() {
       
       </Switch>
     </BrowserRouter>
+    </WholeContext.Provider>
   );
 }
 

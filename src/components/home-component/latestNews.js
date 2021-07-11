@@ -17,6 +17,8 @@ import './latest.css';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import LocalOfferOutlinedIcon from '@material-ui/icons/LocalOfferOutlined';
 import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -55,6 +57,21 @@ function LatestNews() {
     }
 
     const [imageIndex, setImageIndex] = React.useState(0);
+
+    const [ list, setList ] = useState([]);
+
+    useEffect(() => {
+        var url = `http://localhost:3000/home/recent`;
+        axios
+        .get(url)
+        .then(res => {
+            // console.log(res.data.data);
+            setList(res.data.data);
+        })
+        .catch(err => {
+            console.log(err)
+        }) 
+    }, []);
 
     var settings = {
         centerMode: true,
@@ -107,19 +124,19 @@ function LatestNews() {
                 </Box>
             </Typography>
             <Slider {...settings}>
-                {images.map((img, idx) => (
+                {list.map((item, idx) => (
                     <div key={uuidv4()} className={idx === imageIndex ? "slides actSlide" : "slides"}>
                         <Paper className={classes.paper} square elevation={idx === imageIndex ? 7 : 1} >
 
                             {/* <img src={img}height="200px" alt={img} /> */}
                             <CardContent>
                                 <div className="container">
-                                    <img src={img} alt={img} />
+                                <img src={item.images[0]} alt={item.company} />
                                     <IconButton className="btn" size="small" ><FavoriteBorderIcon /></IconButton>
                                 </div>
                                 <Typography variant="body2">
                                     <Box fontWeight="fontWeightBold">
-                                        Car Name
+                                    {item.company}{" "}{item.model}
                                     </Box>
                                     Date
                                 </Typography>

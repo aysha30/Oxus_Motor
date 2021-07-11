@@ -1,0 +1,13 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+#paper {
+  transform: scale(0.9);
+  clip-path: polygon(0 29%, 0 71%, 50% 100%, 100% 71%, 100% 29%, 50% 0);
+  background-color: #fff;
+}
+@media only screen and (min-width: 600px) {
+  #paper {
+    transform: scale(0.8);
+  }
+}
