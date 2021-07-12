@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "engines": {
+    "node": "14.16.1",
+    "npm": "6.14.12"
+  }
   "scripts": {
     "start": "node app.js",
     "build": "webpack"
