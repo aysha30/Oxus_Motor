@@ -7,9 +7,10 @@ dotenv.config({path: './config.env'})
 
 app.use(cors())
 
+const mongo_uri = process.env.DATABASE;
 
 const connectDB = async () => {
-  await mongoose.connect(process.env.DATABASE, {
+  await mongoose.connect(mongo_uri, {
     useUnifiedTopology: true,
     useNewUrlParser: true
   });
