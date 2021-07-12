@@ -1,7 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
 var cors = require('cors')
-const URI = 'mongodb+srv://aysha30:aysha30@cluster0.xy1g7.mongodb.net/mern?retryWrites=true&w=majority'
 const app = express()
 const dotenv = require('dotenv');
 dotenv.config({path: './config.env'})
@@ -10,7 +9,7 @@ app.use(cors())
 
 
 const connectDB = async () => {
-  await mongoose.connect(URI, {
+  await mongoose.connect(process.env.DATABASE, {
     useUnifiedTopology: true,
     useNewUrlParser: true
   });
