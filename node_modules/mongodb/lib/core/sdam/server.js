@@ -20,6 +20,7 @@ const isNodeShuttingDownError = require('../error').isNodeShuttingDownError;
 const isNetworkErrorBeforeHandshake = require('../error').isNetworkErrorBeforeHandshake;
 const maxWireVersion = require('../utils').maxWireVersion;
 const makeStateMachine = require('../utils').makeStateMachine;
+const extractCommand = require('../../command_utils').extractCommand;
 const common = require('./common');
 const ServerType = common.ServerType;
 const isTransactionCommand = require('../transactions').isTransactionCommand;
@@ -49,6 +50,7 @@ const DEBUG_FIELDS = [
   'promoteLongs',
   'promoteValues',
   'promoteBuffers',
+  'bsonRegExp',
   'servername'
 ];
 
@@ -166,6 +168,10 @@ class Server extends EventEmitter {
     return this.s.description;
   }
 
+  get supportsRetryableWrites() {
+    return supportsRetryableWrites(this);
+  }
+
   get name() {
     return this.s.description.address;
   }
@@ -261,10 +267,11 @@ class Server extends EventEmitter {
 
     // Debug log
     if (this.s.logger.isDebug()) {
+      const extractedCommand = extractCommand(cmd);
       this.s.logger.debug(
         `executing command [${JSON.stringify({
           ns,
-          cmd,
+          cmd: extractedCommand.shouldRedact ? `${extractedCommand.name} details REDACTED` : cmd,
           options: debugOptions(DEBUG_FIELDS, options)
         })}] against ${this.name}`
       );

@@ -8,6 +8,7 @@ const MongoError = require('../core').MongoError;
 const parseIndexOptions = require('../utils').parseIndexOptions;
 const ReadPreference = require('../core').ReadPreference;
 const toError = require('../utils').toError;
+const extractCommand = require('../command_utils').extractCommand;
 const CONSTANTS = require('../constants');
 const MongoDBNamespace = require('../utils').MongoDBNamespace;
 
@@ -23,6 +24,7 @@ const debugFields = [
   'promoteLongs',
   'promoteValues',
   'promoteBuffers',
+  'bsonRegExp',
   'bufferMaxEntries',
   'numberOfRetries',
   'retryMiliSeconds',
@@ -227,14 +229,16 @@ function executeCommand(db, command, options, callback) {
   options.readPreference = ReadPreference.resolve(db, options);
 
   // Debug information
-  if (db.s.logger.isDebug())
+  if (db.s.logger.isDebug()) {
+    const extractedCommand = extractCommand(command);
     db.s.logger.debug(
       `executing command ${JSON.stringify(
-        command
+        extractedCommand.shouldRedact ? `${extractedCommand.name} details REDACTED` : command
       )} against ${dbName}.$cmd with options [${JSON.stringify(
         debugOptions(debugFields, options)
       )}]`
     );
+  }
 
   // Execute command
   db.s.topology.command(db.s.namespace.withCollection('$cmd'), command, options, (err, result) => {
