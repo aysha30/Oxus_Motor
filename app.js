@@ -21,11 +21,6 @@ const connectDB = async () => {
 
 connectDB()
 
-app.use(function(req, res, next) {//https://boiling-taiga-29797.herokuapp.com
-  res.header("Access-Control-Allow-Origin", "https://boiling-taiga-29797.herokuapp.com"); // update to match the domain you will make the request from
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
 
 app.use(express.json())
 
@@ -41,9 +36,7 @@ app.use('/contactUs', contactUsRouter)
 const homeRouter = require('./routes/home')
 app.use('/home', homeRouter)
 
-const Port = process.env.PORT;
-
-app.listen(Port, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log('Server started')
-  console.log(`app is running on port ${Port}`);
+  console.log(`app is running on port ${process.env.PORT}`);
 })
