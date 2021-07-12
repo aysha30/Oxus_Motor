@@ -1,11 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose')
-var cors = require('cors')
+const cors = require('cors')
 const app = express()
+app.use(cors());
 const dotenv = require('dotenv');
+
 dotenv.config({path: './config.env'})
 
-app.use(cors())
 
 const mongo_uri = process.env.DATABASE;
 
@@ -33,7 +34,7 @@ app.use('/contactUs', contactUsRouter)
 const homeRouter = require('./routes/home')
 app.use('/home', homeRouter)
 
-const Port = process.env.PORT || 3000;
+const Port = process.env.PORT;
 
 app.listen(Port, () => {
   console.log('Server started')
