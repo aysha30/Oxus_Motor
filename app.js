@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const app = express()
+
 app.use(cors());
 const dotenv = require('dotenv');
 
@@ -19,6 +20,12 @@ const connectDB = async () => {
 };
 
 connectDB()
+
+app.use(function(req, res, next) {//https://boiling-taiga-29797.herokuapp.com
+  res.header("Access-Control-Allow-Origin", "https://boiling-taiga-29797.herokuapp.com"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use(express.json())
 
