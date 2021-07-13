@@ -36,7 +36,13 @@ app.use('/contactUs', contactUsRouter)
 const homeRouter = require('./routes/home')
 app.use('/home', homeRouter)
 
-app.listen(process.env.PORT || 5000, () => {
+if(process.env.NODE_ENV == "production"){
+  app.use(express.static("client/build"));
+}
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
   console.log('Server started')
-  console.log(`app is running on port ${process.env.PORT}`);
+  console.log(`app is running on port ${PORT}`);
 })
