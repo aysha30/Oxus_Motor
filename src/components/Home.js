@@ -352,14 +352,14 @@ export default function Home() {
          <Grid container fullwidth='true' justifyContent="center" style={{marginTop: "90px"}} >
             <Grid item>
             <Typography >
+            <NavLink to="/Inventory" >
                <Box component={Link}
                fontWeight="fontWeightBold"
                underline="hover"
                color="#000"
-               href="/Inventory"
                >
                   View all <ExpandMoreIcon />
-               </Box>
+               </Box></NavLink>
             </Typography>
             
             </Grid>
@@ -382,14 +382,13 @@ export default function Home() {
          <Grid container fullwidth='true' justifyContent="center" style={{marginTop: "90px"}} >
             <Grid item>
             <Typography >
+            <NavLink to="/Inventory" >
                <Box component={Link}
                fontWeight="fontWeightBold"
                underline="hover"
-               color="#000"
-               href="/Inventory"
                >
                   View all <ExpandMoreIcon />
-               </Box>
+               </Box></NavLink>
             </Typography>
             
             </Grid>
@@ -403,14 +402,14 @@ export default function Home() {
          <Grid container fullwidth='true' justifyContent="center" style={{marginTop: "90px"}} >
             <Grid item>
             <Typography >
+            <NavLink to="/Inventory" >
                <Box component={Link}
                fontWeight="fontWeightBold"
                underline="hover"
                color="#000"
-               href="/Inventory"
                >
                   View all <ExpandMoreIcon />
-               </Box>
+               </Box></NavLink>
             </Typography>
             
             </Grid>
@@ -424,14 +423,14 @@ export default function Home() {
          <Grid container fullwidth='true' justifyContent="center" style={{marginTop: "90px"}} >
             <Grid item>
             <Typography >
-               <Box component={Link}
+            <NavLink to="/Inventory" >
+               <Box
                fontWeight="fontWeightBold"
                underline="hover"
                color="#000"
-               href="/Inventory"
                >
                   View all <ExpandMoreIcon />
-               </Box>
+               </Box></NavLink>
             </Typography>
             
             </Grid>

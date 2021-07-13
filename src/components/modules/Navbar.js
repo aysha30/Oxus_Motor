@@ -8,6 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import {Button} from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import OxusCare from "./oxusCare.js";
@@ -129,7 +130,7 @@ export default function Navbar() {
                <p>Contact</p>
             </MenuItem>
          </NavLink>
-         <NavLink underline="always" to="#">
+         <NavLink underline="none"onClick={() => setOpenCare(true)} to="#">
             <MenuItem>
                <p>Oxus Car Care</p>
             </MenuItem>
@@ -144,12 +145,13 @@ export default function Navbar() {
       <div className={classes.grow}>
          <AppBar>
             <Toolbar>
+            <NavLink to="/">
                <Typography variant="h6" noWrap>
                   <img src={logo} 
                   height="30" 
                   alt="OXUS" />
                </Typography>
-
+            </NavLink>
                <div className={classes.grow} />
                <div className={classes.sectionDesktop}>
                   <Typography className={classes.navmenu}>
@@ -181,17 +183,17 @@ export default function Navbar() {
                         {" "}
                         Contact{" "}
                      </NavLink>
-                     <NavLink
+                     <Button
                         className={classes.navmenu}
                         onClick={() => setOpenCare(true)}
-                        to="#"
+                        
                      >
                         {" "}
                         Oxus Car Care{" "}
-                     </NavLink>
+                     </Button>
                      <NavLink
                         className={classes.navmenu}
-                        to="#"
+                        to="/Inventory"
                      >
                         {" "}
                         <SearchIcon />{" "}

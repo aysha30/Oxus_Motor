@@ -19,19 +19,21 @@ const useStyles = makeStyles((theme) => ({
         // alignItems: "center",
     },
     carItem: {
+        display: "flex",
         height: 70,
         [theme.breakpoints.down(1200)]:{
         // padding: "0px 20px",
         // padding: "10px 0px",
-        width: "100%", 
+        width: "100vw", 
+        // marginLeft:"-50px"
         },
         [theme.breakpoints.up(1201)]:{
             width: 600,
         },
     },
     toolbar:{
-        width: "100%",
-        display: "flex",
+        width: "100vw",
+        // display: "block",
     },
     formControl: {
         margin: theme.spacing(1),
@@ -67,7 +69,7 @@ function OptionBar(props) {
 
     return(
         <div className={classes.root}>
-            <Toolbar >
+            {/* <Toolbar > */}
             <Grid container
             className={classes.toolbar}
                 direction="row"
@@ -83,19 +85,19 @@ function OptionBar(props) {
                         // fullwidth="true"
                         onChange={handleCar}
                     >
-                        <ToggleButton  value="Luxury" style={{ borderRadius: 50, margin: 5, border: 2 }}  >
+                        <ToggleButton  value="Luxury" style={{ borderRadius: 50, marginTop: 15, marginBottom: 15, border: 2, marginLeft: 0}}  >
                             Luxury
                         </ToggleButton>
-                        <ToggleButton value="SUV" style={{ borderRadius: 50, margin: 5, border: 2 }} >
+                        <ToggleButton value="SUV" style={{ borderRadius: 50, marginTop: 15, marginBottom: 15, border: 2, marginLeft: 0 }} >
                             SUV
                         </ToggleButton>
-                        <ToggleButton value="Sedan" style={{ borderRadius: 50, margin: 5, border: 2 }} >
+                        <ToggleButton value="Sedan" style={{ borderRadius: 50, marginTop: 15, marginBottom: 15, border: 2, marginLeft: 0 }} >
                             Sedan
                         </ToggleButton>
-                        <ToggleButton value="Sport" style={{ borderRadius: 50, margin: 5, border: 2 }} >
+                        <ToggleButton value="Sport" style={{ borderRadius: 50, marginTop: 15, marginBottom: 15, border: 2, marginLeft: 0 }} >
                             Sport
                         </ToggleButton>
-                        <ToggleButton value="Coupe" style={{ borderRadius: 50, margin: 5, border: 2 }} >
+                        <ToggleButton value="Coupe" style={{ borderRadius: 50, marginTop: 15, marginBottom: 15, border: 2, marginLeft: 0 }} >
                             Coupe
                         </ToggleButton>
                     </ToggleButtonGroup>
@@ -146,7 +148,7 @@ function OptionBar(props) {
                 </Grid>
                 
             </Grid>
-            </Toolbar>
+            {/* </Toolbar> */}
         </div>
     )
 }
