@@ -78,7 +78,7 @@ function Inventory() {
     
 
     useEffect(() => {
-        var url = `http://localhost:3000/inventory/`;
+        var url = `/inventory/`;
         const apiUrl = (url) => {
         
             if(searchfield.length)

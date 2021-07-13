@@ -14,9 +14,6 @@ import {
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
-import img1 from "./card2.png";
-import img2 from "./car3.png";
-import img3 from "./car4.png";
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -77,7 +74,7 @@ function LuxuryInOxus() {
    const [ list, setList ] = useState([]);
 
    useEffect(() => {
-      var url = `http://localhost:3000/home/body_style/luxury`;
+      var url = `/home/body_style/luxury`;
       axios
       .get(url)
       .then(res => {
@@ -151,7 +148,7 @@ function LuxuryInOxus() {
                         
                         <CardContent>
                            <Box display="flex">
-                              <Grid item container justify="center">
+                              <Grid item container justifyContent="center">
                                  <Box fontWeight="fontWeightMedium" >
                                     <Typography variant={matches ? 'subtitle1': 'caption'}>Full Price&nbsp;</Typography>
                                  </Box>
@@ -159,7 +156,7 @@ function LuxuryInOxus() {
                                     <Typography variant={matches ? 'subtitle1': 'caption'}> ${item.price}</Typography>
                                  </Box>
                               </Grid>
-                              <Grid item container justify="center">
+                              <Grid item container justifyContent="center">
                                  <Box fontWeight="fontWeightMedium" >
                                     <Typography variant={matches ? 'subtitle1': 'caption'}>Monthly&nbsp; </Typography>
                                  </Box>
@@ -169,7 +166,7 @@ function LuxuryInOxus() {
                               </Grid>
                            </Box>
                            {(idx === imageIndex) ?
-                              <Grid container justify="center">
+                              <Grid container justifyContent="center">
                                  <Typography align="center" variant={matches ? 'subtitle1': 'caption'}
                                  onClick={()=> {
                                     setId(item._id)

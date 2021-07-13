@@ -73,7 +73,7 @@ function SedanInOxus() {
    const [ list, setList ] = useState([]);
 
    useEffect(() => {
-      var url = `http://localhost:3000/home/body_style/sedan`;
+      var url = `/home/body_style/sedan`;
       axios
       .get(url)
       .then(res => {
@@ -147,7 +147,7 @@ function SedanInOxus() {
                         
                         <CardContent>
                            <Box display="flex">
-                              <Grid item container justify="center">
+                              <Grid item container justifyContent="center">
                                  <Box fontWeight="fontWeightMedium" >
                                     <Typography variant={matches ? 'subtitle1': 'caption'}>Full Price&nbsp;</Typography>
                                  </Box>
@@ -155,7 +155,7 @@ function SedanInOxus() {
                                     <Typography variant={matches ? 'subtitle1': 'caption'}> ${item.price}</Typography>
                                  </Box>
                               </Grid>
-                              <Grid item container justify="center">
+                              <Grid item container justifyContent="center">
                                  <Box fontWeight="fontWeightMedium" >
                                     <Typography variant={matches ? 'subtitle1': 'caption'}>Monthly&nbsp; </Typography>
                                  </Box>
@@ -165,7 +165,7 @@ function SedanInOxus() {
                               </Grid>
                            </Box>
                            {(idx === imageIndex) ?
-                              <Grid container justify="center">
+                              <Grid container justifyContent="center">
                                  <Typography align="center" variant={matches ? 'subtitle1': 'caption'}
                                  onClick={()=> {
                                     setId(item._id)

@@ -77,7 +77,7 @@ function RecentInOxus() {
    const [ list, setList ] = useState([]);
 
    useEffect(() => {
-      var url = `http://localhost:3000/home/recent`;
+      var url = `/home/recent`;
       axios
       .get(url)
       .then(res => {
@@ -135,7 +135,7 @@ function RecentInOxus() {
          <Slider {...settings} style={{width: "100vw", margin:"0px"}}>
             {list.map((item, idx) => (
                <div key={uuidv4()} className={idx === imageIndex ? "slide activeSlide" : "slide"}>
-                  <Grid container justify="center" alignItems="center" >
+                  <Grid container justifyContent="center" alignItems="center" >
                      <Paper className={classes.paper}>
                      <CardActionArea>
                         <CardHeader title={
@@ -155,7 +155,7 @@ function RecentInOxus() {
                         <CardContent>
                            
                            <Box display="flex">
-                              <Grid item container justify="center">
+                              <Grid item container justifyContent="center">
                                  <Box fontWeight="fontWeightMedium" >
                                     <Typography variant={matches ? 'subtitle1': 'caption'}>Full Price&nbsp;</Typography>
                                  </Box>
@@ -163,7 +163,7 @@ function RecentInOxus() {
                                     <Typography variant={matches ? 'subtitle1': 'caption'}> ${item.price}</Typography>
                                  </Box>
                               </Grid>
-                              <Grid item container justify="center">
+                              <Grid item container justifyContent="center">
                                  <Box fontWeight="fontWeightMedium" >
                                     <Typography variant={matches ? 'subtitle1': 'caption'}>Monthly&nbsp; </Typography>
                                  </Box>
@@ -173,7 +173,7 @@ function RecentInOxus() {
                               </Grid>
                            </Box>
                            {(idx === imageIndex) ?
-                              <Grid container justify="center">
+                              <Grid container justifyContent="center">
                                  <Typography align="center" variant={matches ? 'subtitle1': 'caption'}
                                  onClick={()=> {
                                     setId(item._id)

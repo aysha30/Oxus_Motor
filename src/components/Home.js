@@ -1,24 +1,17 @@
 import React, { useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
 import Navbar from "./modules/Navbar";
 import Footer from "./modules/Footer";
 import Box from "@material-ui/core/Box";
 import { Button, Container, Grid, Link, MenuItem, Typography } from "@material-ui/core";
-//import "react-alice-carousel/lib/alice-carousel.css";
-
 import "../App.css";
-//import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
-//import MenuItem from "@material-ui/core/MenuItem";
-//import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
-//import CardActionArea from "@material-ui/core/CardActionArea";
-//import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import deals from "../assets/deals.png";
@@ -95,7 +88,7 @@ export default function Home() {
                year, setYear,
             }}>
          <Navbar />
-         <Box bgcolor="primary.main" color="white" style={{ height: "600px", marginTop: "60px" }}>
+         <Box bgcolor="primary.main" style={{ height: "600px", marginTop: "60px", color:"#fff" }}>
             <Container maxWidth="lg">
                <Typography variant="h4" align="center">
                   <Grid container>
@@ -110,7 +103,7 @@ export default function Home() {
                         </Box>
                         <Box pt={3}>
                            <Button variant="contained">
-                              <Typography color="white" variant="button">
+                              <Typography color="inherit" variant="button">
                                  Explore Cars
                               </Typography>
                            </Button>
@@ -202,7 +195,7 @@ export default function Home() {
                      </Grid>
                      
                         <Grid item xs={12} sm>
-                           <a href="/Inventory">
+                           <NavLink to="/Inventory">
                            <Button
                               onClick={() => setOpenAdvSch(true)}
                               type='submit'
@@ -211,7 +204,7 @@ export default function Home() {
                               color="primary"  >
                               Search
                            </Button>
-                           </a>
+                           </NavLink>
                         
                         </Grid>
                      
@@ -356,12 +349,11 @@ export default function Home() {
             </Box>
          </Typography>
          <RecentInOxus />
-         <Grid container fullwidth='true' justify="center" style={{marginTop: "90px"}} >
+         <Grid container fullwidth='true' justifyContent="center" style={{marginTop: "90px"}} >
             <Grid item>
             <Typography >
                <Box component={Link}
                fontWeight="fontWeightBold"
-               variant="string"
                underline="hover"
                color="#000"
                href="/Inventory"
@@ -387,12 +379,11 @@ export default function Home() {
             </Box>
          </Typography>
          <SedanInOxus />
-         <Grid container fullwidth='true' justify="center" style={{marginTop: "90px"}} >
+         <Grid container fullwidth='true' justifyContent="center" style={{marginTop: "90px"}} >
             <Grid item>
             <Typography >
                <Box component={Link}
                fontWeight="fontWeightBold"
-               variant="string"
                underline="hover"
                color="#000"
                href="/Inventory"
@@ -409,12 +400,11 @@ export default function Home() {
             </Box>
          </Typography>
          <SUVInOxus />
-         <Grid container fullwidth='true' justify="center" style={{marginTop: "90px"}} >
+         <Grid container fullwidth='true' justifyContent="center" style={{marginTop: "90px"}} >
             <Grid item>
             <Typography >
                <Box component={Link}
                fontWeight="fontWeightBold"
-               variant="string"
                underline="hover"
                color="#000"
                href="/Inventory"
@@ -431,12 +421,11 @@ export default function Home() {
             </Box>
          </Typography>
          <LuxuryInOxus />
-         <Grid container fullwidth='true' justify="center" style={{marginTop: "90px"}} >
+         <Grid container fullwidth='true' justifyContent="center" style={{marginTop: "90px"}} >
             <Grid item>
             <Typography >
                <Box component={Link}
                fontWeight="fontWeightBold"
-               variant="string"
                underline="hover"
                color="#000"
                href="/Inventory"

@@ -3,9 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import {
     Box,
     Grid,
-    Typography,
-    Button, Paper, InputBase,
-    Container, TextField,
+    Typography,Paper, InputBase,
     IconButton,
 } from '@material-ui/core';
 import TelegramIcon from '@material-ui/icons/Telegram';
@@ -66,7 +64,7 @@ function SignUp() {
 
 
                 </Typography>
-                <Grid container justify="center" alignItems="center">
+                <Grid container justifyContent="center" alignItems="center">
                     <Paper component="form" className={classes.paper}>
 
                         <InputBase

@@ -260,19 +260,19 @@ export default function AdvSearch( props ) {
 //     extColor, intColor, extColType, sort);
 
 let cancelToken
-    const handleFilter = async e => {
+    const handleFilter = async (e) => {
         e.preventDefault();
         if (typeof cancelToken != typeof undefined) {
             cancelToken.cancel("Operation canceled due to new request.")
         }
         cancelToken = axios.CancelToken.source()
-        var url = `http://localhost:3000/inventory/advance-search/${make}/${model}/${trim}/${year}/${priceValue[0]*1000}/${priceValue[1]*1000}/${mileageValue[0]*1000}/${mileageValue[1]*1000}/${dayValue[0]}/${dayValue[1]}/${cylinder}/${cylinderType}/${condition}/${extColor}/${intColor}/${extColType}/${sort}`;
+        var url = `/inventory/advance-search/${make}/${model}/${trim}/${year}/${priceValue[0]*1000}/${priceValue[1]*1000}/${mileageValue[0]*1000}/${mileageValue[1]*1000}/${dayValue[0]}/${dayValue[1]}/${cylinder}/${cylinderType}/${condition}/${extColor}/${intColor}/${extColType}/${sort}`;
         
         try {
             const results = await axios.get(url,
                 { cancelToken: cancelToken.token }
             )
-                console.log(`http://localhost:3000/inventory/advance-search/${make}/${model}/${trim}/${year}/${priceValue[0]*1000}/${priceValue[1]*1000}/${mileageValue[0]*1000}/${mileageValue[1]*1000}/${dayValue[0]}/${dayValue[1]}/${cylinder}/${cylinderType}/${condition}/${extColor}/${intColor}/${extColType}/${sort}`)
+                // console.log(`http://localhost:3000/inventory/advance-search/${make}/${model}/${trim}/${year}/${priceValue[0]*1000}/${priceValue[1]*1000}/${mileageValue[0]*1000}/${mileageValue[1]*1000}/${dayValue[0]}/${dayValue[1]}/${cylinder}/${cylinderType}/${condition}/${extColor}/${intColor}/${extColType}/${sort}`)
                 setListItems(results.data.data)
             
         } 

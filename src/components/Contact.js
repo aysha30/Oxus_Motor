@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
         width: "auto",
         textAlign: "center"
     }
-  }));
+}));
 
 
 export default function Contact() {

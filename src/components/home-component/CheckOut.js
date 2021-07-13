@@ -2,10 +2,9 @@ import React from 'react'
 import Slider from "react-slick";
 import {
    Box,
-   Typography,
-   useMediaQuery, Grid,
+   Typography, Grid,
 } from '@material-ui/core';
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles} from "@material-ui/core/styles";
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import img1 from "./car01.jpg";
@@ -37,13 +36,6 @@ const images = [img1, img2, img3, img4, img1, img2, img3, img4];
 function CheckOut() {
 
    const classes = useStyles();
-   const theme = useTheme();
-   const matches = useMediaQuery(theme.breakpoints.down("xs"));
-
-
-   var width = window.innerWidth
-|| document.documentElement.clientWidth
-|| document.body.clientWidth;
 
    const NextArrow = ({ onClick }) => {
       return (
@@ -115,7 +107,7 @@ function CheckOut() {
          <Slider {...settings} style={{height: "auto"}}>
             {images.map((imj, idx) => (
                <div key={uuidv4()} className={idx === imageIndex ? "sli aSlide" : "sli"}>
-                  <Grid container alignItems="center" justify="center">
+                  <Grid container alignItems="center" justifyContent="center">
                      <img src={imj} 
                      width="450px" 
                      height="300px"

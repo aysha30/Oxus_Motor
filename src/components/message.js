@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Box, TextField, Grid, Typography, Button, Paper } from '@material-ui/core';
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import LanguageIcon from '@material-ui/icons/Language';
 import CallIcon from '@material-ui/icons/Call';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -126,25 +125,25 @@ export default function Message() {
     
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit = (data) => {
-        fetch('http://localhost:3000/contactUs', {
+    const onSubmit = async (datas) => {
+        const res = await fetch('/contactUs/', {
             method: 'post',
-            headers: {'Content-Type': 'application/json'},
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
             body: JSON.stringify({
-                name: data.firstName,
-                surname: data.lastName,
-                email: data.email,
-                phone: data.phone,
-                message: data.message
+                name: datas.firstName,
+                surname: datas.lastName,
+                email: datas.email,
+                phone: datas.phone,
+                message: datas.message
             })
         })
-        .then(res => {
-            res.json();
-        })
-        .catch(err => console.log(err));
-
+        const data = await res.json();
+console.log(data);
         
-            document.getElementById('formsubmit').reset();
+        // document.getElementById('formsubmit').reset();
     };
 
     
@@ -153,7 +152,7 @@ export default function Message() {
 
     return(
         <div>
-        <Grid container justify="center" alignItems="center" >
+        <Grid container justifyContent="center" alignItems="center" >
             <Paper 
             className={classes.paper}
             align="left" >
@@ -185,7 +184,8 @@ export default function Message() {
                     </Typography>
                 </Box>
                     <Box className={classes.googlemap} mt={5}>
-                    <iframe title="g-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230818.73494937457!2d55.406180553978885!3d25.319562846321514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f5fede7964b%3A0x2a830aa19c1f6d89!2sSharjah%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1623924574886!5m2!1sen!2sin" width="100%" height="270" style={{border:0}} allowFullScreen="" loading="lazy"></iframe>
+                    <iframe title="g-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230818.73494937457!2d55.406180553978885!3d25.319562846321514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f5fede7964b%3A0x2a830aa19c1f6d89!2sSharjah%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1623924574886!5m2!1sen!2sin" 
+                    width="100%" height="270" style={{border:0}} allowFullScreen="" loading="lazy"></iframe>
                     
                         </Box>
                         
@@ -199,7 +199,7 @@ export default function Message() {
                     <Typography variant="h6">
                         Send us a message
                     </Typography><hr />
-                    <form id="formsubmit" onSubmit={handleSubmit(onSubmit)}  >
+                    <form method="POST" id="formsubmit" onSubmit={handleSubmit(onSubmit)}  >
                         <TextField 
                             // id="standard-size-normal"
                             className={classes.textf}

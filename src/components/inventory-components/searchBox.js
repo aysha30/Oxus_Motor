@@ -86,13 +86,13 @@ function SearchBox({searchChange}) {
             <Grid container 
                 className={classes.gridContainer}
                 direction="row"
-                justify="center"
+                justifyContent="center"
                 alignItems="stretch"
                 >
                 <Grid container
                     className={classes.gridSearch}
                     direction="row"
-                    justify="center"
+                    justifyContent="center"
                     alignItems="stretch"
                     style={{ shadow: 5}}
                     >
@@ -116,7 +116,7 @@ function SearchBox({searchChange}) {
                         </Button>
                     </Grid>
                 </Grid>
-                <Grid item container justify="center"
+                <Grid item container justifyContent="center"
                     className={classes.gridAdvance}>
                     <Button 
                             className={classes.advanceButton}

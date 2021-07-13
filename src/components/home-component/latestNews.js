@@ -9,9 +9,6 @@ import {
 } from '@material-ui/core';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
-import img1 from "./card2.png";
-import img2 from "./car3.png";
-import img3 from "./car4.png";
 import Slider from "react-slick";
 import './latest.css';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
@@ -36,8 +33,6 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const images = [img1, img2, img3, img1, img2, img3];
-
 function LatestNews() {
     const classes = useStyles();
     const NextArrow = ({ onClick }) => {
@@ -61,7 +56,7 @@ function LatestNews() {
     const [ list, setList ] = useState([]);
 
     useEffect(() => {
-        var url = `http://localhost:3000/home/recent`;
+        var url = `/home/recent`;
         axios
         .get(url)
         .then(res => {
@@ -141,13 +136,11 @@ function LatestNews() {
                                     Date
                                 </Typography>
                             </CardContent>
-                            <CardActionArea >
-                                <Grid container spacing={2} alignItems="center" justify="center" style={{ marginBottom: "20px" }} >
+                                <Grid container spacing={2} alignItems="center" justifyContent="center" style={{ marginBottom: "20px" }} >
                                     <Button startIcon={<LocalOfferOutlinedIcon />}> <Box fontSize={15}>Cars</Box></Button>
                                     <Button startIcon={<LocalOfferOutlinedIcon />}> <Box fontSize={15}>News</Box></Button>
                                     <Button startIcon={<LocalOfferOutlinedIcon />}> <Box fontSize={15}>Fermentum</Box></Button>
                                 </Grid>
-                            </CardActionArea>
                         </Paper>
                     </div>
 

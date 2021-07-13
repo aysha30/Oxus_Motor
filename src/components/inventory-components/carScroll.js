@@ -7,105 +7,6 @@ import {
     CardContent} from '@material-ui/core';
     import { useHistory, generatePath } from 'react-router-dom';
 
-// const carArray = [
-//     {
-//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-//         name: "Mercedes Benz1",
-//         fullPrice: "  $50,000",
-//         monthly: "  $2,000",
-//         year: 2020,
-//         fuel: "Diesel",
-//         gear: "Full Automatic",
-//         km: 37400,
-//         bodyType: "SUV",
-//         enginePower: "125 hp"
-//     },
-//     {
-//         src: "https://freepngimg.com/thumb/car/4-2-car-png-hd.png",
-//         name: "Mercedes Benz2",
-//         fullPrice: "  $50,000",
-//         monthly: "  $2,000",
-//         year: 2020,
-//         fuel: "Diesel",
-//         gear: "Full Automatic",
-//         km: 37400,
-//         bodyType: "SUV",
-//         enginePower: "125 hp"
-//     },
-//     {
-//         src: "https://i.pinimg.com/originals/dc/19/e9/dc19e9b94a372ebc21ffeb7623d5632a.png",
-//         name: "Mercedes Benz3",
-//         fullPrice: "  $50,000",
-//         monthly: "  $2,000",
-//         year: 2020,
-//         fuel: "Diesel",
-//         gear: "Full Automatic",
-//         km: 37400,
-//         bodyType: "SUV",
-//         enginePower: "125 hp"
-//     },
-//     {
-//         src: "https://www.nicepng.com/png/detail/936-9365791_free-png-download-car-png-images-background-png.png",
-//         name: "Mercedes Benz4",
-//         fullPrice: "  $50,000",
-//         monthly: "  $2,000",
-//         year: 2020,
-//         fuel: "Diesel",
-//         gear: "Full Automatic",
-//         km: 37400,
-//         bodyType: "SUV",
-//         enginePower: "125 hp"
-//     },
-//     {
-//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-//         name: "Mercedes Benz5",
-//         fullPrice: "  $50,000",
-//         monthly: "  $2,000",
-//         year: 2020,
-//         fuel: "Diesel",
-//         gear: "Full Automatic",
-//         km: 37400,
-//         bodyType: "SUV",
-//         enginePower: "125 hp"
-//     },
-//     {
-//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-//         name: "Mercedes Benz6",
-//         fullPrice: "  $50,000",
-//         monthly: "  $2,000",
-//         year: 2020,
-//         fuel: "Diesel",
-//         gear: "Full Automatic",
-//         km: 37400,
-//         bodyType: "SUV",
-//         enginePower: "125 hp"
-//     },
-//     {
-//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-//         name: "Mercedes Benz7",
-//         fullPrice: "  $50,000",
-//         monthly: "  $2,000",
-//         year: 2020,
-//         fuel: "Diesel",
-//         gear: "Full Automatic",
-//         km: 37400,
-//         bodyType: "SUV",
-//         enginePower: "125 hp"
-//     },
-//     {
-//         src: "https://i.pinimg.com/originals/91/06/02/910602979bda92b9f88144d313f52725.png",
-//         name: "Mercedes Benz8",
-//         fullPrice: "  $50,000",
-//         monthly: "  $2,000",
-//         year: 2020,
-//         fuel: "Diesel",
-//         gear: "Full Automatic",
-//         km: 37400,
-//         bodyType: "SUV",
-//         enginePower: "125 hp"
-//     },
-
-// ];
 
 const initialCars = {
     "data": [
@@ -248,7 +149,7 @@ function CarScroll() {
     const [ id, setId ] = useState();
     const history = useHistory();
     
-    const getUrl = 'http://localhost:3000/cars';
+    const getUrl = '/cars';
 
     useEffect(()=>{
         fetch(getUrl)
@@ -259,29 +160,6 @@ function CarScroll() {
         .catch(err => console.log(err));
     },[])
 
-    // useEffect(()=>{
-    //     const loadAll = async () => {
-    //         // console.log("useeffect of carscroll");
-    //         await axios
-    //         .get(getUrl)
-    //         .then(res => {
-    //             // console.log("id "+ id);
-    //             // console.log("axios data", res);
-    //             setCarArray(res);
-    //             // console.log("cararray", carArray);
-                
-    //         })
-    //         .catch((error) => {
-    //             const response = error.response
-    //             console.log(response.data.errors)
-    //         }) 
-    //     } 
-    //     loadAll();
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // },[getUrl]);
-
-    // console.log("inicar", initialCars);
-    // console.log("cararray", carArray);
     return(
         <div>
         {carArray.data.slice(0, 3).map((item) => (

@@ -4,9 +4,8 @@ import {
    Box,
    Grid,
    Typography,
-   useMediaQuery
 } from '@material-ui/core';
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import './explore.css';
@@ -26,8 +25,6 @@ const useStyles = makeStyles((theme) => ({
 function ExploreCar() {
 
    const classes = useStyles();
-   const theme = useTheme();
-   const matches = useMediaQuery(theme.breakpoints.down("xs"));
 
    const NextArrow = ({ onClick }) => {
       return (
@@ -50,7 +47,7 @@ function ExploreCar() {
    const [ list, setList ] = useState([]);
 
    useEffect(() => {
-      var url = `http://localhost:3000/home/recent`;
+      var url = `/home/recent`;
       axios
       .get(url)
       .then(res => {
@@ -107,7 +104,7 @@ function ExploreCar() {
          <Slider {...settings} style={{height: "400px"}}>
             {list.map((item, idx) => (
                <div key={uuidv4()} className={idx === imageIndex ? "sld acSld" : "sld"}>
-                  <Grid container justify="center" alignItems="center" >
+                  <Grid container justifyContent="center" alignItems="center" >
                   <img className="image" src={item.images[0]} alt={item.company} />
                   
                   </Grid>
