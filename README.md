@@ -1,5 +1,7 @@
 # Oxus-Motors
 
+NOTE: frontend code on `client` branch and backend code on `server` branch.
+
 ![image](https://user-images.githubusercontent.com/45158487/125452731-6ff1db95-2455-46ac-9da7-713edd9802ac.png)
 
 
